@@ -708,7 +708,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sec:2c2" class="md-nav__link">
+  <a href="#automated-lcr-transport-calculations-the-2c2-geometry" class="md-nav__link">
     <span class="md-ellipsis">
       Automated lcr Transport Calculations: The 2c2 Geometry
     </span>
@@ -1969,7 +1969,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sec:2c2" class="md-nav__link">
+  <a href="#automated-lcr-transport-calculations-the-2c2-geometry" class="md-nav__link">
     <span class="md-ellipsis">
       Automated lcr Transport Calculations: The 2c2 Geometry
     </span>
@@ -2015,7 +2015,7 @@ system. The results will be written to files <code>seedname_qc.dat</code> and
 <code>seedname_dos.dat</code>, respectively.</p>
 <p>The system for which transport properties are calculated is determined
 by the keyword <code>transport_mode</code>.</p>
-<h3 id="transport_mode-bulk"><code>transport_mode = bulk</code><a class="headerlink" href="#transport_mode-bulk" title="Permanent link">&para;</a></h3>
+<h2 id="transport_mode-bulk"><code>transport_mode = bulk</code><a class="headerlink" href="#transport_mode-bulk" title="Permanent link">&para;</a></h2>
 <p>Quantum conductance and density of states are calculated for a perfectly
 periodic one-dimensional conductor. If
 <code>tran_read_ht = FALSE</code> the transport properties are
@@ -2025,7 +2025,7 @@ allows the user to provide an external Hamiltonian matrix file
 <code>seedname_htB.dat</code>, from which the properties are found. See
 Section <a href="../parameters/#post-processing">Post-Processing</a>
 for more details of the keywords required for such calculations.</p>
-<h3 id="transport_mode-lcr"><code>transport_mode = lcr</code><a class="headerlink" href="#transport_mode-lcr" title="Permanent link">&para;</a></h3>
+<h2 id="transport_mode-lcr"><code>transport_mode = lcr</code><a class="headerlink" href="#transport_mode-lcr" title="Permanent link">&para;</a></h2>
 <p>Quantum conductance and density of states are calculated for a system
 where semi-infinite, left and right leads are connected through a
 central conductor region. This is known as the <em>lcr</em> system. Details of
@@ -2040,11 +2040,11 @@ the method is described in Ref. <sup id="fnref:ref1"><a class="footnote-ref" hre
 <li>
 <p>If <code>tran_read_ht = FALSE</code>, then the transport
     calculation is performed automatically using the Wannier functions
-    as a basis and the 2c2 geometry described in
-    Section <a href="#sec:2c2">Automated lcr Transport Calculations: The 2c2 Geometry</a>.</p>
+    as a basis and the 2c2 geometry described in Section
+    <a href="#automated-lcr-transport-calculations-the-2c2-geometry">Automated lcr Transport Calculations: The 2c2 Geometry</a>.</p>
 </li>
 </ul>
-<h3 id="sec:2c2">Automated lcr Transport Calculations: The 2c2 Geometry<a class="headerlink" href="#sec:2c2" title="Permanent link">&para;</a></h3>
+<h2 id="automated-lcr-transport-calculations-the-2c2-geometry">Automated lcr Transport Calculations: The 2c2 Geometry<a class="headerlink" href="#automated-lcr-transport-calculations-the-2c2-geometry" title="Permanent link">&para;</a></h2>
 <p>Calculations using the 2c2 geometry provide a method to calculate the
 transport properties of an lcr system from a single
 <code>wannier90</code> calculation. The Hamiltonian matrices which the five
@@ -2094,13 +2094,13 @@ function and <span class="arithmatex">\(g(\mathbf{r})\)</span> are the set of fu
 <div class="arithmatex">\[
 \begin{aligned}
 g(\mathbf{r})=&amp;\left\lbrace1,\sin\left(\frac{2\pi (x-x_c)}{L_x}\right),
-                                             \sin\left(\frac{2\pi (y-y_c)}{L_y}\right),
-                                             \sin\left(\frac{2\pi (z-z_c)}{L_z}\right),
-                                             \sin\left(\frac{2\pi (x-x_c)}{L_x}\right)
-                                             \sin\left(\frac{2\pi (y-y_c)}{L_y}\right),\right.\nonumber \\
-                                           &amp;\left.\sin\left(\frac{2\pi (x-x_c)}{L_x}\right)
-                                             \sin\left(\frac{2\pi (z-z_c)}{L_z}\right),
-                                             ... \right\rbrace
+            \sin\left(\frac{2\pi (y-y_c)}{L_y}\right),
+            \sin\left(\frac{2\pi (z-z_c)}{L_z}\right),
+            \sin\left(\frac{2\pi (x-x_c)}{L_x}\right)
+            \sin\left(\frac{2\pi (y-y_c)}{L_y}\right),\right.\nonumber \\
+             &amp;\left.\sin\left(\frac{2\pi (x-x_c)}{L_x}\right)
+            \sin\left(\frac{2\pi (z-z_c)}{L_z}\right),
+            ... \right\rbrace
 \label{eq:g(r)}
 \end{aligned}
 \]</div>
@@ -2139,8 +2139,8 @@ file:</p>
 </ul>
 <p>A further parameter related to these calculations is
 <code>tran_group_threshold</code>.</p>
-<p>Tutorial of <a href="../../../tutorials/tutorial_14/">how 2c2 calculations are preformed</a> can be found in the
-<code>wannier90</code> Tutorial.</p>
+<p>Tutorial of <a href="../../../tutorials/tutorial_14/">how 2c2 calculations are preformed</a>
+can be found in the <code>wannier90</code> Tutorial.</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -2171,7 +2171,7 @@ file:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2181,7 +2181,7 @@ file:</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

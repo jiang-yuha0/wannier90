@@ -900,7 +900,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sec:boltzwann-theory" class="md-nav__link">
+  <a href="#theory" class="md-nav__link">
     <span class="md-ellipsis">
       Theory
     </span>
@@ -2002,7 +2002,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sec:boltzwann-theory" class="md-nav__link">
+  <a href="#theory" class="md-nav__link">
     <span class="md-ellipsis">
       Theory
     </span>
@@ -2119,7 +2119,7 @@ electrical conductivity <span class="arithmatex">\(\mathrm{\bm{\sigma}}\)</span>
 <span class="arithmatex">\(\mathrm{\bm{S}}\)</span> and the coefficient <span class="arithmatex">\(\mathrm{\bm{K}}\)</span> (defined below;
 it is the main ingredient of the thermal conductivity).</p>
 <p>The list of parameters of the <code>BoltzWann</code> module are summarized in
-Table <a href="../postw90params/#boltzwann-parameters"> <code>BoltzWann</code> Parameters</a>. 
+Table <a href="../postw90params/#boltzwann-parameters"><code>BoltzWann</code> Parameters</a>.
 A <a href="../../../tutorials/tutorial_16/">tutorial of a Boltzmann transport</a>
 calculation can be found in the <code>wannier90</code> Tutorial.</p>
 <div class="admonition note">
@@ -2127,8 +2127,8 @@ calculation can be found in the <code>wannier90</code> Tutorial.</p>
 <p>By default, the code assumes to be working with a 3D bulk
 material, with periodicity along all three spatial directions. If you
 are interested in studying 2D systems, set the correct value for the
-<code>boltz_2d_dir</code> variable 
-(see Sec. <a href="../postw90params/#sec:boltz2ddir">boltz_2d_dir</a> for the documentation). 
+<code>boltz_2d_dir</code> variable
+(see Sec. <a href="../postw90params/#sec:boltz2ddir">boltz_2d_dir</a> for the documentation).
 This is important
 for the evaluation of the Seebeck coefficient.</p>
 </div>
@@ -2141,7 +2141,7 @@ transport properties with a maximally-localized Wannier functions
 basis</em>,
 Comp. Phys. Comm. 185, 422 (2014), DOI:10.1016/j.cpc.2013.09.015.</p>
 </blockquote>
-<h3 id="sec:boltzwann-theory">Theory<a class="headerlink" href="#sec:boltzwann-theory" title="Permanent link">&para;</a></h3>
+<h2 id="theory">Theory<a class="headerlink" href="#theory" title="Permanent link">&para;</a></h2>
 <p>The theory of the electronic transport using the Boltzmann transport
 equations can be found for instance in
 Refs. <sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup><sup id="fnref:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup><sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup>. Here we briefly
@@ -2151,8 +2151,10 @@ flux density) <span class="arithmatex">\(\mathrm{\bm{J}}_Q\)</span> can be writt
 <div class="arithmatex">\[
 \begin{equation}
 \begin{aligned}
-  \mathrm{\bm{J}}   &amp;= \mathrm{\bm{\sigma}}(\mathrm{\bm{E}} - \mathrm{\bm{S}} \mathrm{\bm{\nabla }}T) \\
-  \mathrm{\bm{J}}_Q &amp;= T \mathrm{\bm{\sigma }}\mathrm{\bm{S}} \mathrm{\bm{E}} - \mathrm{\bm{K}} \mathrm{\bm{\nabla }}T,
+  \mathrm{\bm{J}}   &amp;= \mathrm{\bm{\sigma}}(\mathrm{\bm{E}} - \mathrm{\bm{S}}
+  \mathrm{\bm{\nabla }}T) \\
+  \mathrm{\bm{J}}_Q &amp;= T \mathrm{\bm{\sigma }}\mathrm{\bm{S}} \mathrm{\bm{E}} -
+  \mathrm{\bm{K}} \mathrm{\bm{\nabla }}T,
 \end{aligned}
 \end{equation}
 \]</div>
@@ -2166,7 +2168,8 @@ electronic part of the thermal conductivity), which is defined as the
 heat current per unit of temperature gradient in open-circuit
 experiments (i.e., with <span class="arithmatex">\(\mathrm{\bm{J}}=0\)</span>) is not precisely
 <span class="arithmatex">\(\mathrm{\bm{K}}\)</span>, but
-<span class="arithmatex">\(\mathrm{\bm{\kappa }}= \mathrm{\bm{K}}-\mathrm{\bm{S}} \mathrm{\bm{\sigma }}\mathrm{\bm{S}} T\)</span>
+<span class="arithmatex">\(\mathrm{\bm{\kappa }}= \mathrm{\bm{K}}-\mathrm{\bm{S}}
+\mathrm{\bm{\sigma }}\mathrm{\bm{S}} T\)</span>
 (see for instance Eq. (7.89) of Ref. <sup id="fnref2:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup> or Eq. (XI-57b) of
 Ref. <sup id="fnref2:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>). The thermal conductivity <span class="arithmatex">\(\mathrm{\bm{\kappa}}\)</span>
 can be then calculated from the <span class="arithmatex">\(\mathrm{\bm{\sigma}}\)</span>,
@@ -2178,9 +2181,16 @@ on the temperature <span class="arithmatex">\(T\)</span>, and can be calculated 
 \begin{equation}
 \label{eq:boltz-sigmas}
 \begin{aligned}
-  \mathrm{[\bm{\sigma}]}_{ij}(\mu,T)&amp;=e^2 \int_{-\infty}^{+\infty} d\varepsilon \left(-\frac {\partial f(\varepsilon,\mu,T)}{\partial \varepsilon}\right)\Sigma_{ij}(\varepsilon), \\
-  [\mathrm{\bm{\sigma }}\mathrm{\bm{S}}]_{ij}(\mu,T)&amp;=\frac e T \int_{-\infty}^{+\infty} d\varepsilon \left(-\frac {\partial f(\varepsilon,\mu,T)}{\partial \varepsilon}\right)(\varepsilon-\mu)\Sigma_{ij}(\varepsilon),\\
-  [\mathrm{\bm{K}}]_{ij}(\mu,T)&amp;=\frac 1 T \int_{-\infty}^{+\infty} d\varepsilon \left(-\frac {\partial f(\varepsilon,\mu,T)}{\partial \varepsilon}\right)(\varepsilon-\mu)^2 \Sigma_{ij}(\varepsilon),
+  \mathrm{[\bm{\sigma}]}_{ij}(\mu,T)&amp;=e^2 \int_{-\infty}^{+\infty} d\varepsilon
+  \left(-\frac {\partial f(\varepsilon,\mu,T)}{\partial \varepsilon}\right)
+  \Sigma_{ij}(\varepsilon), \\
+  [\mathrm{\bm{\sigma }}\mathrm{\bm{S}}]_{ij}(\mu,T)&amp;=\frac e T
+  \int_{-\infty}^{+\infty} d\varepsilon \left(-\frac {\partial
+  f(\varepsilon,\mu,T)}{\partial \varepsilon}\right)(\varepsilon-\mu)
+  \Sigma_{ij}(\varepsilon),\\
+  [\mathrm{\bm{K}}]_{ij}(\mu,T)&amp;=\frac 1 T \int_{-\infty}^{+\infty}
+  d\varepsilon \left(-\frac {\partial f(\varepsilon,\mu,T)}
+  {\partial \varepsilon}\right)(\varepsilon-\mu)^2 \Sigma_{ij}(\varepsilon),
 \end{aligned}
 \end{equation}
 \]</div>
@@ -2198,7 +2208,9 @@ f(\varepsilon,\mu,T) = \frac{1}{e^{(\varepsilon-\mu)/K_B T}+1}
 tensor, defined as</p>
 <div class="arithmatex">\[
 \begin{equation}
-\Sigma_{ij}(\varepsilon) = \frac 1 V \sum_{n,\mathrm{\bm{k}}} v_i(n,\mathrm{\bm{k}}) v_j(n,\mathrm{\bm{k}}) \tau(n,\mathrm{\bm{k}}) \delta(\varepsilon - E_{n,k}).
+\Sigma_{ij}(\varepsilon) = \frac 1 V \sum_{n,\mathrm{\bm{k}}}
+v_i(n,\mathrm{\bm{k}}) v_j(n,\mathrm{\bm{k}}) \tau(n,\mathrm{\bm{k}})
+\delta(\varepsilon - E_{n,k}).
 \end{equation}
 \]</div>
 <p>In the above formula, the sum is over all bands <span class="arithmatex">\(n\)</span> and all states
@@ -2213,8 +2225,8 @@ finally <span class="arithmatex">\(\tau\)</span> is the relaxation time. In the 
 approximation</em> adopted here, <span class="arithmatex">\(\tau\)</span> is assumed as a constant, i.e., it
 is independent of <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(\mathrm{\bm{k}}\)</span> and its value (in fs) is
 read from the input variable <code>boltz_relax_time</code>.</p>
-<h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
-<h4 id="seedname_boltzdosdat"><code>seedname_boltzdos.dat</code><a class="headerlink" href="#seedname_boltzdosdat" title="Permanent link">&para;</a></h4>
+<h2 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
+<h3 id="seedname_boltzdosdat"><code>seedname_boltzdos.dat</code><a class="headerlink" href="#seedname_boltzdosdat" title="Permanent link">&para;</a></h3>
 <p>OUTPUT. Written by <code>postw90</code> if <code>boltz_calc_also_dos</code> is <code>true</code>. Note
 that even if there are other general routines in <code>postw90</code> which
 specifically calculate the DOS, it may be convenient to use the routines
@@ -2227,7 +2239,8 @@ describe the content of the file. Then, there is a line for each energy
 <span class="arithmatex">\(\varepsilon\)</span> on the grid, containing a number of columns. The first
 column is the energy <span class="arithmatex">\(\varepsilon\)</span>. The following is the DOS at the
 given energy <span class="arithmatex">\(\varepsilon\)</span>. The DOS can either be calculated using the
-adaptive smearing scheme (see the following note) if <code>boltz_dos_adpt_smr</code> is <code>true</code>, or using
+adaptive smearing scheme (see the following note) if <code>boltz_dos_adpt_smr</code>
+is <code>true</code>, or using
 a "standard" fixed smearing, whose type and value are defined by
 <code>boltz_dos_smr_type</code> and <code>boltz_dos_smr_fixed_en_width</code>, respectively.
 If spin decomposition is required (input flag <code>spin_decomp</code>), further
@@ -2242,7 +2255,7 @@ replaced by 8 neighboring <span class="arithmatex">\(k\)</span> points. Thus, th
 the DOS may be slightly different with respect to that given by the
 <code>dos</code> module.</p>
 </div>
-<h4 id="seedname_tdfdat"><code>seedname_tdf.dat</code><a class="headerlink" href="#seedname_tdfdat" title="Permanent link">&para;</a></h4>
+<h3 id="seedname_tdfdat"><code>seedname_tdf.dat</code><a class="headerlink" href="#seedname_tdfdat" title="Permanent link">&para;</a></h3>
 <p>OUTPUT. This file contains the Transport Distribution Function (TDF)
 tensor <span class="arithmatex">\(\mathrm{\bm{\Sigma}}\)</span> on a grid of energies.</p>
 <p>The first lines are comments (starting with # characters) which
@@ -2258,7 +2271,7 @@ for the spin down.</p>
 <p>The energy <span class="arithmatex">\(\varepsilon\)</span> is in eV, while <span class="arithmatex">\(\mathrm{\bm{\Sigma}}\)</span> is in
 <span class="arithmatex">\(\displaystyle\frac{1}{\hbar^2}\cdot{\mathrm{eV}\cdot\mathrm{fs}}\cdot
 {\mathring{\mathrm{A}}^{-1}}\)</span>.</p>
-<h4 id="seedname_elconddat"><code>seedname_elcond.dat</code><a class="headerlink" href="#seedname_elconddat" title="Permanent link">&para;</a></h4>
+<h3 id="seedname_elconddat"><code>seedname_elcond.dat</code><a class="headerlink" href="#seedname_elconddat" title="Permanent link">&para;</a></h3>
 <p>OUTPUT. This file contains the electrical conductivity tensor
 <span class="arithmatex">\(\mathrm{\bm{\sigma}}\)</span> on the grid of <span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(\mu\)</span> points.</p>
 <p>The first lines are comments (starting with # characters) which
@@ -2269,7 +2282,7 @@ describe the content of the file. Then, there is a line for each
 <p>The chemical potential is in eV, the temperature is in K, and the
 components of the electrical conductivity tensor ar in SI units, i.e. in
 1/<span class="arithmatex">\(\Omega\)</span>/m.</p>
-<h4 id="seedname_sigmasdat"><code>seedname_sigmas.dat</code><a class="headerlink" href="#seedname_sigmasdat" title="Permanent link">&para;</a></h4>
+<h3 id="seedname_sigmasdat"><code>seedname_sigmas.dat</code><a class="headerlink" href="#seedname_sigmasdat" title="Permanent link">&para;</a></h3>
 <p>OUTPUT. This file contains the tensor
 <span class="arithmatex">\(\mathrm{\bm{\sigma}}\mathrm{\bm{S}}\)</span>, i.e. the product of the
 electrical conductivity tensor and of the Seebeck coefficient as defined
@@ -2282,7 +2295,7 @@ describe the content of the file. Then, there is a line for each
 symmetric).</p>
 <p>The chemical potential is in eV, the temperature is in K, and the
 components of the tensor ar in SI units, i.e. in A/m/K.</p>
-<h4 id="seedname_seebeckdat"><code>seedname_seebeck.dat</code><a class="headerlink" href="#seedname_seebeckdat" title="Permanent link">&para;</a></h4>
+<h3 id="seedname_seebeckdat"><code>seedname_seebeck.dat</code><a class="headerlink" href="#seedname_seebeckdat" title="Permanent link">&para;</a></h3>
 <p>OUTPUT. This file contains the Seebeck tensor <span class="arithmatex">\(\mathrm{\bm{S}}\)</span> on the
 grid of <span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(\mu\)</span> points.</p>
 <p>Note that in the code the Seebeck coefficient is defined as zero when
@@ -2298,9 +2311,9 @@ describe the content of the file. Then, there is a line for each
 from the other three files (elcond, sigmas and kappa)!</p>
 <p>The chemical potential is in eV, the temperature is in K, and the
 components of the Seebeck tensor ar in SI units, i.e. in V/K.</p>
-<h4 id="seedname_kappadat"><code>seedname_kappa.dat</code><a class="headerlink" href="#seedname_kappadat" title="Permanent link">&para;</a></h4>
+<h3 id="seedname_kappadat"><code>seedname_kappa.dat</code><a class="headerlink" href="#seedname_kappadat" title="Permanent link">&para;</a></h3>
 <p>OUTPUT. This file contains the tensor <span class="arithmatex">\(\mathrm{\bm{K}}\)</span> defined in
-Sec. <a href="#sec:boltzwann-theory">Theory</a> on the grid of <span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(\mu\)</span> points.</p>
+Sec. <a href="#theory">Theory</a> on the grid of <span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(\mu\)</span> points.</p>
 <p>The first lines are comments (starting with # characters) which
 describe the content of the file. Then, there is a line for each
 <span class="arithmatex">\((\mu,T)\)</span> pair, containing 8 columns, which are respectively: <span class="arithmatex">\(\mu\)</span>,
@@ -2348,7 +2361,7 @@ thermal conductivity, i.e. in W/m/K.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2358,7 +2371,7 @@ thermal conductivity, i.e. in W/m/K.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

@@ -622,9 +622,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#job-control" class="md-nav__link">
+  <a href="#job-control-parameters" class="md-nav__link">
     <span class="md-ellipsis">
-      Job Control
+      Job Control Parameters
     </span>
   </a>
   
@@ -846,7 +846,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#job-control_1" class="md-nav__link">
+  <a href="#job-control" class="md-nav__link">
     <span class="md-ellipsis">
       Job Control
     </span>
@@ -1642,15 +1642,6 @@
   <a href="#realkinddp-tran_energy_step" class="md-nav__link">
     <span class="md-ellipsis">
       real(kind=dp) :: tran_energy_step
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#realkinddp-fermi_energy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      real(kind=dp) :: fermi_energy
     </span>
   </a>
   
@@ -3236,9 +3227,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#job-control" class="md-nav__link">
+  <a href="#job-control-parameters" class="md-nav__link">
     <span class="md-ellipsis">
-      Job Control
+      Job Control Parameters
     </span>
   </a>
   
@@ -3460,7 +3451,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#job-control_1" class="md-nav__link">
+  <a href="#job-control" class="md-nav__link">
     <span class="md-ellipsis">
       Job Control
     </span>
@@ -4262,15 +4253,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#realkinddp-fermi_energy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      real(kind=dp) :: fermi_energy
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#integer-tran_num_bb" class="md-nav__link">
     <span class="md-ellipsis">
       integer :: tran_num_bb
@@ -4544,15 +4526,18 @@ structure.</p>
 treated as comments. Most keywords have a default value that is used
 unless the keyword is given in <code>seedname.win</code>. Keywords can be set in
 any of the following ways</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>num_wann 4
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>num_wann 4
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>num_wann = 4
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>num_wann : 4
 </span></code></pre></div>
 <p>A logical keyword can be set to <code>true</code> using any of the following
 strings: <code>T</code>, <code>true</code>, <code>.true.</code>.</p>
-<p>For further examples see Section <a href="../sample_inputs/#winfile">Master input file: <code>seedname.win</code></a> and the the <code>wannier90</code> Tutorial.</p>
+<p>For further examples see Section
+<a href="../sample_inputs/#winfile">Master input file: <code>seedname.win</code></a>
+and the the <code>wannier90</code> Tutorial.</p>
 <h2 id="keyword-list">Keyword List<a class="headerlink" href="#keyword-list" title="Permanent link">&para;</a></h2>
 <h3 id="system-parameters">System Parameters<a class="headerlink" href="#system-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -4634,12 +4619,15 @@ strings: <code>T</code>, <code>true</code>, <code>.true.</code>.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords defining the system. Argument types are
 represented by, I for a integer, R for a real number, P for a physical
 value, L for a logical value and S for a text string.<br />
 * <code>atoms_cart</code> and <code>atoms_frac</code> may not both be defined in the same input
 file.</p>
-<h3 id="job-control">Job Control<a class="headerlink" href="#job-control" title="Permanent link">&para;</a></h3>
+<h3 id="job-control-parameters">Job Control Parameters<a class="headerlink" href="#job-control-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -4731,11 +4719,14 @@ file.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords defining job control. Argument types are
 represented by, I for a integer, R for a real number, P for a physical
 value, L for a logical value and S for a text string.
 translate_home_cell only relevant if <code>write_xyz</code> is <code>.true.</code></p>
 <h3 id="disentanglement-parameters">Disentanglement Parameters<a class="headerlink" href="#disentanglement-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -4802,10 +4793,13 @@ translate_home_cell only relevant if <code>write_xyz</code> is <code>.true.</cod
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the disentanglement. Argument
 types are represented by, I for a integer, R for a real number, P for a
 physical value, L for a logical value and S for a text string.</p>
 <h3 id="wannierise-parameters">Wannierise Parameters<a class="headerlink" href="#wannierise-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -4927,6 +4921,8 @@ physical value, L for a logical value and S for a text string.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the wannierisation. Argument
 types are represented by, I for a integer, R for a real number, P for a
 physical value, L for a logical value and S for a text string. *
@@ -4935,6 +4931,7 @@ file. **Cannot be used in conjunction with disentanglement.
 ***Cannot be used in conjunction with the inner (frozen) energy
 window.</p>
 <h3 id="plot-parameters">Plot Parameters<a class="headerlink" href="#plot-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5126,11 +5123,14 @@ window.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the plotting. Argument types
 are represented by, I for a integer, R for a real number, P for a
 physical value, L for a logical value and S for a text string. * Only
 applies when <code>wannier_plot_format</code> is <code>cube</code>.</p>
 <h3 id="transport-parameters">Transport Parameters<a class="headerlink" href="#transport-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5262,6 +5262,8 @@ applies when <code>wannier_plot_format</code> is <code>cube</code>.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling transport. Argument types are
 represented by, I for a integer, R for a real number, P for a physical
 value, L for a logical value and S for a text string.</p>
@@ -5274,7 +5276,7 @@ value, L for a logical value and S for a text string.</p>
 <p>Default <code>num_bands</code>=<code>num_wann</code></p>
 <h3 id="cell-lattice-vectors">Cell Lattice Vectors<a class="headerlink" href="#cell-lattice-vectors" title="Permanent link">&para;</a></h3>
 <p>The cell lattice vectors should be specified in Cartesian coordinates.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>begin unit_cell_cart
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>begin unit_cell_cart
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>[units]
 </span></code></pre></div>
 <div class="arithmatex">\[\begin{array}{ccc}
@@ -5282,7 +5284,7 @@ A_{1x} &amp; A_{1y} &amp; A_{1z} \\
 A_{2x} &amp; A_{2y} &amp; A_{2z} \\
 A_{3x} &amp; A_{3y} &amp; A_{3z}
 \end{array}\]</div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>end unit_cell_cart
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>end unit_cell_cart
 </span></code></pre></div>
 <p>Here <span class="arithmatex">\(A_{1x}\)</span> is the <span class="arithmatex">\(x\)</span>-component of the first lattice vector
 <span class="arithmatex">\(\mathbf{A}_1\)</span>, <span class="arithmatex">\(A_{2y}\)</span> is the <span class="arithmatex">\(y\)</span>-component of the second lattice
@@ -5296,7 +5298,7 @@ to the lattice vectors of the unit cell, or in absolute Cartesian
 coordinates. Only one of <code>atoms_cart</code> and <code>atoms_frac</code> may be given in
 the input file.</p>
 <h4 id="cartesian-coordinates">Cartesian coordinates<a class="headerlink" href="#cartesian-coordinates" title="Permanent link">&para;</a></h4>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>begin atoms_cart
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>begin atoms_cart
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>[units]
 </span></code></pre></div>
 <div class="arithmatex">\[\begin{array}{cccc}
@@ -5304,7 +5306,7 @@ P  &amp; R^{P}_{x} &amp; R^{P}_{y} &amp; R^{P}_{z} \\
 Q  &amp; R^{Q}_{x} &amp; R^{Q}_{y} &amp; R^{Q}_{z} \\
 \vdots
 \end{array}\]</div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>end atoms_cart
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>end atoms_cart
 </span></code></pre></div>
 <p>The first entry on a line is the atomic symbol. The next three entries
 are the atom's position <span class="arithmatex">\(\mathbf{R}=(R_x , R_y, R_z)\)</span> in Cartesian
@@ -5312,14 +5314,14 @@ coordinates. The first line of the block, <code>[units]</code>, specifies the un
 in which the coordinates are given and can be either <code>bohr</code> or <code>ang</code>. If
 not present, the default is <code>ang</code>.</p>
 <h4 id="fractional-coordinates">Fractional coordinates<a class="headerlink" href="#fractional-coordinates" title="Permanent link">&para;</a></h4>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>begin atoms_frac
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>begin atoms_frac
 </span></code></pre></div>
 <div class="arithmatex">\[\begin{array}{cccc}
 P  &amp; F^{P}_{1} &amp; F^{P}_{2} &amp; F^{P}_{3} \\
 Q  &amp; F^{Q}_{1} &amp; F^{Q}_{2} &amp; F^{Q}_{3} \\
 \vdots
 \end{array}\]</div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>end atoms_frac
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>end atoms_frac
 </span></code></pre></div>
 <p>The first entry on a line is the atomic symbol. The next three entries
 are the atom's position in fractional coordinates <span class="arithmatex">\(\mathbf{F} = F_1
@@ -5328,7 +5330,7 @@ the cell lattice vectors <span class="arithmatex">\(\mathbf{A}_i\)</span>, <span
 <h3 id="integer-dimension-mp_grid3"><code>integer, dimension :: mp_grid(3)</code><a class="headerlink" href="#integer-dimension-mp_grid3" title="Permanent link">&para;</a></h3>
 <p>Dimensions of the regular (Monkhorst-Pack) k-point mesh. For example,
 for a <span class="arithmatex">\(2\times2\times2\)</span> grid:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mp_grid : 2  2  2
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mp_grid : 2  2  2
 </span></code></pre></div>
 <p>No default.</p>
 <h3 id="k-points">K-points<a class="headerlink" href="#k-points" title="Permanent link">&para;</a></h3>
@@ -5338,14 +5340,14 @@ for a <span class="arithmatex">\(2\times2\times2\)</span> grid:</p>
 primitive reciprocal lattice vectors <span class="arithmatex">\(\mathbf{B}_{i}\)</span>, <span class="arithmatex">\(i \in [1,3]\)</span>.
 The position of each k-point in this list assigns its numbering; the
 first k-point is k-point 1, the second is k-point 2, and so on.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>begin kpoints
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>begin kpoints
 </span></code></pre></div>
 <div class="arithmatex">\[\begin{array}{ccc}
  K^{1}_{1} &amp; K^{1}_{2} &amp; K^{1}_{3} \\
  K^{2}_{1} &amp; K^{2}_{2} &amp; K^{2}_{3} \\
 \vdots
 \end{array}\]</div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>end kpoints
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>end kpoints
 </span></code></pre></div>
 <p>There is no default.</p>
 <div class="admonition note">
@@ -5375,7 +5377,7 @@ nearest neighbours. <span class="arithmatex">\(N_{\mathrm{sh}}\)</span> shells o
 in the finite-difference formula, with <span class="arithmatex">\(M_s\)</span> vectors in the
 <span class="arithmatex">\(s^{\mathrm{th}}\)</span> shell. For <span class="arithmatex">\(\nabla_{{\bf k}}\)</span> to be correct to linear
 order, we require that the following equation is satisfied (Eq. B1 of
-Ref. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>): </p>
+Ref. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>):</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:B1}
@@ -5409,12 +5411,12 @@ code: <a href="https://z2pack.greschd.ch/en/latest/">https://z2pack.greschd.ch/e
 <p>Specifies the nearest-neighbour k-points which are written to the
 <code>.nnkp</code> file. This can be used to explicitly specify which overlap
 matrices should be calculated.</p>
-<div class="language-text highlight"><pre><span></span><code>begin nnkpts
-1   2   0  0  0
-.
-.
-end nnkpts
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>begin nnkpts
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>1   2   0  0  0
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>.
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>.
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>end nnkpts
+</span></code></pre></div>
 <p>Each nearest neighbour <span class="arithmatex">\(\mathbf{k + b}\)</span> is given by a line of 5
 integers. The first specifies the k-point number <code>nkp</code> of <span class="arithmatex">\(\mathbf{k}\)</span>.
 The second is the k-point number of the neighbour. The final three
@@ -5435,15 +5437,15 @@ less than <code>kmesh_tol</code>. Units are Ang.</p>
 generate an initial guess for the unitary transformations. This data
 will be written in the <code>seedname.nnkp</code> file to be used by a
 first-principles code.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>begin projections
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>.  
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>.  
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>end projections
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>begin projections
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>.  
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>.  
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>end projections
 </span></code></pre></div>
 <p>If <code>guiding_centres</code>=<code>true</code>, then the projection centres are used as the
 guiding centres in the Wannierisation routine.</p>
 <p>For details see Section <a href="../projections/#sec:proj">Specification of projections in <code>seedname.win</code></a>.</p>
-<h2 id="job-control_1">Job Control<a class="headerlink" href="#job-control_1" title="Permanent link">&para;</a></h2>
+<h2 id="job-control">Job Control<a class="headerlink" href="#job-control" title="Permanent link">&para;</a></h2>
 <h3 id="logical-postproc_setup"><code>logical :: postproc_setup</code><a class="headerlink" href="#logical-postproc_setup" title="Permanent link">&para;</a></h3>
 <p>If <code>postproc_setup</code>=<code>true</code>, then the wannier code will write
 <code>seedname.nnkp</code> file and exit. If <code>wannier90</code> is called with the option
@@ -5663,15 +5665,15 @@ of one of the spheres used for k-dependent disentanglement. The same
 crystallographic units as for <code>kpoints</code> are used here. Each k-point
 coordinate <span class="arithmatex">\(\mathbf{K}^i\)</span> must the followed by the respectice sphere
 radius <span class="arithmatex">\(r_{i}\)</span> in inverse angstrom (on the same line).</p>
-<p>The number of lines must be equal to <code>dis_spheres_num</code>.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>begin dis_spheres
-</span></code></pre></div></p>
+<p>The number of lines must be equal to <code>dis_spheres_num</code>.</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>begin dis_spheres
+</span></code></pre></div>
 <div class="arithmatex">\[\begin{array}{cccc}
  K^{1}_{1} &amp; K^{1}_{2} &amp; K^{1}_{3} &amp; r_{1} \\
  K^{2}_{1} &amp; K^{2}_{2} &amp; K^{2}_{3} &amp; r_{2} \\
 \vdots
 \end{array}\]</div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>end dis_spheres
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>end dis_spheres
 </span></code></pre></div>
 <p>There is no default.</p>
 <h2 id="wannierise">Wannierise<a class="headerlink" href="#wannierise" title="Permanent link">&para;</a></h2>
@@ -5805,7 +5807,8 @@ simply generate a set of <code>num_wann</code> MLWFs.</p>
 functions are constrained to either the centres of the first <code>slwf_num</code>
 orbitals in the <code>projections</code> block or to new positions specified in the
 <code>slwf_centres</code> block (see
-Sec. <a href="#constraints-on-centres">Constraints on centres</a>). In this case, a modified spread
+Sec. <a href="#constraints-on-centres">Constraints on centres</a>). In this case,
+a modified spread
 functional, <span class="arithmatex">\(\Omega_c\)</span>, with the addition of a constraint term, as
 described in Ref. <sup id="fnref2:ref5"><a class="footnote-ref" href="#fn:ref5">5</a></sup>.</p>
 <p>The default is <code>false</code></p>
@@ -5825,10 +5828,10 @@ by the first <code>slwf_num</code> rows of the <code>projections</code> block.</
 target centres for some or all of the <code>slwf_num</code> objective Wannier
 functions.</p>
 <p>The block below shows an example of how to set the constraints:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>begin slwf_centres
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>   2  0.0   0.0  0.0
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>   4  0.25  0.0  0.0
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>end slwf_centres
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>begin slwf_centres
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>   2  0.0   0.0  0.0
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>   4  0.25  0.0  0.0
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>end slwf_centres
 </span></code></pre></div>
 <ul>
 <li>
@@ -5875,7 +5878,7 @@ Wannier functions in a format specified by <code>wannier_plot_format</code></p>
 after the minimisation of the spread.</p>
 <p>The default behaviour is to plot all WF. For example, to plot WF 4, 5, 6
 and 10:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>wannier_plot_list : 4-6, 10
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>wannier_plot_list : 4-6, 10
 </span></code></pre></div>
 <h3 id="integer-wannier_plot_supercell"><code>integer :: wannier_plot_supercell</code><a class="headerlink" href="#integer-wannier_plot_supercell" title="Permanent link">&para;</a></h3>
 <p>The code generates the WFs on a grid corresponding to a
@@ -6008,14 +6011,14 @@ by <code>bands_plot_format</code>.</p>
 Each line gives the start and end point (with labels) for a section of
 the path. Values are in fractional coordinates with respect to the
 primitive reciprocal lattice vectors.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>begin kpoint_path
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>begin kpoint_path
 </span></code></pre></div>
 <div class="arithmatex">\[\begin{array}{cccccccc}
 G &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; L &amp; 0.0 &amp; 0.0 &amp; 1.0 \\
 L &amp; 0.0 &amp; 0.0 &amp; 1.0 &amp; N &amp; 0.0 &amp; 1.0 &amp; 1.0 \\
 \vdots
 \end{array}\]</div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>end kpoint_path
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>end kpoint_path
 </span></code></pre></div>
 <p>There is no default</p>
 <h3 id="integer-bands_num_points"><code>integer :: bands_num_points</code><a class="headerlink" href="#integer-bands_num_points" title="Permanent link">&para;</a></h3>
@@ -6046,7 +6049,7 @@ are numbered according to the seedname.wout file. The result is written
 in the <code>seedname_band.dat</code> file, and a corresponding gnuplot script to
 <code>seedname_band_proj.dat</code> .</p>
 <p>For example, to project on to WFs 2, 6, 7, 8 and 12:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>bands_plot_project : 2, 6-8, 12
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>bands_plot_project : 2, 6-8, 12
 </span></code></pre></div>
 <h3 id="characterlen20-bands_plot_mode"><code>character(len=20) :: bands_plot_mode</code><a class="headerlink" href="#characterlen20-bands_plot_mode" title="Permanent link">&para;</a></h3>
 <p>To interpolate the band structure along the k-point path, either use the
@@ -6093,10 +6096,21 @@ plot the Fermi surface.</p>
 in the regular k-point grid used to calculate the Fermi surface.</p>
 <p>The default value for <code>fermi_surface_num_points</code> is 50.</p>
 <h3 id="realkinddp-fermi_energy"><code>real(kind=dp) :: fermi_energy</code><a class="headerlink" href="#realkinddp-fermi_energy" title="Permanent link">&para;</a></h3>
-<p>The Fermi energy in eV. This parameter is written into the bxsf file. If
-<code>fermi_energy</code> is specified, <code>fermi_energy_min</code>, <code>fermi_energy_max</code>,
+<p>The Fermi energy in eV.
+If <code>fermi_energy</code> is specified, <code>fermi_energy_min</code>, <code>fermi_energy_max</code>,
 and <code>fermi_energy_step</code> should not be specified, and vice-versa.</p>
 <p>The default value is 0.0</p>
+<ul>
+<li>
+<p>For Fermi surface:
+    This parameter is written into the bxsf file.</p>
+</li>
+<li>
+<p>For transport:
+    The energy axis of the quantum conductance and
+    density of states data will be shifted rigidly by this amount.</p>
+</li>
+</ul>
 <h3 id="realkinddp-fermi_energy_min"><code>real(kind=dp) :: fermi_energy_min</code><a class="headerlink" href="#realkinddp-fermi_energy_min" title="Permanent link">&para;</a></h3>
 <p>Instead of specifyfing a single Fermi energy, it is possible to scan the
 Fermi level over a range of values, and recompute certain quantities for
@@ -6166,7 +6180,8 @@ must be provided by the five external files:
 <code>seedname_htL.dat, seedname_htLC.dat, seedname_htC.dat, seedname_htCR.dat, seedname_htR.dat</code>.
 If <code>tran_read_ht = false</code> then the Hamiltonian matrices
 are found automatically provided the supercell adheres to conditions
-outlined in Section <a href="../transport/#sec:2c2">Automated lcr Transport Calculations: The 2c2 Geometry</a>.</p>
+outlined in Section
+<a href="../transport/#automated-lcr-transport-calculations-the-2c2-geometry">Automated lcr Transport Calculations: The 2c2 Geometry</a>.</p>
 <p>The valid options for this parameter are:</p>
 <ul>
 <li>
@@ -6188,10 +6203,6 @@ Units are eV.</p>
 <p>Sampling interval of the energy values from <code>tran_win_min</code> to
 <code>tran_win_max</code>. Units are eV.</p>
 <p>The default value is 0.01.</p>
-<h3 id="realkinddp-fermi_energy_1"><code>real(kind=dp) :: fermi_energy</code><a class="headerlink" href="#realkinddp-fermi_energy_1" title="Permanent link">&para;</a></h3>
-<p>The Fermi energy in eV. The energy axis of the quantum conductance and
-density of states data will be shifted rigidly by this amount.</p>
-<p>The default value is 0.0</p>
 <h3 id="integer-tran_num_bb"><code>integer :: tran_num_bb</code><a class="headerlink" href="#integer-tran_num_bb" title="Permanent link">&para;</a></h3>
 <p>Size of a bulk Hamiltonian matrix. This number is equal to the number of
 WFs in one principal layer.</p>
@@ -6251,7 +6262,8 @@ formatted for the transport calculation will be written to a file
 formatted for the transport calculation will be read from a set of files
 described in the parameter <code>transport_mode</code>. Set
 <code>tran_write_ht = false</code> to perform automated lcr
-calculations (see Section <a href="../transport/#sec:2c2">Automated lcr Transport Calculations: The 2c2 Geometry</a>).</p>
+calculations (see Section
+<a href="../transport/#automated-lcr-transport-calculations-the-2c2-geometry">Automated lcr Transport Calculations: The 2c2 Geometry</a>).</p>
 <p>The default value is <code>false</code>.</p>
 <h3 id="logical-tran_use_same_lead"><code>logical :: tran_use_same_lead</code><a class="headerlink" href="#logical-tran_use_same_lead" title="Permanent link">&para;</a></h3>
 <p>If <code>tran_use_same_lead = true</code>, then the left and the right
@@ -6286,7 +6298,8 @@ v2.1.</p>
 <span class="arithmatex">\(\|\mathbf{d}_{ij\mathbf{R}} + \tilde{\mathbf{R}}_{nml} \|\)</span> and
 <span class="arithmatex">\(\|\mathbf{d}_{ij\mathbf{R}} + \tilde{\mathbf{R}}_{n'm'l'} \|\)</span> (as
 defined in
-chapter <a href="../notes_interpolations/">Some notes on the interpolation</a>) for the shortest distance between two
+chapter <a href="../notes_interpolations/">Some notes on the interpolation</a>)
+for the shortest distance between two
 Wannier functions are equivalent. If the difference in distance (in
 Angstrom) is less than <code>ws_distance_tol</code>, they are taken to be
 equivalent.</p>
@@ -6294,7 +6307,8 @@ equivalent.</p>
 <h3 id="ws_search_size"><code>:: ws_search_size</code><a class="headerlink" href="#ws_search_size" title="Permanent link">&para;</a></h3>
 <p>Maximum absolute value for the integers <span class="arithmatex">\(n,m,l\)</span> that identify the
 super-lattice vectors <span class="arithmatex">\(\tilde{\mathbf{R}}_{nml}\)</span> (see
-chapter <a href="../notes_interpolations/">Some notes on the interpolation</a>) when searching for points inside the
+chapter <a href="../notes_interpolations/">Some notes on the interpolation</a>) when
+searching for points inside the
 Wigner-Seitz cell. If <code>ws_search_size</code> is provided as a single integer,
 then the number of repetitions of the Born-von Karman cell is the same
 along all three linear dimensions; otherwise, if three integers are
@@ -6406,7 +6420,7 @@ the Cartesian axes.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -6416,7 +6430,7 @@ the Cartesian axes.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

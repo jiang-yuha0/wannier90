@@ -616,6 +616,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       Examples
@@ -640,9 +649,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples_1" class="md-nav__link">
+  <a href="#spinor-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples
+      Spinor Examples
     </span>
   </a>
   
@@ -2090,6 +2099,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       Examples
@@ -2114,9 +2132,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples_1" class="md-nav__link">
+  <a href="#spinor-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples
+      Spinor Examples
     </span>
   </a>
   
@@ -2297,17 +2315,17 @@ equation but rather the <em>real</em> (in the sense of non-imaginary) states
 <span class="arithmatex">\(\Theta_{lm_{\mathrm{r}}}\)</span>, obtained by a unitary transformation. For
 example, the canonical eigenstates associated with <span class="arithmatex">\(l=1\)</span>, <span class="arithmatex">\(m=\{-1,0,1\}\)</span>
 are not the real p<span class="arithmatex">\(_{x}\)</span>, p<span class="arithmatex">\(_{y}\)</span> and p<span class="arithmatex">\(_{z}\)</span> that we want. See
-Section <a href="#orbital-definitions">Orbital Definitions</a> 
+Section <a href="#orbital-definitions">Orbital Definitions</a>
 for our mathematical conventions regarding
 projection orbitals for different <span class="arithmatex">\(n\)</span>, <span class="arithmatex">\(l\)</span> and <span class="arithmatex">\(m_{\mathrm{r}}\)</span>.</p>
 <p>We use the following format to specify projections in <code>&lt;seedname&gt;.win</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Begin Projections
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Begin Projections
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>[units]
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>site:ang_mtm:zaxis:xaxis:radial:zona
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ⋮
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>End Projections
 </span></code></pre></div>
-<p>Notes:</p>
+<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h3>
 <p><code>units</code>:
 Optional. Either <code>Ang</code> or <code>Bohr</code> to specify whether the projection
 centres specified in this block (if given in Cartesian co-ordinates) are
@@ -2350,7 +2368,7 @@ to each other.</p>
 atomic orbital (controls the diffusivity of the radial function). Units
 always in reciprocal Angstrom. Default is <code>zona=1.0</code>.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
-<ol>
+<ul>
 <li>
 <p>CuO, s,p and d on all Cu; sp<span class="arithmatex">\(^3\)</span> hybrids on O:</p>
 <p><code>Cu:l=0;l=1;l=2</code></p>
@@ -2364,11 +2382,11 @@ direction:</p>
 <li>
 <p>Project onto s, p and d (with no radial nodes), and s and p (with
 one radial node) in silicon:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Si:l=0;l=1;l=2
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Si:l=0;l=1;l=2
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Si:l=0;l=1:r=2
 </span></code></pre></div>
 </li>
-</ol>
+</ul>
 <h2 id="spinor-projections">Spinor Projections<a class="headerlink" href="#spinor-projections" title="Permanent link">&para;</a></h2>
 <p>When <code>spinors=.true.</code> it is possible to select a set of localised
 functions to project onto 'up' states and a set to project onto 'down'
@@ -2378,7 +2396,7 @@ local spin quantisation axis.</p>
 interface between the ab-initio code and Wannier90 (i.e., written after
 the release of the 2.0 version, in October 2013) supporting spinor
 projections.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Begin Projections
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Begin Projections
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>[units]
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>site:ang_mtm:zaxis:xaxis:radial:zona(spin)[quant_dir]
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    ⋮
@@ -2392,7 +2410,7 @@ Default is <code>u,d</code></p>
 <p><code>quant_dir</code> (optional):
 <code>1,0,0</code> -- set the spin quantisation axis to be in the (1,0,0)
 direction. Default is <code>0,0,1</code></p>
-<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<h3 id="spinor-examples">Spinor Examples<a class="headerlink" href="#spinor-examples" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>18 projections on an iron site</p>
@@ -2416,14 +2434,14 @@ direction. Default is <code>0,0,1</code></p>
 </li>
 <li>
 <p>9 projections onto up-states and 3 on down</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Fe:sp3d2;dxy;dxz;dyz(u)
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Fe:sp3d2;dxy;dxz;dyz(u)
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Fe:dxy;dxz;dyz(d)
 </span></code></pre></div>
 </li>
 <li>
 <p>projections onto alternate spin states for two lattice sites (Cr1,
     Cr2)</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Cr1:d(u)
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Cr1:d(u)
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Cr2:d(d)
 </span></code></pre></div>
 </li>
@@ -2431,7 +2449,7 @@ direction. Default is <code>0,0,1</code></p>
 <h2 id="short-cuts">Short-Cuts<a class="headerlink" href="#short-cuts" title="Permanent link">&para;</a></h2>
 <h3 id="random-projections">Random projections<a class="headerlink" href="#random-projections" title="Permanent link">&para;</a></h3>
 <p>It is possible to specify the projections, for example, as follows:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Begin Projections
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Begin Projections
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>random
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>C:sp3
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>End Projections
@@ -2457,6 +2475,7 @@ of solutions to the radial part of the hydrogenic Schrödinger equation
 for <span class="arithmatex">\(l=0\)</span>, i.e., the radial parts of the 1s, 2s, 3s... orbitals, which
 are given in Table <a href="#radial-functions">Radial functions</a>.</p>
 <h3 id="angular-functions">Angular functions<a class="headerlink" href="#angular-functions" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -2565,9 +2584,12 @@ are given in Table <a href="#radial-functions">Radial functions</a>.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p>Angular functions <span class="arithmatex">\(\Theta_{lm_{\mathrm{r}}}(\theta,\varphi)\)</span> associated
 with particular values of <span class="arithmatex">\(l\)</span> and <span class="arithmatex">\(m_{\mathrm{r}}\)</span> for <span class="arithmatex">\(l\ge0\)</span>.</p>
 <h3 id="hybrids">Hybrids<a class="headerlink" href="#hybrids" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -2700,11 +2722,14 @@ with particular values of <span class="arithmatex">\(l\)</span> and <span class=
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p>Angular functions <span class="arithmatex">\(\Theta_{lm_{\mathrm{r}}}(\theta,\varphi)\)</span> associated
 with particular values of <span class="arithmatex">\(l\)</span> and <span class="arithmatex">\(m_{\mathrm{r}}\)</span> for <span class="arithmatex">\(l&lt;0\)</span>, in terms
 of the orbitals defined in
 Table <a href="#angular-functions">Angular functions</a>.</p>
 <h3 id="radial-functions">Radial functions<a class="headerlink" href="#radial-functions" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -2727,6 +2752,8 @@ Table <a href="#angular-functions">Angular functions</a>.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p>One possible choice for the radial functions <span class="arithmatex">\(R_{\mathrm{r}}(r)\)</span>
 associated with different values of <span class="arithmatex">\(r\)</span>: the set of solutions to the
 radial part of the hydrogenic Schrödinger equation for <span class="arithmatex">\(l=0\)</span>, i.e., the
@@ -2769,7 +2796,7 @@ spin-noncollinear systems. The SCDM-<strong>k</strong> can operate in two modes:
 </ol>
 <p>The following keywords need to be specified in the <code>pw2wannier90.x</code>
 input file <code>&lt;seedname&gt;.pw2wan</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scdm_proj
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scdm_proj
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>scdm_entanglement
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>scdm_mu
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>scdm_sigma
@@ -2798,7 +2825,7 @@ compute the <code>amn</code> file.</p>
 Wannierisation, for such cases, one can inspect the stdout of
 <code>pw2wannier90</code>, which will print the orbitals used for computing <code>amn</code>,
 e.g.,</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>-------------------------------------
+<div class="language-text highlight"><span class="filename">Output file</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>-------------------------------------
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>*** Compute A with atomic projectors
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>-------------------------------------
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>Use atomic projectors from UPF
@@ -2817,13 +2844,15 @@ e.g.,</p>
 three <span class="arithmatex">\(p\)</span> orbitals. If one wants to exclude specific orbital(s), there
 is an additional input <code>atom_proj_exclude</code>, which accept a list of
 integers, e.g.,</p>
-<p><code>atom_proj_exclude = 1 5</code></p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>atom_proj_exclude = 1 5
+</span></code></pre></div>
 <p>which will exclude the two <span class="arithmatex">\(s\)</span> orbitals from computing <code>amn</code>.</p>
-<h4 id="advanced-usage">Advanced usage<a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h4>
+<h3 id="advanced-usage">Advanced usage<a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h3>
 <p>If the pseudopotential orbitals are not enough, one could also generate
 a custom set of orbitals, and ask <code>pw2wannier90</code> to use them for
 computing <code>amn</code>. This can be done by setting</p>
-<p><code>atom_proj_dir = ’./ext_proj’</code></p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>atom_proj_dir = &#39;./ext_proj&#39;`
+</span></code></pre></div>
 <p>where the directory <code>ext_proj</code> contains the orbitals for all the atomic
 species used in the calculation. For example, for a silicon calculation,
 the directory <code>ext_proj</code> should contain a file named <code>Si.dat</code>. The
@@ -2832,16 +2861,16 @@ format of the file is:</p>
 <li>
 <p>The first line contains two integers: the number of radial grid
     points (<span class="arithmatex">\(n_g\)</span>) and the number of projectors (<span class="arithmatex">\(n_p\)</span>), e.g.,</p>
-<div class="language-text highlight"><pre><span></span><code>1141 2
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>1141 2
+</span></code></pre></div>
 <p>which means the radial grid has <span class="arithmatex">\(n_g = 1141\)</span> points, and there are
 <span class="arithmatex">\(n_p = 3\)</span> projectors.</p>
 </li>
 <li>
 <p>The second line contains <span class="arithmatex">\(n_p\)</span> integers specifying the angular
     momentums of all the projectors, e.g.,</p>
-<div class="language-text highlight"><pre><span></span><code>0 1
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>0 1
+</span></code></pre></div>
 <p>standing for the two projectors having <span class="arithmatex">\(s\)</span> and <span class="arithmatex">\(p\)</span> characters,
 respectively.</p>
 </li>
@@ -2851,10 +2880,10 @@ respectively.</p>
     the <span class="arithmatex">\(x\)</span>-grid, the second column is the <span class="arithmatex">\(r\)</span>-grid in Bohr unit, and
     they are related by <span class="arithmatex">\(r = \exp(x)\)</span>. The rest are <span class="arithmatex">\(n_p\)</span> columns of the
     radial wavefunctions of the projectors,</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-9.639057329615259 0.000065134426111 3.32211124436945e-05 1.86840239681223e-09
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>-9.626557329615258 0.000065953716334 3.363898259696903e-05 1.915701228607072e-09
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>-9.614057329615258 0.000066783311958 3.406210890972733e-05 1.964197436025957e-09
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>...
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>-9.639057329615259 0.000065134426111 3.32211124436945e-05 1.86840239681223e-09
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>-9.626557329615258 0.000065953716334 3.363898259696903e-05 1.915701228607072e-09
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>-9.614057329615258 0.000066783311958 3.406210890972733e-05 1.964197436025957e-09
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>...
 </span></code></pre></div>
 <p>Inside <code>pw2wannier90.x</code>, the radial wavefunction will be read and
 multiplied by spherical harmonics to form the actual projectors.</p>
@@ -2896,7 +2925,7 @@ see the script <code>utility/write_pdwf_projectors.py</code>.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2906,7 +2935,7 @@ see the script <code>utility/write_pdwf_projectors.py</code>.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

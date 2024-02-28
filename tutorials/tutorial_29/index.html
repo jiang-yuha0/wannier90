@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#platinum-spin-hall-conductivity" class="md-skip">
+        <a href="#29-platinum-spin-hall-conductivity" class="md-skip">
           Skip to content
         </a>
       
@@ -1796,27 +1796,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#berry-curvature-like-term-plots" class="md-nav__link">
     <span class="md-ellipsis">
       Berry curvature-like term plots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Notes
     </span>
   </a>
   
@@ -1967,27 +1949,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#berry-curvature-like-term-plots" class="md-nav__link">
     <span class="md-ellipsis">
       Berry curvature-like term plots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Notes
     </span>
   </a>
   
@@ -2033,18 +1997,19 @@
   
 
 
-<h1 class="unnumbered" id="platinum-spin-hall-conductivity">29: Platinum &#151; Spin Hall conductivity<a class="headerlink" href="#platinum-spin-hall-conductivity" title="Permanent link">&para;</a></h1>
+<h1 id="29-platinum-spin-hall-conductivity">29: Platinum &#151; Spin Hall conductivity<a class="headerlink" href="#29-platinum-spin-hall-conductivity" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
 <p>Outline: <em>Calculate spin Hall conductivity (SHC) and plot Berry
     curvature-like term of fcc Pt considering spin-orbit coupling. To
     gain a better understanding of this tutorial, it is suggested to read
-    Ref. <sup id="fnref5:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup> for a detailed description of the theory and
-    the <a href="../../user_guide/postw90/berry/#sec:shc">berry_task=shc: spin Hall conductivity</a> 
+    Ref. <sup id="fnref5:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup> for a detailed description of the theory and the
+    <a href="../../user_guide/postw90/berry/#sec:shc">berry_task=shc: spin Hall conductivity</a>
     chapter of the User Guide.</em></p>
 </li>
 <li>
-<p>Directory: <code>tutorials/tutorial29/</code> <em>Files can be downloaded <a href="https://github.com/wannier-developers/wannier90/tree/develop/tutorials/tutorial29">here</a></em></p>
+<p>Directory: <code>tutorials/tutorial29/</code> <em>Files can be downloaded
+    <a href="https://github.com/wannier-developers/wannier90/tree/develop/tutorials/tutorial29">here</a></em></p>
 </li>
 <li>
 <p>Input files</p>
@@ -2099,8 +2064,8 @@
 </li>
 <li>
 <p>Run <code>postw90</code></p>
-<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>postw90.x<span class="w"> </span>Pt<span class="w"> </span><span class="c1"># (1)! </span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>postw90.x<span class="w"> </span>Pt<span class="w"> </span><span class="c1"># (2)! </span>
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>postw90.x<span class="w"> </span>Pt<span class="w"> </span><span class="c1"># (1)!</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>postw90.x<span class="w"> </span>Pt<span class="w"> </span><span class="c1"># (2)!</span>
 </span></code></pre></div>
 <ol>
 <li>serial execution</li>
@@ -2108,33 +2073,28 @@
 </ol>
 </li>
 </ol>
-<h2 class="unnumbered" id="spin-hall-conductivity">Spin Hall conductivity<a class="headerlink" href="#spin-hall-conductivity" title="Permanent link">&para;</a></h2>
+<h2 id="spin-hall-conductivity">Spin Hall conductivity<a class="headerlink" href="#spin-hall-conductivity" title="Permanent link">&para;</a></h2>
 <p>The intrinsic spin Hall conductivity
 <span class="arithmatex">\(\sigma_{\alpha\beta}^{\text{spin}\gamma}\)</span> is proportional to the BZ
 integral of the Berry curvature-like term. To evaluate the SHC using a
 <span class="arithmatex">\(25\times
 25\times 25\)</span> <span class="arithmatex">\(k\)</span>-point mesh, set the following lines in <code>Pt.win</code>,</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>berry = true
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>berry_task = shc
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>berry_kmesh = 25 25 25
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>berry_task = shc
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>berry_kmesh = 25 25 25
 </span></code></pre></div>
 <p>When calculating SHC, adaptive smearing can be used by commenting the
 following two lines,</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>#kubo_adpt_smr = false
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>#kubo_smr_fixed_en_width = 1
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>#kubo_smr_fixed_en_width = 1
 </span></code></pre></div>
 <p>Then set the Fermi energy <span class="arithmatex">\(\varepsilon_F\)</span> to a specific value</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>fermi_energy = [insert your value here]
 </span></code></pre></div>
 <p>or invoke Fermi energy scan by setting</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>fermi_energy_min = [insert here your lower range]
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>fermi_energy_max = [insert here your upper range]
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>fermi_energy_step = [insert here your step]
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>fermi_energy_max = [insert here your upper range]
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>fermi_energy_step = [insert here your step]
 </span></code></pre></div>
 <p>and re-run <code>postw90</code>. The SHC is written in the output file
 <code>Pt-shc-fermiscan.dat</code>. If only <code>fermi_energy</code> is set, the output file
@@ -2170,12 +2130,19 @@ Refs. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup> 
 <p>Note some rough estimations of computation progress and time are
 reported in <code>Pt.wpout</code> (see the SHC part of the Solution Booklet). These
 may be helpful if the computation time is very long.</p>
-<h2 class="unnumbered" id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
 <li>
 <p>Since the Kubo formula of SHC involves unoccupied bands, we need to
     include some unoccupied bands and construct more MLWF. Thus the
     following parameters should be increased accordingly:</p>
+<p><!-- markdownlint-disable MD046 -->
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>dis_froz_max
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>dis_win_max
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>projections
+</span></code></pre></div>
+<!-- markdownlint-enable MD046 --></p>
 </li>
 <li>
 <p>Normally we calculate the SHC <span class="arithmatex">\(\sigma_{xy}^{\text{spin}z}\)</span>, i.e.
@@ -2184,10 +2151,12 @@ may be helpful if the computation time is very long.</p>
     standing for <code>x, y, z</code> respectively.</p>
 </li>
 </ul>
-<h2 class="unnumbered" id="berry-curvature-like-term-plots">Berry curvature-like term plots<a class="headerlink" href="#berry-curvature-like-term-plots" title="Permanent link">&para;</a></h2>
+</div>
+<h2 id="berry-curvature-like-term-plots">Berry curvature-like term plots<a class="headerlink" href="#berry-curvature-like-term-plots" title="Permanent link">&para;</a></h2>
 <p>The band-projected Berry curvature-like term
 <span class="arithmatex">\(\Omega_{n,\alpha\beta}^{\text{spin} \gamma}({\bm k})\)</span> is defined in
-this <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:kubo_shc_berry">equation</a> of the User Guide. 
+this <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:kubo_shc_berry">equation</a>
+of the User Guide.
 The following lines in <code>Pt.win</code> are used
 to calculate the energy bands colored by the band-projected Berry
 curvature-like term
@@ -2196,28 +2165,21 @@ well as the <span class="arithmatex">\(k\)</span>-resolved Berry curvature-like 
 <span class="arithmatex">\(\Omega_{\alpha\beta}^{\text{spin} \gamma}({\bm k})\)</span> along high-symmetry
 lines in <span class="arithmatex">\(k\)</span>-space, i.e. the <code>kpath</code> plot. First comment the line
 <code>berry = true</code> and then set</p>
-<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kpath = true
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>kpath_task = bands+shc
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>kpath_bands_colour = shc
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>kpath_num_points = 400
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>kubo_adpt_smr = false
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>kubo_smr_fixed_en_width = 1
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>fermi_energy = [insert your value here]
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>berry_curv_unit = ang2
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kpath = true
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>kpath_task = bands+shc
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>kpath_bands_colour = shc
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>kpath_num_points = 400
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>kubo_adpt_smr = false
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>kubo_smr_fixed_en_width = 1
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>fermi_energy = [insert your value here]
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>berry_curv_unit = ang2
 </span></code></pre></div>
 <p>After executing <code>postw90</code>, four files are generated: <code>Pt-bands.dat</code>,
 <code>Pt-path.kpt</code>, <code>Pt-shc.dat</code> and <code>Pt-bands+shc.py</code>. Then plot the
 band-projected Berry curvature-like term
 <span class="arithmatex">\(\Omega_{n,\alpha\beta}^{\text{spin}\gamma}({\bm k})\)</span> using the script
 generated at runtime,</p>
-<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python<span class="w"> </span>Pt-bands+shc.py
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>python<span class="w"> </span>Pt-bands+shc.py
 </span></code></pre></div>
 <p>and compare with Fig. 2 of Ref. <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>. Note a large fixed
 smearing of 1 eV is used to recover the result in Ref. <sup id="fnref3:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>.
@@ -2238,48 +2200,104 @@ lines in <code>Pt.win</code>, Note the <code>kslice_b2</code> is actually
 <span class="arithmatex">\((\frac{\sqrt{2}}{4},   \frac{3\sqrt{2}}{4},0.0)\)</span> which leads to a
 square slice in the BZ, making it easier to plot in the generated
 <code>python</code> script. Re-run <code>postw90</code>, and issue</p>
-<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>python<span class="w"> </span>Pt-kslice-shc+fermi_lines.py
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>python<span class="w"> </span>Pt-kslice-shc+fermi_lines.py
 </span></code></pre></div>
 <p>Compare the generated figure with Fig. 3 in Ref. <sup id="fnref4:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>, or the
 Solution Booklet.</p>
-<h2 class="unnumbered" id="notes-1">Notes<a class="headerlink" href="#notes-1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Adaptive smearing depends on a uniform kmesh, so when running
-    <code>kpath</code> and <code>kslice</code> plots adaptive smearing should not be used. A
-    fixed smearing is needed to avoid near zero number in the
-    denominator of the <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:kubo_shc">Kubo formula</a> 
-    in the User Guide. To
-    add a fixed smearing of 0.05 eV, add the following keywords in the
-    <code>Pt.win</code>,</li>
-</ul>
-<h2 class="unnumbered" id="input-parameters-for-shc">Input parameters for SHC<a class="headerlink" href="#input-parameters-for-shc" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adaptive smearing depends on a uniform kmesh, so when running
+<code>kpath</code> and <code>kslice</code> plots adaptive smearing should not be used. A
+fixed smearing is needed to avoid near zero number in the denominator of the
+<a href="../../user_guide/postw90/berry/#mjx-eqn:eq:kubo_shc">Kubo formula</a>
+in the User Guide. To add a fixed smearing of 0.05 eV, add the following
+keywords in the<code>Pt.win</code>,</p>
+<p><!-- markdownlint-disable MD046 -->
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubo_adpt_smr = .false.
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>kubo_smr_fixed_en_width = 0.05
+</span></code></pre></div>
+<!-- markdownlint-enable MD046 --></p>
+</div>
+<h2 id="input-parameters-for-shc">Input parameters for SHC<a class="headerlink" href="#input-parameters-for-shc" title="Permanent link">&para;</a></h2>
 <p>Finally, we provide a complete list of input parameters that can be used
 to control the SHC calculation, including the calculation of alternating
 current (ac) SHC which will be introduced in the next tutorial.</p>
 <ul>
 <li>
 <p>general controls for SHC</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>shc_freq_scan
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>shc_alpha
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>shc_beta
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>shc_gamma
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>kubo_eigval_max
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>exclude_bands
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>berry_curv_unit
+</span></code></pre></div>
 </li>
 <li>
 <p>kmesh</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>berry_task
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>berry_kmesh
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>berry_curv_adpt_kmesh
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>berry_curv_adpt_kmesh_thresh
+</span></code></pre></div>
 </li>
 <li>
 <p>ac SHC</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kubo_freq_min
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>kubo_freq_max
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>kubo_freq_step
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>shc_bandshift
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>shc_bandshift_firstband
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>shc_bandshift_energyshift
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>scissors_shift
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>num_valence_bands
+</span></code></pre></div>
 </li>
 <li>
 <p>smearing</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>[kubo_]adpt_smr
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>[kubo_]adpt_smr_fac
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>[kubo_]adpt_smr_max
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>[kubo_]smr_fixed_en_width
+</span></code></pre></div>
 </li>
 <li>
 <p>Fermi energy</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>fermi_energy
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>fermi_energy_min
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>fermi_energy_max
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>fermi_energy_step
+</span></code></pre></div>
 </li>
 <li>
 <p>kpath</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>kpath
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>kpath_task
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>kpath_num_points
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>kpath_bands_colour
+</span></code></pre></div>
 </li>
 <li>
 <p>kslice</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>kslice
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>kslice_task
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>kslice_corner
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>kslice_b1
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>kslice_b2
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>kslice_2dkmesh
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>kslice_fermi_level
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>kslice_fermi_lines_colour
+</span></code></pre></div>
 </li>
 </ul>
-<p>Their meanings and usages can be found in the 
+<p>Their meanings and usages can be found in the
 <a href="../../user_guide/postw90/berry/#sec:shc">berry_task=shc: spin Hall conductivity</a>
  chapter of the User Guide.</p>
 <div class="footnote">
@@ -2315,7 +2333,7 @@ current (ac) SHC which will be introduced in the next tutorial.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2325,7 +2343,7 @@ current (ac) SHC which will be introduced in the next tutorial.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

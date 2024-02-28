@@ -912,9 +912,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sec:kdotp" class="md-nav__link">
+  <a href="#berry_taskkdotp-k-p-coefficients" class="md-nav__link">
     <span class="md-ellipsis">
-      berry_task=kdotp: \(k\cdot p\) coefficients
+      berry_task=kdotp: k ⋅ p coefficients
     </span>
   </a>
   
@@ -2050,9 +2050,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sec:kdotp" class="md-nav__link">
+  <a href="#berry_taskkdotp-k-p-coefficients" class="md-nav__link">
     <span class="md-ellipsis">
-      berry_task=kdotp: \(k\cdot p\) coefficients
+      berry_task=kdotp: k ⋅ p coefficients
     </span>
   </a>
   
@@ -2105,7 +2105,7 @@ routines in the <code>berry</code> module which compute the <span class="arithma
 curvature, orbital magnetization and spin Hall conductivity are also
 called when <code>kpath = true</code> and <code>kpath_task = {curv,morb,shc}</code>, or when
 <code>kslice = true</code> and <code>kslice_task = {curv,morb,shc}</code>.</p>
-<h3 id="background-berry-connection-and-curvature">Background: Berry connection and curvature<a class="headerlink" href="#background-berry-connection-and-curvature" title="Permanent link">&para;</a></h3>
+<h2 id="background-berry-connection-and-curvature">Background: Berry connection and curvature<a class="headerlink" href="#background-berry-connection-and-curvature" title="Permanent link">&para;</a></h2>
 <p>The Berry connection is defined in terms of the cell-periodic Bloch
 states <span class="arithmatex">\(\vert u_{n{\bf k}}\rangle=e^{-i{\bf k}\cdot{\bf r}}\vert
 \psi_{n{\bf k}}\rangle\)</span> as</p>
@@ -2136,16 +2136,16 @@ u_{m{\bf k}}\rangle={\bf A}_{mn}^*({\bf k}),
 \end{equation}
 \]</div>
 <p>and write the curvature as an
-antisymmetric tensor, </p>
+antisymmetric tensor,</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:curv}
 \Omega_{n,\alpha\beta}({\bf k}) =\epsilon_{\alpha\beta\gamma}
-\Omega_{n,\gamma}({\bf k})=-2{\rm Im}\langle 
+\Omega_{n,\gamma}({\bf k})=-2{\rm Im}\langle
 \nabla_{k_\alpha} u_{n\bf k}\vert \nabla_{k_\beta} u_{n\bf k}\rangle.
 \end{equation}
 \]</div>
-<h3 id="berry_taskkubo-optical-conductivity-and-joint-density-of-states"><code>berry_task=kubo</code>: optical conductivity and joint density of states<a class="headerlink" href="#berry_taskkubo-optical-conductivity-and-joint-density-of-states" title="Permanent link">&para;</a></h3>
+<h2 id="berry_taskkubo-optical-conductivity-and-joint-density-of-states"><code>berry_task=kubo</code>: optical conductivity and joint density of states<a class="headerlink" href="#berry_taskkubo-optical-conductivity-and-joint-density-of-states" title="Permanent link">&para;</a></h2>
 <p>The Kubo-Greenwood formula for the optical conductivity of a crystal in
 the independent-particle approximation reads</p>
 <div class="arithmatex">\[
@@ -2166,7 +2166,7 @@ Fermi-Dirac distribution function. <span class="arithmatex">\(\hbar\omega\)</spa
 frequency, and <span class="arithmatex">\(\eta&gt;0\)</span> is an adjustable smearing parameter with units
 of energy.</p>
 <p>The off-diagonal velocity matrix elements can be expressed in terms of
-the connection matrix <sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup>, </p>
+the connection matrix <sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup>,</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:velocity_mat}
@@ -2175,7 +2175,7 @@ the connection matrix <sup id="fnref:ref2"><a class="footnote-ref" href="#fn:re
 {\bf A}_{nm}({\bf k})\,\,\,\,\,\,\,\,(m\not= n).
 \end{equation}
 \]</div>
-<p>The conductivity becomes </p>
+<p>The conductivity becomes</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:sig-k}
@@ -2191,7 +2191,7 @@ A_{nm,\alpha}({\bf k})A_{mn,\beta}({\bf k})
 \end{equation}
 \]</div>
 <p>Let us decompose it into Hermitian (dissipative) and anti-Hermitean
-(reactive) parts. Note that </p>
+(reactive) parts. Note that</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:lorentzian}
@@ -2216,7 +2216,7 @@ A_{nm,\alpha}({\bf k})A_{mn,\beta}({\bf k})
 (Eq. <span class="arithmatex">\(\eqref{eq:lorentzian}\)</span>) with a Gaussian, or other shapes. The
 analytical form of <span class="arithmatex">\(\overline{\delta}(\varepsilon)\)</span> is controlled by the
 keyword <code>[kubo_]smr_type</code>.</p>
-<p>The anti-Hermitean part of Eq. <span class="arithmatex">\(\eqref{eq:sig-k}\)</span> is given by </p>
+<p>The anti-Hermitean part of Eq. <span class="arithmatex">\(\eqref{eq:sig-k}\)</span> is given by</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:sig-AH}
@@ -2230,7 +2230,7 @@ A_{nm,\alpha}({\bf k})A_{mn,\beta}({\bf k}).
 \end{equation}
 \]</div>
 <p>Finally the joint density
-of states is </p>
+of states is</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:jdos}
@@ -2239,8 +2239,8 @@ f_{n{\bf k}}(1-f_{m{\bf k}})
 \overline{\delta}(\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}-\hbar\omega).
 \end{equation}
 \]</div>
-<p>Equations <span class="arithmatex">\(\eqref{eq:lorentzian}\)</span>--<span class="arithmatex">\(\eqref{eq:jdos}\)</span> contain the parameter <span class="arithmatex">\(\eta\)</span>, whose value can be
-chosen using the keyword 
+<p>Equations <span class="arithmatex">\(\eqref{eq:lorentzian}\)</span>--<span class="arithmatex">\(\eqref{eq:jdos}\)</span> contain the parameter
+<span class="arithmatex">\(\eta\)</span>, whose value can be chosen using the keyword
 <code>[kubo_]smr_fixed_en_width</code>. Better results can often be achieved by
 adjusting the value of <span class="arithmatex">\(\eta\)</span> for each pair of states, i.e.,
 <span class="arithmatex">\(\eta\rightarrow \eta_{nm\bf k}\)</span>. This is done as follows (see
@@ -2270,7 +2270,7 @@ conductivity are assembled into the symmetric and antisymmetric tensors</p>
 \]</div>
 <p>whose independent components are written as a function
 of frequency onto nine separate files.</p>
-<h3 id="berry_taskahc-anomalous-hall-conductivity"><code>berry_task=ahc</code>: anomalous Hall conductivity<a class="headerlink" href="#berry_taskahc-anomalous-hall-conductivity" title="Permanent link">&para;</a></h3>
+<h2 id="berry_taskahc-anomalous-hall-conductivity"><code>berry_task=ahc</code>: anomalous Hall conductivity<a class="headerlink" href="#berry_taskahc-anomalous-hall-conductivity" title="Permanent link">&para;</a></h2>
 <p>The antisymmetric tensor <span class="arithmatex">\(\sigma^{\rm A}_{\alpha\beta}\)</span> is odd under
 time reversal, and therefore vanishes in non-magnetic systems, while in
 ferromagnets with spin-orbit coupling it is generally nonzero. The
@@ -2297,11 +2297,11 @@ replaced <span class="arithmatex">\(f_{n\bf k}-f_{m\bf k}\)</span> with
 as the sums run over the complete set of occupied and empty states. In
 practice the sum over empty states can be truncated, but a relatively
 large number should be retained to obtain accurate results. Using the
-resolution of the identity 
+resolution of the identity
 <span class="arithmatex">\(1=\sum_m \vert u_{m\bf k} \rangle \langle u_{m\bf k}\vert\)</span> and noting that the term
 <span class="arithmatex">\(\sum_{n,m}f_{n\bf k}f_{m\bf k}(\ldots)\)</span> vanishes identically, we arrive
 at the celebrated formula for the intrinsic AHC in terms of the Berry
-curvature, </p>
+curvature,</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:ahc}
@@ -2319,9 +2319,9 @@ Once we have a set of Wannier functions spanning the valence bands
 Eq. <span class="arithmatex">\(\eqref{eq:ahc}\)</span> can
 be evaluated by Wannier interpolation as described in
 Refs. <sup id="fnref2:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup><sup id="fnref:ref5"><a class="footnote-ref" href="#fn:ref5">5</a></sup>, with no truncation involved.</p>
-<h3 id="berry_taskmorb-orbital-magnetization"><code>berry_task=morb</code>: orbital magnetization<a class="headerlink" href="#berry_taskmorb-orbital-magnetization" title="Permanent link">&para;</a></h3>
+<h2 id="berry_taskmorb-orbital-magnetization"><code>berry_task=morb</code>: orbital magnetization<a class="headerlink" href="#berry_taskmorb-orbital-magnetization" title="Permanent link">&para;</a></h2>
 <p>The ground-state orbital magnetization of a crystal is given
-by <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup><sup id="fnref:ref6"><a class="footnote-ref" href="#fn:ref6">6</a></sup> </p>
+by <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup><sup id="fnref:ref6"><a class="footnote-ref" href="#fn:ref6">6</a></sup></p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:morb}
@@ -2343,10 +2343,10 @@ Wannier-interpolation calculation is described in Ref. <sup id="fnref2:ref5"><a
 Note that the definition of <span class="arithmatex">\({\bf M}^{\rm orb}({\bf k})\)</span> used here
 differs by a factor of <span class="arithmatex">\(-1/2\)</span> from the one in Eq. (97) and Fig. 2 of
 that work.</p>
-<h3 id="sec:shc"><code>berry_task=shc</code>: spin Hall conductivity<a class="headerlink" href="#sec:shc" title="Permanent link">&para;</a></h3>
+<h2 id="sec:shc"><code>berry_task=shc</code>: spin Hall conductivity<a class="headerlink" href="#sec:shc" title="Permanent link">&para;</a></h2>
 <p>The Kubo-Greenwood formula for the intrinsic spin Hall conductivity
 (SHC) of a crystal in the independent-particle approximation reads
-<sup id="fnref:ref7"><a class="footnote-ref" href="#fn:ref7">7</a></sup><sup id="fnref:ref8"><a class="footnote-ref" href="#fn:ref8">8</a></sup><sup id="fnref:ref9"><a class="footnote-ref" href="#fn:ref9">9</a></sup> </p>
+<sup id="fnref:ref7"><a class="footnote-ref" href="#fn:ref7">7</a></sup><sup id="fnref:ref8"><a class="footnote-ref" href="#fn:ref8">8</a></sup><sup id="fnref:ref9"><a class="footnote-ref" href="#fn:ref9">9</a></sup></p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:kubo_shc}
@@ -2354,7 +2354,7 @@ that work.</p>
 \sum_{\bm{k}}\sum_{n} f_{n\bm{k}} \\
 \sum_{m \neq n}
 \frac{2\operatorname{Im}[\langle n\bm{k}| \hat{j}_{\alpha}^{\gamma}|m\bm{k}\rangle
-    \langle m\bm{k}| -e\hat{v}_{\beta}|n\bm{k}\rangle]}
+ \langle m\bm{k}| -e\hat{v}_{\beta}|n\bm{k}\rangle]}
 {(\epsilon_{n\bm{k}}-\epsilon_{m\bm{k}})^2-(\hbar\omega +i\eta)^2}.
 \end{equation}
 \]</div>
@@ -2378,8 +2378,10 @@ noteworthy difference is the way in which two <em>ab-initio</em> matrix
 elements are evaluated,</p>
 <div class="arithmatex">\[
 \begin{equation}
-\langle u_{n{\bf k}}\vert\sigma_\gamma H_{\bf k}\vert u_{m{\bf k}+{\bf b}}\rangle, 
-\langle u_{n{\bf k}}\vert\sigma_\gamma \vert u_{m{\bf k}+{\bf b}}\rangle, \gamma = x, y, z
+\langle u_{n{\bf k}}\vert\sigma_\gamma H_{\bf k}
+\vert u_{m{\bf k}+{\bf b}}\rangle,
+\langle u_{n{\bf k}}\vert \sigma_\gamma \vert u_{m{\bf k}+{\bf b}}\rangle,
+\gamma = x, y, z
 \end{equation}
 \]</div>
 <p>These are evaluated by <code>pw2wannier90</code> using Ryoo's method. In contrast,
@@ -2390,14 +2392,14 @@ You can choose which method to evaluate this value with <code>shc_method</code> 
 the input file. For a full derivation please refer to
 Ref. <sup id="fnref2:ref7"><a class="footnote-ref" href="#fn:ref7">7</a></sup> or Ref. <sup id="fnref2:ref8"><a class="footnote-ref" href="#fn:ref8">8</a></sup>.</p>
 <p>The Eq. <span class="arithmatex">\(\eqref{eq:kubo_shc}\)</span> can be further separated into band-projected
-Berry curvature-like term </p>
+Berry curvature-like term</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:kubo_shc_berry}
 \Omega_{n,\alpha\beta}^{\text{spin}\gamma}(\bm{k}) = {\hbar}^2 \sum_{
-    m\ne n}\frac{-2\operatorname{Im}[\langle n\bm{k}| 
-    \frac{1}{2}\{\hat{\sigma}_{\gamma},\hat{v}_{\alpha}\}|m\bm{k}\rangle
-    \langle m\bm{k}| \hat{v}_{\beta}|n\bm{k}\rangle]}
+ m\ne n}\frac{-2\operatorname{Im}[\langle n\bm{k}|
+ \frac{1}{2}\{\hat{\sigma}_{\gamma},\hat{v}_{\alpha}\}|m\bm{k}\rangle
+ \langle m\bm{k}| \hat{v}_{\beta}|n\bm{k}\rangle]}
 {(\epsilon_{n\bm{k}}-\epsilon_{m\bm{k}})^2-(\hbar\omega+i\eta)^2},
 \end{equation}
 \]</div>
@@ -2409,10 +2411,10 @@ Berry curvature-like term </p>
 f_{n\bm{k}} \Omega_{n,\alpha\beta}^{\text{spin}\gamma}(\bm{k}),
 \end{equation}
 \]</div>
-<p>and the SHC is </p>
+<p>and the SHC is</p>
 <div class="arithmatex">\[
 \begin{equation}
-\sigma_{\alpha\beta}^{\text{spin}\gamma}(\omega) = 
+\sigma_{\alpha\beta}^{\text{spin}\gamma}(\omega) =
 -\frac{e^2}{\hbar}\frac{1}{\Omega_c N_k}\sum_{\bm{k}}
 \Omega_{\alpha\beta}^{\text{spin}\gamma}(\bm{k}).
 \end{equation}
@@ -2455,7 +2457,7 @@ Phys. Rev. B. 98, 214402 (2018), DOI:10.1103/PhysRevB.98.214402.</p>
 principles using maximally localized Wannier functions</em>,
 Phys. Rev. B. 99, 235113 (2019), DOI:10.1103/PhysRevB.99.235113.</p>
 </blockquote>
-<h3 id="berry_tasksc-shift-current"><code>berry_task=sc</code>: shift current<a class="headerlink" href="#berry_tasksc-shift-current" title="Permanent link">&para;</a></h3>
+<h2 id="berry_tasksc-shift-current"><code>berry_task=sc</code>: shift current<a class="headerlink" href="#berry_tasksc-shift-current" title="Permanent link">&para;</a></h2>
 <p>The shift-current contribution to the second-order response is
 characterized by a frequency-dependent third-rank tensor <sup id="fnref:ref11"><a class="footnote-ref" href="#fn:ref11">11</a></sup></p>
 <div class="arithmatex">\[
@@ -2481,7 +2483,7 @@ r^a_{ nm}(\bm{k})=(1-\delta_{nm})A^a_{ nm}(\bm{k}),
 \end{equation}
 \]</div>
 <p>and its
-<em>generalized derivative</em> </p>
+<em>generalized derivative</em></p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:gen-der}
@@ -2506,8 +2508,8 @@ Eq. <span class="arithmatex">\(\eqref{eq:lorentzian}\)</span>) using the keywor
 the keyword <code>[kubo_]adpt_smr</code>.</p>
 <p>Please cite Ref. <sup id="fnref2:ref12"><a class="footnote-ref" href="#fn:ref12">12</a></sup> when publishing shift-current
 results using this method.</p>
-<h3 id="sec:kdotp"><code>berry_task=kdotp</code>: <span class="arithmatex">\(k\cdot p\)</span> coefficients<a class="headerlink" href="#sec:kdotp" title="Permanent link">&para;</a></h3>
-<p>Consider a Hamiltonian </p>
+<h2 id="berry_taskkdotp-k-p-coefficients"><code>berry_task=kdotp</code>: k ⋅ p coefficients<a class="headerlink" href="#berry_taskkdotp-k-p-coefficients" title="Permanent link">&para;</a></h2>
+<p>Consider a Hamiltonian</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:H}
@@ -2530,7 +2532,7 @@ transformed Hamiltonian <span class="arithmatex">\(\tilde{H}\)</span> exists wit
 <p>where
 <span class="arithmatex">\(\tilde{H}^{j}\)</span> contain matrix elements of <span class="arithmatex">\(H^{\prime}\)</span> to the <span class="arithmatex">\(j\)</span>th
 power. According to Appendix B of Ref <sup id="fnref:ref13"><a class="footnote-ref" href="#fn:ref13">13</a></sup>, the
-first three terms are </p>
+first three terms are</p>
 <div class="arithmatex">\[
 \begin{equation}
 \begin{aligned}
@@ -2540,7 +2542,7 @@ first three terms are </p>
 &amp; \tilde{H}^{1}_{mm'} = H^{'}_{mm'},\\
 \label{eq:pert-matelem2}
 &amp; \tilde{H}^{2}_{mm'} = \dfrac{1}{2}\sum_{l}H^{'}_{ml}H^{'}_{lm'}
-\left( 
+\left(
 \dfrac{1}{E_{m}-E_{l}}+\dfrac{1}{E_{m'}-E_{l}}
 \right),
 \end{aligned}
@@ -2554,7 +2556,7 @@ elements of the truncated matrix.</p>
 <p>We adopt the notation described in Sec. III.B of Ref. <sup id="fnref4:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>. We
 shift the origin of <span class="arithmatex">\(k\)</span> space to the point where the band edge (or some
 other band extremum of interest) is located, and Taylor expand around
-that point the Wannier-gauge Hamiltonian, </p>
+that point the Wannier-gauge Hamiltonian,</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:HW-exp}
@@ -2564,23 +2566,27 @@ H^{(W)}(\bm{k})=H^{(W)}(0)
 + \mathcal{O}(k^{3})
 \end{equation}
 \]</div>
-<p>where <span class="arithmatex">\(a,b=x,y,z\)</span>, and </p>
+<p>where <span class="arithmatex">\(a,b=x,y,z\)</span>, and</p>
 <div class="arithmatex">\[
 \begin{equation}
 \begin{aligned}
-&amp;H_{a}^{(W)}(0)=\left. \dfrac{\partial H^{(W)}(\bm{k})}{\partial k_{a}}\right\rvert_{\bm{k}=0}\\
-&amp;H_{ab}^{(W)}(0)=\left. \dfrac{\partial^{2} H^{(W)}(\bm{k})}{\partial k_{a}\partial k_{b}}\right\rvert_{\bm{k}=0}
+&amp;H_{a}^{(W)}(0)=\left. \dfrac{\partial H^{(W)}(\bm{k})}{\partial k_{a}}
+\right\rvert_{\bm{k}=0}\\
+&amp;H_{ab}^{(W)}(0)=\left. \dfrac{\partial^{2} H^{(W)}(\bm{k})}
+{\partial k_{a}\partial k_{b}}\right\rvert_{\bm{k}=0}
 \end{aligned}
 \end{equation}
 \]</div>
 <p>We now apply to <span class="arithmatex">\(H^{(W)}(\bm{k})\)</span> a similarity transformation <span class="arithmatex">\(U(0)\)</span>
 that diagonalizes <span class="arithmatex">\(H^{(W)}(0)\)</span>, and call the transformed Hamiltonian
-<span class="arithmatex">\(H(\bm{k})\)</span>, </p>
+<span class="arithmatex">\(H(\bm{k})\)</span>,</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:Hbar}
-H(\bm{k})=\overbrace{\overline{H}}^{H^{0}} + \overbrace{\sum_{a}\overline{H}_{a}k_{a}
-+\dfrac{1}{2}\sum_{ab}\overline{H}_{ab}k_{a}k_{b}}^{H^{\prime}} + \mathcal{O}(k^{3}),
+H(\bm{k})=\overbrace{\overline{H}}^{H^{0}} +
+\overbrace{\sum_{a}\overline{H}_{a}k_{a}
++\dfrac{1}{2}\sum_{ab}\overline{H}_{ab}k_{a}k_{b}}^{H^{\prime}} +
+\mathcal{O}(k^{3}),
 \end{equation}
 \]</div>
 <p>where we introduced the notation</p>
@@ -2599,7 +2605,7 @@ Eq. <span class="arithmatex">\(\eqref{eq:pert-exp}\)</span> up to second order 
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:Htilde}
- \tilde{H}_{mm'}(\bm{k}) = 
+ \tilde{H}_{mm'}(\bm{k}) =
 \overline{H}_{mm'} + \sum_{a} \left(\overline{H}_{a}\right)_{mm'}k_{a}
  + \dfrac{1}{2}\sum_{a,b}\left[
 \left(\overline{H}_{ab}\right)_{mm'} + \left({T}_{ab}\right)_{mm'}
@@ -2607,18 +2613,17 @@ Eq. <span class="arithmatex">\(\eqref{eq:pert-exp}\)</span> up to second order 
 \end{equation}
 \]</div>
 <p>where <span class="arithmatex">\(m,m'\in A\)</span> and we have
-defined the virtual-transition matrix </p>
+defined the virtual-transition matrix</p>
 <div class="arithmatex">\[
 \begin{equation}
 \label{eq:Tab}
 \left({T}_{ab}\right)_{mm'}=\sum_{l\in B}
-\left(\overline{H}_{a}\right)_{ml}\left(\overline{H}_{b}\right)_{lm'} 
+\left(\overline{H}_{a}\right)_{ml}\left(\overline{H}_{b}\right)_{lm'}
  \times
-\left( 
+\left(
 \dfrac{1}{E_{m}-E_{l}}+\dfrac{1}{E_{m'}-E_{l}}
 \right)
-= 
-\left({T}_{ab}\right)_{m'm}^{*}.
+= \left({T}_{ab}\right)_{m'm}^{*}.
 \end{equation}
 \]</div>
 <p>(The <span class="arithmatex">\(T_{ab}\)</span> term in Eq.
@@ -2630,11 +2635,12 @@ before summing.)</p>
 Ref. <sup id="fnref:ref14"><a class="footnote-ref" href="#fn:ref14">14</a></sup>, and outputs <span class="arithmatex">\(\overline{H}_{mm'}\)</span> in
 <code>seedname-kdotp_0.dat</code>, <span class="arithmatex">\(\left(\overline{H}_{a}\right)_{mm'}\)</span> in
 <code>seedname-kdotp_1.dat</code>, and
-<span class="arithmatex">\(\left[\left(\overline{H}_{ab}\right)_{mm'} + \left({T}_{ab}\right)_{mm'}\right]/2\)</span>
+<span class="arithmatex">\(\left[\left(\overline{H}_{ab}\right)_{mm'} +
+\left({T}_{ab}\right)_{mm'}\right]/2\)</span>
 in <code>seedname-kdotp_2.dat</code>.</p>
 <p>Please cite Ref. <sup id="fnref2:ref14"><a class="footnote-ref" href="#fn:ref14">14</a></sup> when publishing <span class="arithmatex">\(k\cdot p\)</span>
 results using this method.</p>
-<h3 id="needed-matrix-elements">Needed matrix elements<a class="headerlink" href="#needed-matrix-elements" title="Permanent link">&para;</a></h3>
+<h2 id="needed-matrix-elements">Needed matrix elements<a class="headerlink" href="#needed-matrix-elements" title="Permanent link">&para;</a></h2>
 <p>All the quantities entering the formulas for the optical conductivity
 and AHC can be calculated by Wannier interpolation once the Hamiltonian
 and position matrix elements <span class="arithmatex">\(\langle {\bf 0}n\vert H\vert
@@ -2643,7 +2649,8 @@ and position matrix elements <span class="arithmatex">\(\langle {\bf 0}n\vert H\
 elements are readily available at the end of a standard MLWF calculation
 with <code>wannier90</code>. In particular, <span class="arithmatex">\(\langle {\bf
   0}n\vert {\bf r}\vert {\bf R}m\rangle\)</span> can be calculated by Fourier
-transforming the overlap matrices in <a href="../../wannier90/methodology/#mjx-eqn:eq:overlap-matrix">Methodology Eq. [overlap matrices]</a>,</p>
+transforming the overlap matrices in
+<a href="../../wannier90/methodology/#mjx-eqn:eq:overlap-matrix">Methodology Eq. [overlap matrices]</a>,</p>
 <div class="arithmatex">\[
 \begin{equation}
 \langle u_{n{\bf k}}\vert u_{m{\bf k}+{\bf b}}\rangle.
@@ -2663,37 +2670,38 @@ H_{\bf k}\vert u_{m{\bf k}+{\bf b}_2}\rangle
 <p>over the <em>ab-initio</em>
 <span class="arithmatex">\(k\)</span>-point mesh <sup id="fnref4:ref5"><a class="footnote-ref" href="#fn:ref5">5</a></sup>. These are evaluated by <code>pw2wannier90</code>,
 the interface routine between <code>pwscf</code> and <code>wannier90</code>, by adding to the
-input file <code>seedname.pw2wan</code> the line </p>
-<div class="language-text highlight"><pre><span></span><code>write_uHu = .true.
-</code></pre></div>
+input file <code>seedname.pw2wan</code> the line</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>write_uHu = .true.
+</span></code></pre></div>
 <p>The calculation of spin Hall conductivity needs the spin matrix
 elements</p>
 <div class="arithmatex">\[
 \begin{equation}
-\langle u_{n{\bf k}}\vert \sigma_\gamma \vert u_{m{\bf k}}\rangle, 
+\langle u_{n{\bf k}}\vert \sigma_\gamma \vert u_{m{\bf k}}\rangle,
 \gamma = x, y, z
 \end{equation}
 \]</div>
 <p>from the <em>ab-initio</em> <span class="arithmatex">\(k\)</span>-point mesh. These are also
 evaluated by <code>pw2wannier90</code> by adding to the input file
-<code>seedname.pw2wan</code> the line </p>
-<div class="language-text highlight"><pre><span></span><code>write_spn = .true.
-</code></pre></div>
+<code>seedname.pw2wan</code> the line</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>write_spn = .true.
+</span></code></pre></div>
 <p>If one uses Ryoo's method to calculate spin Hall conductivity, the
-further matrix elements are needed: </p>
+further matrix elements are needed:</p>
 <div class="arithmatex">\[
 \begin{equation}
 \langle u_{n{\bf k}}\vert
-\sigma_\gamma H_{\bf k}\vert u_{m{\bf k}+{\bf b}}\rangle, \langle u_{n{\bf k}}\vert
+\sigma_\gamma H_{\bf k}\vert u_{m{\bf k}+{\bf b}}\rangle,
+\langle u_{n{\bf k}}\vert
 \sigma_\gamma \vert u_{m{\bf k}+{\bf b}}\rangle,
 \gamma = x, y, z
 \end{equation}
 \]</div>
 <p>and these are evaluated by adding to the input file
-<code>seedname.pw2wan</code> the lines </p>
-<div class="language-text highlight"><pre><span></span><code>write_sHu = .true.
-write_sIu = .true.
-</code></pre></div>
+<code>seedname.pw2wan</code> the lines</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>write_sHu = .true.
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>write_sIu = .true.
+</span></code></pre></div>
 <div class="footnote">
 <hr />
 <ol>
@@ -2763,7 +2771,7 @@ write_sIu = .true.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2773,7 +2781,7 @@ write_sIu = .true.
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

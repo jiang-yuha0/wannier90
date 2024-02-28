@@ -2040,9 +2040,9 @@ from a single MPI process.</p>
 <p>You can find a minimal example of how the library mode can be used among
 the tests, in the file <code>test-suite/library-mode-test/test_library.F90</code>
 in the Wannier90 git repository.</p>
-<h3 id="subroutines">Subroutines<a class="headerlink" href="#subroutines" title="Permanent link">&para;</a></h3>
-<h4 id="wannier_setup"><code>wannier_setup</code><a class="headerlink" href="#wannier_setup" title="Permanent link">&para;</a></h4>
-<div class="language-fortran highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">wannier_setup</span><span class="p">(</span><span class="n">seed_name</span><span class="p">,</span><span class="n">mp_grid</span><span class="p">,</span><span class="n">num_kpts</span><span class="p">,</span><span class="n">real_lattice</span><span class="p">,</span><span class="n">recip_lattice</span><span class="p">,</span>
+<h2 id="subroutines">Subroutines<a class="headerlink" href="#subroutines" title="Permanent link">&para;</a></h2>
+<h3 id="wannier_setup"><code>wannier_setup</code><a class="headerlink" href="#wannier_setup" title="Permanent link">&para;</a></h3>
+<div class="language-fortran highlight"><span class="filename">Fortran</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">wannier_setup</span><span class="p">(</span><span class="n">seed_name</span><span class="p">,</span><span class="n">mp_grid</span><span class="p">,</span><span class="n">num_kpts</span><span class="p">,</span><span class="n">real_lattice</span><span class="p">,</span><span class="n">recip_lattice</span><span class="p">,</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">              </span><span class="n">kpt_latt</span><span class="p">,</span><span class="n">num_bands_tot</span><span class="p">,</span><span class="n">num_atoms</span><span class="p">,</span><span class="n">atom_symbols</span><span class="p">,</span><span class="n">atoms_cart</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">              </span><span class="n">gamma_only</span><span class="p">,</span><span class="n">spinors</span><span class="p">,</span><span class="n">nntot</span><span class="p">,</span><span class="n">nnlist</span><span class="p">,</span><span class="n">nncell</span><span class="p">,</span><span class="n">num_bands</span><span class="p">,</span><span class="n">num_wann</span><span class="p">,</span><span class="n">proj_site</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">              </span><span class="n">proj_l</span><span class="p">,</span><span class="n">proj_m</span><span class="p">,</span><span class="n">proj_radial</span><span class="p">,</span><span class="n">proj_z</span><span class="p">,</span><span class="n">proj_x</span><span class="p">,</span><span class="n">proj_zona</span><span class="p">,</span>
@@ -2068,8 +2068,8 @@ the first lattice vector <span class="arithmatex">\(\mathbf{A}_{1}\)</span>, etc
 <code>nnlist(nkp,1:nntot)</code>.</p>
 <p>Additionally, the parameter <code>shell_list</code> may be specified in the
 <code>wannier90</code> input file.</p>
-<h4 id="wannier_run"><code>wannier_run</code><a class="headerlink" href="#wannier_run" title="Permanent link">&para;</a></h4>
-<div class="language-fortran highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">wannier_run</span><span class="p">(</span><span class="n">seed_name</span><span class="p">,</span><span class="n">mp_grid</span><span class="p">,</span><span class="n">num_kpts</span><span class="p">,</span><span class="n">real_lattice</span><span class="p">,</span><span class="n">recip_lattice</span><span class="p">,</span>
+<h3 id="wannier_run"><code>wannier_run</code><a class="headerlink" href="#wannier_run" title="Permanent link">&para;</a></h3>
+<div class="language-fortran highlight"><span class="filename">Fortran</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">wannier_run</span><span class="p">(</span><span class="n">seed_name</span><span class="p">,</span><span class="n">mp_grid</span><span class="p">,</span><span class="n">num_kpts</span><span class="p">,</span><span class="n">real_lattice</span><span class="p">,</span><span class="n">recip_lattice</span><span class="p">,</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">            </span><span class="n">kpt_latt</span><span class="p">,</span><span class="n">num_bands</span><span class="p">,</span><span class="n">num_wann</span><span class="p">,</span><span class="n">nntot</span><span class="p">,</span><span class="n">num_atoms</span><span class="p">,</span><span class="n">atom_symbols</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">            </span><span class="n">atoms_cart</span><span class="p">,</span><span class="n">gamma_only</span><span class="p">,</span><span class="n">M_matrix_orig</span><span class="p">,</span><span class="n">A_matrix</span><span class="p">,</span><span class="n">eigenvalues</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">            </span><span class="n">U_matrix</span><span class="p">,</span><span class="n">U_matrix_opt</span><span class="p">,</span><span class="n">lwindow</span><span class="p">,</span><span class="n">wann_centres</span><span class="p">,</span><span class="n">wann_spreads</span><span class="p">,</span>
@@ -2214,7 +2214,7 @@ u_{n\mathbf{k+b}}\right\rangle\\
 \begin{aligned}
 \mathbf{k} &amp;=\texttt{kpt_latt(1:3,nkp)}\\
 \mathbf{k+b}&amp;= \texttt{kpt_latt(1:3,nnlist(nkp,nn))} +
-\texttt{nncell(1:3,nkp,nn)} 
+\texttt{nncell(1:3,nkp,nn)}
 \end{aligned}
 \]</div>
 <p>and <span class="arithmatex">\(\left\{|g_{n}\rangle\right\}\)</span> are a set of initial
@@ -2254,7 +2254,7 @@ are modulated by appropriate spherical harmonics.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2264,7 +2264,7 @@ are modulated by appropriate spherical harmonics.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

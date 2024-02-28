@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#silicon-boltzmann-transport" class="md-skip">
+        <a href="#16-silicon-boltzmann-transport" class="md-skip">
           Skip to content
         </a>
       
@@ -1532,7 +1532,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-ideas-4" class="md-nav__link">
+  <a href="#further-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       Further ideas
     </span>
@@ -1958,7 +1958,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-ideas-4" class="md-nav__link">
+  <a href="#further-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       Further ideas
     </span>
@@ -1997,14 +1997,14 @@
   
 
 
-<h1 class="unnumbered" id="silicon-boltzmann-transport">16: Silicon &#151; Boltzmann transport<a class="headerlink" href="#silicon-boltzmann-transport" title="Permanent link">&para;</a></h1>
+<h1 id="16-silicon-boltzmann-transport">16: Silicon &#151; Boltzmann transport<a class="headerlink" href="#16-silicon-boltzmann-transport" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Outline: <em>Obtain MLWFs for the valence and low-lying conduction
     states of Si. Calculate the electrical conductivity, the Seebeck
     coefficient and the thermal conductivity in the constant relaxation
     time approximation using the <code>BoltzWann</code> module.</em></li>
 </ul>
-<h2 class="unnumbered" id="if-you-want-to-use-quantum-espresso">If you want to use Quantum ESPRESSO<a class="headerlink" href="#if-you-want-to-use-quantum-espresso" title="Permanent link">&para;</a></h2>
+<h2 id="if-you-want-to-use-quantum-espresso">If you want to use Quantum ESPRESSO<a class="headerlink" href="#if-you-want-to-use-quantum-espresso" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Directory: <code>tutorials/tutorial16-withqe/</code> <em>Files can be downloaded from <a href="https://github.com/wannier-developers/wannier90/tree/develop/tutorials/tutorial16">here</a></em></p>
@@ -2024,12 +2024,12 @@
 <p><code>Si.pw2wan</code> <em>Input file for <code>pw2wannier90</code></em></p>
 </li>
 <li>
-<p><code>Si.win</code> <em>The <code>wannier90</code> and <code>postw90</code> input file</em> </p>
+<p><code>Si.win</code> <em>The <code>wannier90</code> and <code>postw90</code> input file</em></p>
 </li>
 </ul>
 </li>
 </ul>
-<h2 class="unnumbered" id="if-you-do-not-want-to-use-quantum-espresso">If you do not want to use Quantum ESPRESSO<a class="headerlink" href="#if-you-do-not-want-to-use-quantum-espresso" title="Permanent link">&para;</a></h2>
+<h2 id="if-you-do-not-want-to-use-quantum-espresso">If you do not want to use Quantum ESPRESSO<a class="headerlink" href="#if-you-do-not-want-to-use-quantum-espresso" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Directory: <code>tutorials/tutorial16-noqe/</code> <em>Files can be downloaded from <a href="https://github.com/wannier-developers/wannier90/tree/develop/tutorials/tutorial16">here</a></em></p>
@@ -2055,9 +2055,9 @@
 </ul>
 </li>
 </ul>
-<p>Note the first five steps in the following are the same of Tutorial <a href="../tutorial_11/#silicon-valence-and-low-lying-conduction-states">11</a>,
+<p>Note the first five steps in the following are the same of Tutorial <a href="../tutorial_11/">11</a>,
 and are needed only if you want to use the <code>PWscf</code> code of Quantum
-ESPRESSO. Otherwise, if you have already run Tutorial <a href="../tutorial_11/#silicon-valence-and-low-lying-conduction-states">11</a> with Quantum
+ESPRESSO. Otherwise, if you have already run Tutorial <a href="../tutorial_11/">11</a> with Quantum
 ESPRESSSO (in particular, the section "<em>Valence + Conduction States</em>")
 you can start from those files and continue from point 6, after having
 added the <code>BoltzWann</code> flags to the input file.</p>
@@ -2073,7 +2073,7 @@ want to use it, you can start from step 5 using the files in the
 <li>
 <p>Run <code>pwscf</code> to obtain the Bloch states on a uniform
     k-point grid. Details on the disentanglement procedure are discussed
-    in Tutorial <a href="../tutorial_11/#silicon-valence-and-low-lying-conduction-states">11</a>.</p>
+    in Tutorial <a href="../tutorial_11/">11</a>.</p>
 <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pw.x<span class="w"> </span>&lt;<span class="w"> </span>Si.nscf<span class="w"> </span>&gt;<span class="w"> </span>nscf.out
 </span></code></pre></div>
 </li>
@@ -2096,8 +2096,9 @@ want to use it, you can start from step 5 using the files in the
 </span></code></pre></div>
 <p>Inspect the output file <code>Si.wout</code> and check if the convergence was
 reached both in the disentanglement and in the wannierisation steps
-(as discussed in further detail in Tutorial <a href="../tutorial_11/#silicon-valence-and-low-lying-conduction-states">11</a>). You may also want to
-plot the Wannier functions and the interpolated band structure.</p>
+(as discussed in further detail in Tutorial <a href="../tutorial_11/">11</a>).
+You may also want to plot the Wannier functions and the interpolated
+band structure.</p>
 </li>
 <li>
 <p>Run <code>postw90</code> to calculate the transport coefficients.\
@@ -2121,7 +2122,7 @@ to inspect the DOS.</p>
 <p>Using your favourite plotting program, plot columns 1 and 3 of the
 <code>Si_seebeck.dat</code> file to inspect the <span class="arithmatex">\(S_{xx}\)</span> component of the Seebeck
 coefficient as a function of the chemical potential <span class="arithmatex">\(\mu\)</span>, at <span class="arithmatex">\(T=300\)</span> K.</p>
-<h2 class="unnumbered" id="further-ideas-4">Further ideas<a class="headerlink" href="#further-ideas-4" title="Permanent link">&para;</a></h2>
+<h2 id="further-ideas">Further ideas<a class="headerlink" href="#further-ideas" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Change the interpolation to a <span class="arithmatex">\(60\times 60\times 60\)</span> mesh and run
@@ -2178,7 +2179,7 @@ using the <code>awk/gawk</code> command line program is the following:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2188,7 +2189,7 @@ using the <code>awk/gawk</code> command line program is the following:</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

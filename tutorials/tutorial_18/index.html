@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#iron-berry-curvature-anomalous-hall-conductivity-and-optical-conductivity" class="md-skip">
+        <a href="#18-iron-berry-curvature-anomalous-hall-conductivity-and-optical-conductivity" class="md-skip">
           Skip to content
         </a>
       
@@ -1583,7 +1583,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-ideas-6" class="md-nav__link">
+  <a href="#further-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       Further ideas
     </span>
@@ -1976,7 +1976,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-ideas-6" class="md-nav__link">
+  <a href="#further-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       Further ideas
     </span>
@@ -2015,7 +2015,7 @@
   
 
 
-<h1 class="unnumbered" id="iron-berry-curvature-anomalous-hall-conductivity-and-optical-conductivity">18: Iron &#151; Berry curvature, anomalous Hall conductivity and optical conductivity<a class="headerlink" href="#iron-berry-curvature-anomalous-hall-conductivity-and-optical-conductivity" title="Permanent link">&para;</a></h1>
+<h1 id="18-iron-berry-curvature-anomalous-hall-conductivity-and-optical-conductivity">18: Iron &#151; Berry curvature, anomalous Hall conductivity and optical conductivity<a class="headerlink" href="#18-iron-berry-curvature-anomalous-hall-conductivity-and-optical-conductivity" title="Permanent link">&para;</a></h1>
 <p>Note: This tutorial requires a recent version of the <code>pw2wannier90</code>
 interface.</p>
 <ul>
@@ -2048,8 +2048,8 @@ interface.</p>
 </ul>
 </li>
 </ul>
-<p>The sequence of steps below is the same of Tutorial <a href="../tutorial_17/#iron-spin-orbit-coupled-bands-and-fermi-surface-contours">17</a>. If you have
-already run that example, you can reuse the output files from steps
+<p>The sequence of steps below is the same of Tutorial <a href="../tutorial_17/">17</a>.
+If you have already run that example, you can reuse the output files from steps
 1 &#151; 5, and only step 6 must be carried out again using the new input file
 <code>Fe.win</code>.</p>
 <ol>
@@ -2083,7 +2083,7 @@ already run that example, you can reuse the output files from steps
 </span></code></pre></div>
 </li>
 <li>
-<p>Run <code>postw90</code> </p>
+<p>Run <code>postw90</code></p>
 <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>postw90.x<span class="w"> </span>Fe<span class="w"> </span><span class="c1"># (1)! </span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>postw90.x<span class="w"> </span>Fe<span class="w"> </span><span class="c1"># (2)!</span>
 </span></code></pre></div>
@@ -2093,9 +2093,11 @@ already run that example, you can reuse the output files from steps
 </ol>
 </li>
 </ol>
-<h2 class="unnumbered" id="berry-curvature-plots">Berry curvature plots<a class="headerlink" href="#berry-curvature-plots" title="Permanent link">&para;</a></h2>
+<h2 id="berry-curvature-plots">Berry curvature plots<a class="headerlink" href="#berry-curvature-plots" title="Permanent link">&para;</a></h2>
 <p>The Berry curvature <span class="arithmatex">\(\Omega_{\alpha\beta}({\bf k})\)</span> of the occupied
-states is defined in this <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:ahc">equation</a>  of the User Guide. The following lines
+states is defined in this
+<a href="../../user_guide/postw90/berry/#mjx-eqn:eq:ahc">equation</a>
+of the User Guide. The following lines
 in <code>Fe.win</code> are used to calculate the energy bands and the Berry
 curvature (in bohr<span class="arithmatex">\(^2\)</span>) along high-symmetry lines in <span class="arithmatex">\(k\)</span>-space.</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>fermi_energy = [insert your value here]
@@ -2116,16 +2118,16 @@ direction using the script generated at runtime,</p>
 <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>Fe-bands+curv_z.py
 </span></code></pre></div>
 <p>and compare with Fig. 2 of Ref. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>.</p>
-<p>In Tutorial <a href="../tutorial_17/#iron-spin-orbit-coupled-bands-and-fermi-surface-contours">17</a> we plotted the Fermi lines on the (010) plane <span class="arithmatex">\(k_y=0\)</span>. To
-combine them with a heatmap plot of (minus) the Berry curvature set
+<p>In Tutorial <a href="../tutorial_17/">17</a> we plotted the Fermi lines on the (010) plane
+<span class="arithmatex">\(k_y=0\)</span>. To combine them with a heatmap plot of (minus) the Berry curvature set
 <code>kpath = false</code>, uncomment the following lines in <code>Fe.win</code>, re-run
 <code>postw90</code>, and issue</p>
 <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>Fe-kslice-curv_z+fermi_lines.py
 </span></code></pre></div>
 <p>Compare with Fig. 3 in Ref. <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>. Note how the Berry curvature
 "hot-spots" tend to occur near spin-orbit-induced avoided crossings (the
-Fermi lines with and without spin-orbit were generated in Tutorial <a href="../tutorial_17/#iron-spin-orbit-coupled-bands-and-fermi-surface-contours">17</a>).</p>
-<h2 class="unnumbered" id="anomalous-hall-conductivity">Anomalous Hall conductivity<a class="headerlink" href="#anomalous-hall-conductivity" title="Permanent link">&para;</a></h2>
+Fermi lines with and without spin-orbit were generated in Tutorial <a href="../tutorial_17/">17</a>).</p>
+<h2 id="anomalous-hall-conductivity">Anomalous Hall conductivity<a class="headerlink" href="#anomalous-hall-conductivity" title="Permanent link">&para;</a></h2>
 <p>The intrinsic anomalous Hall conductivity (AHC) is proportional to the
 BZ integral of the Berry curvature. In bcc Fe with the magnetization
 along <span class="arithmatex">\(\hat{\bf z}\)</span>, the only nonzero components are
@@ -2158,7 +2160,7 @@ three terms, denoted <span class="arithmatex">\(D\)</span>-<span class="arithmat
 Ref. <sup id="fnref:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>. To report in <code>Fe.wpout</code> the decomposition of the
 total AHC into these three terms, set <code>iprint</code> (verbosity level) to a
 value larger than one in <code>Fe.win</code>.</p>
-<h2 class="unnumbered" id="optical-conductivity">Optical conductivity<a class="headerlink" href="#optical-conductivity" title="Permanent link">&para;</a></h2>
+<h2 id="optical-conductivity">Optical conductivity<a class="headerlink" href="#optical-conductivity" title="Permanent link">&para;</a></h2>
 <p>The optical conductivity tensor of bcc Fe with magnetization along
 <span class="arithmatex">\(\hat{\bf z}\)</span> has the form</p>
 <div class="arithmatex">\[
@@ -2202,7 +2204,16 @@ in S/cm, as in the lower panel of Fig. 5 in Ref. <sup id="fnref4:ref1"><a clas
 <div class="language-gnuplot highlight"><span class="filename">Gnuplot shell</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">plot</span><span class="w"> </span><span class="s">&#39;Fe-kubo_A_xy.dat&#39;</span><span class="w"> </span><span class="nb">u</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="w"> </span><span class="nb">w</span><span class="w"> </span><span class="n">l</span>
 </span></code></pre></div>
 <p>Comapare the <span class="arithmatex">\(\omega\rightarrow 0\)</span> limit with the result obtained
-earlier by integrating the Berry curvature.[^3]</p>
+earlier by integrating the Berry curvature.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The calculation of the AHC using <code>berry_task = kubo</code> involves a
+truncation of the sum over empty states in the Kubo-Greenwood
+formula: see description of the keyword <code>kubo_eigval_max</code> in the
+User Guide. As discussed around <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:ahc">the formula for anomalous Hall
+conductivity</a> of the
+User Guide, no truncation is done with <code>berry_task = ahc</code>.</p>
+</div>
 <p>Next we plot the MCD spectrum. Following Ref. <sup id="fnref5:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>, we plot
 <span class="arithmatex">\({\rm Im}[\omega\sigma_{xy}(\hbar\omega)]\)</span>, in units of
 <span class="arithmatex">\(10^{29}\)</span> sec<span class="arithmatex">\(^{-2}\)</span>. The needed conversion factor is <span class="arithmatex">\(9\times
@@ -2210,15 +2221,16 @@ earlier by integrating the Berry curvature.[^3]</p>
 <div class="language-gnuplot highlight"><span class="filename">Gnuplot shell</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">set</span><span class="w"> </span><span class="nb">yrange</span><span class="p">[</span><span class="mi">-5</span><span class="o">:</span><span class="mi">15</span><span class="p">]</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">plot</span><span class="w"> </span><span class="s">&#39;Fe-kubo_A_xy.dat&#39;</span><span class="w"> </span><span class="nb">u</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="p">(</span><span class="err">\$</span><span class="mi">1</span><span class="p">)</span><span class="err">\</span><span class="o">*</span><span class="p">(</span><span class="err">\$</span><span class="mi">3</span><span class="p">)</span><span class="err">\</span><span class="o">*</span><span class="mf">0.0137</span><span class="w"> </span><span class="nb">w</span><span class="w"> </span><span class="n">l</span>
 </span></code></pre></div>
-<h2 class="unnumbered" id="further-ideas-6">Further ideas<a class="headerlink" href="#further-ideas-6" title="Permanent link">&para;</a></h2>
+<h2 id="further-ideas">Further ideas<a class="headerlink" href="#further-ideas" title="Permanent link">&para;</a></h2>
 <p>-   Recompute the AHC and optical spectra of bcc Fe using projected <span class="arithmatex">\(s\)</span>,
     <span class="arithmatex">\(p\)</span>, and <span class="arithmatex">\(d\)</span>-type Wannier functions instead of the hybridrized MLWFs
-    (see Tutorial <a href="../tutorial_8/#iron-spin-polarized-wfs-dos-projected-wfs-versus-mlwfs">8</a>), 
+    (see Tutorial <a href="../tutorial_8/">8</a>),
     and compare the results.</p>
 <p>-   A crude way to model the influence of heterovalent alloying on the
     AHC is to assume that its only effect is to donate or deplete
     electrons, i.e., to shift the Fermi level of the pure
-    crystal <sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup>. Recalculate the AHC of bcc Fe for a range of Fermi energies within
+    crystal <sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup>. Recalculate the AHC of bcc Fe for a range of Fermi
+    energies within
     <span class="arithmatex">\(\pm 0.5\)</span> eV of the true Fermi level. This calculation can be
     streamlined by replacing in <code>Fe.win</code></p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>fermi_energy = [insert your value here]
@@ -2273,7 +2285,7 @@ earlier by integrating the Berry curvature.[^3]</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2283,7 +2295,7 @@ earlier by integrating the Berry curvature.[^3]</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

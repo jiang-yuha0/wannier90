@@ -960,7 +960,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sec:postw90-globalflags" class="md-nav__link">
+  <a href="#global-variables" class="md-nav__link">
     <span class="md-ellipsis">
       Global variables
     </span>
@@ -1117,33 +1117,6 @@
   <a href="#characterlen20-berry_curv_unit" class="md-nav__link">
     <span class="md-ellipsis">
       character(len=20) :: berry_curv_unit
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#realkinddp-sc_eta" class="md-nav__link">
-    <span class="md-ellipsis">
-      real(kind=dp) :: sc_eta
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integer-sc_phase_conv" class="md-nav__link">
-    <span class="md-ellipsis">
-      integer :: sc_phase_conv
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#realkinddp-sc_w_thr" class="md-nav__link">
-    <span class="md-ellipsis">
-      real(kind=dp) :: sc_w_thr
     </span>
   </a>
   
@@ -1642,7 +1615,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#realkinddp-sc_eta_1" class="md-nav__link">
+  <a href="#realkinddp-sc_eta" class="md-nav__link">
     <span class="md-ellipsis">
       real(kind=dp) :: sc_eta
     </span>
@@ -1651,7 +1624,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#integer-sc_phase_conv_1" class="md-nav__link">
+  <a href="#integer-sc_phase_conv" class="md-nav__link">
     <span class="md-ellipsis">
       integer :: sc_phase_conv
     </span>
@@ -1660,7 +1633,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#realkinddp-sc_w_thr_1" class="md-nav__link">
+  <a href="#realkinddp-sc_w_thr" class="md-nav__link">
     <span class="md-ellipsis">
       real(kind=dp) :: sc_w_thr
     </span>
@@ -3361,7 +3334,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sec:postw90-globalflags" class="md-nav__link">
+  <a href="#global-variables" class="md-nav__link">
     <span class="md-ellipsis">
       Global variables
     </span>
@@ -3518,33 +3491,6 @@
   <a href="#characterlen20-berry_curv_unit" class="md-nav__link">
     <span class="md-ellipsis">
       character(len=20) :: berry_curv_unit
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#realkinddp-sc_eta" class="md-nav__link">
-    <span class="md-ellipsis">
-      real(kind=dp) :: sc_eta
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integer-sc_phase_conv" class="md-nav__link">
-    <span class="md-ellipsis">
-      integer :: sc_phase_conv
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#realkinddp-sc_w_thr" class="md-nav__link">
-    <span class="md-ellipsis">
-      real(kind=dp) :: sc_w_thr
     </span>
   </a>
   
@@ -4043,7 +3989,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#realkinddp-sc_eta_1" class="md-nav__link">
+  <a href="#realkinddp-sc_eta" class="md-nav__link">
     <span class="md-ellipsis">
       real(kind=dp) :: sc_eta
     </span>
@@ -4052,7 +3998,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#integer-sc_phase_conv_1" class="md-nav__link">
+  <a href="#integer-sc_phase_conv" class="md-nav__link">
     <span class="md-ellipsis">
       integer :: sc_phase_conv
     </span>
@@ -4061,7 +4007,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#realkinddp-sc_w_thr_1" class="md-nav__link">
+  <a href="#realkinddp-sc_w_thr" class="md-nav__link">
     <span class="md-ellipsis">
       real(kind=dp) :: sc_w_thr
     </span>
@@ -4585,8 +4531,8 @@
 <h1 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>The <code>wannier90.x</code> code described in
-Part <a href="../../wannier90/methodology/">wannier90.x</a> calculates the maximally-localized Wannier
-functions.</p>
+Part <a href="../../wannier90/methodology/">wannier90.x</a> calculates the
+maximally-localized Wannier functions.</p>
 <p>The <code>postw90.x</code> executable contains instead a series of modules that
 take the Wannier functions calculated by <code>wannier90.x</code> and use them to
 calculate different properties. This executable is parallel (by means of
@@ -4651,14 +4597,14 @@ functions.</p>
 <p><code>kpath</code>: Calculation of <span class="arithmatex">\(k\)</span>-space quantities such as energy bands,
     Berry curvature and Berry curvature-like term of spin Hall
     conductivity along a piecewise linear path in the BZ (see tutorials
-    <a href="../../../tutorials/tutorial_17/">17</a>, 
-    <a href="../../../tutorials/tutorial_18/">18</a> 
+    <a href="../../../tutorials/tutorial_17/">17</a>,
+    <a href="../../../tutorials/tutorial_18/">18</a>
     and <a href="../../../tutorials/tutorial_29/">29</a> of the tutorial).</p>
 </li>
 <li>
 <p><code>kslice</code>: Calculation of <span class="arithmatex">\(k\)</span>-space quantities on a planar slice of
-    the BZ (see tutorials <a href="../../../tutorials/tutorial_17/">17</a>, 
-    <a href="../../../tutorials/tutorial_18/">18</a> 
+    the BZ (see tutorials <a href="../../../tutorials/tutorial_17/">17</a>,
+    <a href="../../../tutorials/tutorial_18/">18</a>
     and <a href="../../../tutorials/tutorial_29/">29</a> of the tutorial).</p>
 </li>
 <li>
@@ -4667,26 +4613,29 @@ functions.</p>
     spin Hall conductivity, including anomalous Hall conductivity,
     orbital magnetisation, optical conductivity, nonlinear shift current
     and spin Hall conductivity (see
-    Chap. <a href="../berry/">Berry</a> and tutorials 
-    <a href="../../../tutorials/tutorial_18/">18</a>, 
-    <a href="../../../tutorials/tutorial_19/">19</a>, 
-    <a href="../../../tutorials/tutorial_25/">25</a>, 
+    Chap. <a href="../berry/">Berry</a> and tutorials
+    <a href="../../../tutorials/tutorial_18/">18</a>,
+    <a href="../../../tutorials/tutorial_19/">19</a>,
+    <a href="../../../tutorials/tutorial_25/">25</a>,
     <a href="../../../tutorials/tutorial_29/">29</a>
     and <a href="../../../tutorials/tutorial_30/">30</a> of the
     tutorial). It also includes an option to compute <span class="arithmatex">\(k\cdot p\)</span>
     expansion coefficients (see
-    Sec. <a href="../berry/#sec:kdotp">kdotp</a> and tutorial <a href="../../../tutorials/tutorial_33/">33</a> of the tutorial).</p>
+    Sec. <a href="../berry/#berry_taskkdotp-k-p-coefficients">kdotp</a> and tutorial
+    <a href="../../../tutorials/tutorial_33/">33</a> of the tutorial).</p>
 </li>
 <li>
 <p><code>gyrotropic</code>: Calculation of gyrotropic properties, including
     natural and current0induced optical rotation, and the
     current-induced magnetization (see
-    Chap. <a href="../gyrotropic/">Gyrotropic</a> and tutorial <a href="../../../tutorials/tutorial_24/">24</a> of the tutorial).</p>
+    Chap. <a href="../gyrotropic/">Gyrotropic</a> and tutorial
+    <a href="../../../tutorials/tutorial_24/">24</a> of the tutorial).</p>
 </li>
 <li>
 <p><code>BoltzWann</code>: Calculation of electronic transport properties for bulk
     materials using the semiclassical Boltzmann transport equation (see
-    Chap. <a href="../boltzwann/">BoltzWann</a> and tutorial <a href="../../../tutorials/tutorial_16/">16</a> of the tutorial).</p>
+    Chap. <a href="../boltzwann/">BoltzWann</a> and tutorial
+    <a href="../../../tutorials/tutorial_16/">16</a> of the tutorial).</p>
 </li>
 <li>
 <p><code>geninterp</code> (Generic Band Interpolation): Calculation band energies
@@ -4697,15 +4646,17 @@ functions.</p>
 <h2 id="keyword-list">Keyword List<a class="headerlink" href="#keyword-list" title="Permanent link">&para;</a></h2>
 <p>On the next pages the list of available  input keywords is reported. In
 particular,
-Table <a href="#global-parameters-of-postw90">Global Parameters of <code>postw90</code></a> reports keywords that affect the
+Table <a href="#global-parameters-of-postw90">Global Parameters of <code>postw90</code></a> reports
+keywords that affect the
 generic behavior of all modules of . Often, these are "global" variables
 that can be overridden by module-specific keywords (as for instance the
 <code>kmesh</code> flag). The subsequent tables describe the input parameters for
 each specific module.
 A description of the behaviour of the global flags is described
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>; the description of the flags
+Sec. <a href="#global-variables">Global variables</a>; the description of the flags
 specific to the modules can be found in the following sections.</p>
 <h3 id="global-parameters-of-postw90">Global Parameters of <code>postw90</code><a class="headerlink" href="#global-parameters-of-postw90" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -4802,6 +4753,8 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the general behaviour of
   the modules in <code>postw90</code>. Argument types are represented by, I for a integer, R
   for a real number, P for a physical value, L for a logical value and S
@@ -4810,6 +4763,7 @@ specific to the modules can be found in the following sections.</p>
   in , and does not really belong to any of them. It is listed here for
   lack of a better place.</p>
 <h3 id="berry-parameters"><code>berry</code> Parameters<a class="headerlink" href="#berry-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -4976,11 +4930,14 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the <code>berry</code> module.
   Argument types are represented by, I for a integer, R for a real
   number, P for a physical value, L for a logical value and S for a text
   string.</p>
 <h3 id="dos-parameters"><code>dos</code> Parameters<a class="headerlink" href="#dos-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5057,8 +5014,13 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
-<p><code>seedname.win</code> file keywords controlling the <code>dos</code> module. Argument types are represented by, I for a integer, R for a real number, P for a physical value, L for a logical value and S for a text string.</p>
+<!-- markdownlint-enable MD013 -->
+
+<p><code>seedname.win</code> file keywords controlling the <code>dos</code> module.
+Argument types are represented by, I for a integer, R for a real number,
+P for a physical value, L for a logical value and S for a text string.</p>
 <h3 id="kpath-parameters"><code>kpath</code> Parameters<a class="headerlink" href="#kpath-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5090,11 +5052,14 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the <code>kpath</code> module.
   Argument types are represented by, I for a integer, R for a real
   number, P for a physical value, L for a logical value and S for a text
   string.</p>
 <h3 id="kslice-parameters"><code>kslice</code> Parameters<a class="headerlink" href="#kslice-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5146,8 +5111,13 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
-<p><code>seedname.win</code> file keywords controlling the <code>kslice</code> module. Argument types are represented by, I for a integer, R for a real number, P for a physical value, L for a logical value and S for a text string.</p>
+<!-- markdownlint-enable MD013 -->
+
+<p><code>seedname.win</code> file keywords controlling the <code>kslice</code> module. Argument types
+are represented by, I for a integer, R for a real number, P for a physical
+value, L for a logical value and S for a text string.</p>
 <h3 id="gyrotropic-parameters"><code>gyrotropic</code> Parameters<a class="headerlink" href="#gyrotropic-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5224,11 +5194,14 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the <code>gyrotropic</code> module.
   Argument types are represented by, I for a integer, R for a real
   number, P for a physical value, L for a logical value and S for a text
   string.</p>
 <h3 id="boltzwann-parameters"><code>BoltzWann</code> Parameters<a class="headerlink" href="#boltzwann-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5370,11 +5343,14 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-enable MD013 -->
+
 <p><code>seedname.win</code> file keywords controlling the <code>BoltzWann</code> module (calculation of
   the Boltzmann transport coefficients in the Wannier basis). Argument
   types are represented by, I for a integer, R for a real number, P for
   a physical value, L for a logical value and S for a text string.</p>
 <h3 id="geninterp-parameters"><code>geninterp</code> Parameters<a class="headerlink" href="#geninterp-parameters" title="Permanent link">&para;</a></h3>
+<!-- markdownlint-disable MD013 -->
 <table>
 <thead>
 <tr>
@@ -5401,8 +5377,13 @@ specific to the modules can be found in the following sections.</p>
 </tr>
 </tbody>
 </table>
-<p><code>seedname.win</code> file keywords controlling the Generic Band Interpolation (<code>geninterp</code>) module. Argument types are represented by,   I for a integer, R for a real number, P for a physical value, L for a logical value and S for a text string.</p>
-<h2 id="sec:postw90-globalflags">Global variables<a class="headerlink" href="#sec:postw90-globalflags" title="Permanent link">&para;</a></h2>
+<!-- markdownlint-enable MD013 -->
+
+<p><code>seedname.win</code> file keywords controlling the Generic Band Interpolation
+(<code>geninterp</code>) module. Argument types are represented by,   I for a integer,
+R for a real number, P for a physical value, L for a logical value and S for
+a text string.</p>
+<h2 id="global-variables">Global variables<a class="headerlink" href="#global-variables" title="Permanent link">&para;</a></h2>
 <h3 id="integer-kmesh"><code>integer :: kmesh(:)</code><a class="headerlink" href="#integer-kmesh" title="Permanent link">&para;</a></h3>
 <p>Dimensions of the interpolation grid used in <code>postw90.x</code>.</p>
 <p><em>Not to be confused with the <code>mp_grid</code> input flag, which instead
@@ -5545,68 +5526,17 @@ cases).</p>
 </li>
 </ul>
 <p>The default value is <code>ang2</code>.</p>
-<h3 id="realkinddp-sc_eta"><code>real(kind=dp) :: sc_eta</code><a class="headerlink" href="#realkinddp-sc_eta" title="Permanent link">&para;</a></h3>
-<p>The width <span class="arithmatex">\(\eta\)</span> used to broaden energy differences in denominators of
-the form</p>
-<div class="arithmatex">\[
-\begin{equation}
-\frac{1}{\varepsilon_{n\bf{k}}-\varepsilon_{m\bf{k}}}\rightarrow
-\text{Re}\frac{1}{\varepsilon_{n\bf{k}}-\varepsilon_{m\bf{k}}+i\eta}.
-\end{equation}
-\]</div>
-<p>The above is needed in shift-current calculations in order to avoid
-numerical problems caused by near-degeneracies in the sum over virtual
-states.</p>
-<p>The units are eV. The default value is 0.4.</p>
-<h3 id="integer-sc_phase_conv"><code>integer :: sc_phase_conv</code><a class="headerlink" href="#integer-sc_phase_conv" title="Permanent link">&para;</a></h3>
-<p>Convention for the expansion of the Bloch states in shift-current
-calculations. It can only take the values one or two. We follow the
-convention of Ref. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>:</p>
-<ul>
-<li>
-<p>1: Include Wannier centre
-    <span class="arithmatex">\({\bm \tau}_{n}=\langle w_{n{\bf 0}}|{\bf r}| w_{n{\bf 0}} \rangle\)</span>
-    in the phase factor (so-called tight-binding convention):</p>
-<div class="arithmatex">\[
-\begin{equation}
-|u_{n\bf{k}}\rangle = \sum_{\bf{R}} e^{-i{\bf k}({\bf r}-{\bf R}-{\bm \tau}_{n})}| w_{n\bf{R}} \rangle
-\end{equation}
-\]</div>
-</li>
-<li>
-<p>2: Do not include Wannier centre in the phase factor (usual
-    <code>Wannier90</code> convention):</p>
-<div class="arithmatex">\[
-\begin{equation}
-|u_{n\bf{k}}\rangle = \sum_{\bf{R}} e^{-i\bf{k}(\bf{r}-\bf{R})}| w_{n\bf{R}} \rangle
-\end{equation}
-\]</div>
-</li>
-</ul>
-<p>If <code>sc_use_eta_corr=true</code>, the convention does not affect the full
-shift-current matrix element, but it does affect the weights of the
-internal components that compose it (see Ref.
-<sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup>). If <code>sc_use_eta_corr=false</code>, the convention
-can affect the full shift-current matrix element (see Ref.
-<sup id="fnref:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>).</p>
-<p>The default value is 1.</p>
-<h3 id="realkinddp-sc_w_thr"><code>real(kind=dp) :: sc_w_thr</code><a class="headerlink" href="#realkinddp-sc_w_thr" title="Permanent link">&para;</a></h3>
-<p>Parameter <span class="arithmatex">\(\alpha_{t}\)</span> for speeding up the frequency integration in
-shift-current calculations. It settles the frequency threshold
-<span class="arithmatex">\(\omega_{t}=\alpha_{t}\eta_{n{\bf k}}\)</span> (a factor times the broadening)
-beyond which the delta functions are taken as zero.</p>
-<p>The default value is 5.0.</p>
 <h3 id="logical-sc_use_eta_corr"><code>logical :: sc_use_eta_corr</code><a class="headerlink" href="#logical-sc_use_eta_corr" title="Permanent link">&para;</a></h3>
 <p>If <code>sc_use_eta_corr=true</code>, apply the finite-eta correction of the shift
-current (Eq. (19) of Ref. <sup id="fnref2:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>). Without the
+current (Eq. (19) of Ref. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>). Without the
 correction, the convention of the Bloch sum (determined by
 <code>sc_phase_conv</code>) can affect the computed shift-current spectra. See Ref.
-<sup id="fnref3:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup> for details.</p>
+<sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup> for details.</p>
 <p>The default value is <code>true</code>.</p>
 <h2 id="dos">DOS<a class="headerlink" href="#dos" title="Permanent link">&para;</a></h2>
 <p>Note that the behavior of the <code>dos</code> module is also influenced by the
 value of some global flags (listed in
-Table <a href="#global-parameters-of-postw90">Global Parameters of postw90</a>), 
+Table <a href="#global-parameters-of-postw90">Global Parameters of postw90</a>),
 as <code>spin_decomp</code>,
 <code>spin_axis_polar</code>, <code>spin_axis_azimuth</code>, <code>scissors_shift</code>, etc. Some of
 the global flags can be possibly overridden by local flags of the DOS
@@ -5650,7 +5580,7 @@ file <code>seedname.wout</code>.</p>
 \begin{equation}
 \begin{aligned}
 \rho_{\cal S}(E)&amp;=\frac{1}{N_k}\sum_{\bf k}\sum_n
-\langle \psi_{n\bf k}^{({\rm H})}\vert \hat{P}_{\bf k}({\cal S})\vert 
+\langle \psi_{n\bf k}^{({\rm H})}\vert \hat{P}_{\bf k}({\cal S})\vert
 \psi_{n\bf k}^{({\rm H})}\rangle\delta(\varepsilon_{n\bf k}-E)\\
 \hat{P}_{\bf k}({\cal S})&amp;=\sum_{m\in{\cal S}}
 \vert \psi_{n\bf k}^{({\rm W})}\rangle\langle \psi_{n\bf k}^{({\rm W})}\vert,
@@ -5659,31 +5589,31 @@ file <code>seedname.wout</code>.</p>
 \]</div>
 <p>where <span class="arithmatex">\(N_k\)</span> is the number of mesh points used to sample the BZ, and the
 superscript (H) and (W) refer to <em>Hamiltonian gauge</em> and <em>Wannier
-gauge</em> <sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup>.</p>
+gauge</em> <sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup>.</p>
 <h3 id="integer-dos_kmesh"><code>integer :: dos_kmesh(:)</code><a class="headerlink" href="#integer-dos_kmesh" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>kmesh</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-dos_kmesh_spacing"><code>real(kind=dp) :: dos_kmesh_spacing</code><a class="headerlink" href="#realkinddp-dos_kmesh_spacing" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>kmesh_spacing</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="logical-dos_adpt_smr"><code>logical :: dos_adpt_smr</code><a class="headerlink" href="#logical-dos_adpt_smr" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-dos_adpt_smr_fac"><code>real(kind=dp) :: dos_adpt_smr_fac</code><a class="headerlink" href="#realkinddp-dos_adpt_smr_fac" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr_fac</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-dos_adpt_smr_max"><code>real(kind=dp) :: dos_adpt_smr_max</code><a class="headerlink" href="#realkinddp-dos_adpt_smr_max" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr_max</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="logical-dos_smr_fixed_en_width"><code>logical :: dos_smr_fixed_en_width</code><a class="headerlink" href="#logical-dos_smr_fixed_en_width" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_fixed_en_width</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <p>Note that if the width is smaller than twice the energy step
 <code>dos_energy_step</code>, the DOS will be unsmeared (thus the default is to
 have an unsmeared DOS).</p>
 <h3 id="characterlen20-dos_smr_type"><code>character(len=20) :: dos_smr_type</code><a class="headerlink" href="#characterlen20-dos_smr_type" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_type</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h2 id="kpath">kpath<a class="headerlink" href="#kpath" title="Permanent link">&para;</a></h2>
 <h3 id="logical-kpath"><code>logical :: kpath</code><a class="headerlink" href="#logical-kpath" title="Permanent link">&para;</a></h3>
 <p>Determines whether to enter the kpath routines.</p>
@@ -5706,7 +5636,7 @@ Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
 </li>
 <li>
 <p><code>seedname-path.kpt</code> (list of <span class="arithmatex">\(k\)</span>-points along the path, written
-    in the <code>pwscf</code> format)</p>
+        in the <code>pwscf</code> format)</p>
 </li>
 </ul>
 </li>
@@ -5786,7 +5716,7 @@ Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
 </li>
 <li>
 <p><code>seedname-bands+{curv,morb}_{x,y,z}.py</code> or
-    <code>seedname-bands+shc.py</code> (<code>python</code> scripts)</p>
+        <code>seedname-bands+shc.py</code> (<code>python</code> scripts)</p>
 </li>
 </ul>
 <p>Two-panel figures are produced, with the energy bands within <span class="arithmatex">\(\pm
@@ -5837,19 +5767,19 @@ specified quantity.</p>
 <ul>
 <li>
 <p><code>seedname-kslice-fermi-spn.dat</code> (data file when
-    <code>kslice_fermi_lines_colour = spin</code>)</p>
+        <code>kslice_fermi_lines_colour = spin</code>)</p>
 </li>
 <li>
 <p><code>seedname-bnd_n.dat</code> (<code>gnuplot</code> data files when
-    <code>kslice_fermi_lines_colour = none</code>)</p>
+        <code>kslice_fermi_lines_colour = none</code>)</p>
 </li>
 <li>
 <p><code>seedname-kslice-coord.dat</code> (<code>python</code> data files when
-    <code>kslice_fermi_lines_colour = none</code>)</p>
+        <code>kslice_fermi_lines_colour = none</code>)</p>
 </li>
 <li>
 <p><code>seedname-kslice-bands.dat</code> (<code>python</code> data file when
-    <code>kslice_fermi_lines_colour = none</code>)</p>
+        <code>kslice_fermi_lines_colour = none</code>)</p>
 </li>
 <li>
 <p><code>seedname-kslice-fermi_lines.gnu</code> (<code>gnuplot</code> script)</p>
@@ -5876,7 +5806,7 @@ specified quantity.</p>
 </li>
 <li>
 <p><code>seedname-kslice-curv_{x,y,z}[+fermi_lines].py</code> (<code>python</code>
-    scripts)</p>
+        scripts)</p>
 </li>
 </ul>
 </li>
@@ -5896,7 +5826,7 @@ specified quantity.</p>
 </li>
 <li>
 <p><code>seedname-kslice-morb_{x,y,z}[+fermi_lines].py</code> (<code>python</code>
-    scripts)</p>
+        scripts)</p>
 </li>
 </ul>
 </li>
@@ -5971,8 +5901,8 @@ quantity.</p>
 <p>The valid options for this parameter are:</p>
 <ul>
 <li>
-<p><code>kubo</code> Complex optical conductivity and joint density of states.
-    Output files:</p>
+<p><code>kubo</code> Complex optical conductivity and joint density of states.</p>
+<p>Output files:</p>
 <ul>
 <li>
 <p><code>seedname-kubo-S_{xx,yy,zz,xy,xz,yz}.dat</code> (data files). First
@@ -6005,7 +5935,8 @@ quantity.</p>
 <li>
 <p><code>ahc</code> Anomalous Hall conductivity, in S/cm. The three independent
     components <span class="arithmatex">\(\sigma_x=\sigma_{yz}\)</span>, <span class="arithmatex">\(\sigma_y=\sigma_{zx}\)</span>, and
-    <span class="arithmatex">\(\sigma_z=\sigma_{xy}\)</span> are computed. Output files:</p>
+    <span class="arithmatex">\(\sigma_z=\sigma_{xy}\)</span> are computed.</p>
+<p>Output files:</p>
 <ul>
 <li><code>seedname-ahc-fermiscan.dat</code> (data file). The first column
     contains the Fermi level <span class="arithmatex">\(\varepsilon_F\)</span> in eV, and the
@@ -6030,7 +5961,8 @@ quantity.</p>
 </ul>
 </li>
 <li>
-<p><code>sc</code> Nonlinear shift current. Output files:</p>
+<p><code>sc</code> Nonlinear shift current.</p>
+<p>Output files:</p>
 <ul>
 <li><code>seedname-sc_{xxx,xxy,xxz,...}.dat</code> (data files). The shift
     current is described by a <span class="arithmatex">\(3\times3\times3\)</span> tensor
@@ -6043,8 +5975,8 @@ quantity.</p>
 </ul>
 </li>
 <li>
-<p><code>shc</code> Spin Hall conductivity (SHC), in <span class="arithmatex">\((\hbar/e)\)</span>S/cm. Output
-    files:</p>
+<p><code>shc</code> Spin Hall conductivity (SHC), in <span class="arithmatex">\((\hbar/e)\)</span>S/cm.</p>
+<p>Output files:</p>
 <ul>
 <li>
 <p><code>seedname-shc-fermiscan.dat</code> (data file). The first column is
@@ -6071,7 +6003,8 @@ quantity.</p>
 </ul>
 </li>
 <li>
-<p><code>kdotp</code> <span class="arithmatex">\(k\cdot p\)</span> expansion coefficients. Output files:</p>
+<p><code>kdotp</code> <span class="arithmatex">\(k\cdot p\)</span> expansion coefficients.</p>
+<p>Output files:</p>
 <ul>
 <li><code>seedname-kdotp_{0,1,2}.dat</code> (data files); respectively, the
     zeroth, first and second order <span class="arithmatex">\(k\cdot p\)</span> expansion
@@ -6082,10 +6015,10 @@ quantity.</p>
 <p>There is no default value.</p>
 <h3 id="integer-berry_kmesh"><code>integer :: berry_kmesh(:)</code><a class="headerlink" href="#integer-berry_kmesh" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>kmesh</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-berry_kmesh_spacing"><code>real(kind=dp) :: berry_kmesh_spacing</code><a class="headerlink" href="#realkinddp-berry_kmesh_spacing" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>kmesh_spacing</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="integer-berry_curv_adpt_kmesh"><code>integer :: berry_curv_adpt_kmesh</code><a class="headerlink" href="#integer-berry_curv_adpt_kmesh" title="Permanent link">&para;</a></h3>
 <p>If a positive integer <span class="arithmatex">\(n\)</span> is given and <code>berry_task=ahc</code>[or
 <code>berry_task=shc</code>], an <span class="arithmatex">\(n\times n\times n\)</span> mesh is placed around points
@@ -6124,19 +6057,19 @@ bound of the inner energy window plus 0.6667. Otherwise it is the
 maximum energy eigenvalue stored in <code>seedname.eig</code> plus 0.6667.</p>
 <h3 id="logical-kubo_adpt_smr"><code>logical :: kubo_adpt_smr</code><a class="headerlink" href="#logical-kubo_adpt_smr" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-kubo_adpt_smr_fac"><code>real(kind=dp) :: kubo_adpt_smr_fac</code><a class="headerlink" href="#realkinddp-kubo_adpt_smr_fac" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr_fac</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-kubo_adpt_smr_max"><code>real(kind=dp) :: kubo_adpt_smr_max</code><a class="headerlink" href="#realkinddp-kubo_adpt_smr_max" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr_max</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="logical-kubo_smr_fixed_en_width"><code>logical :: kubo_smr_fixed_en_width</code><a class="headerlink" href="#logical-kubo_smr_fixed_en_width" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_fixed_en_width</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="characterlen120-kubo_smr_type"><code>character(len=120) :: kubo_smr_type</code><a class="headerlink" href="#characterlen120-kubo_smr_type" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_type</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="logical-shc_freq_scan"><code>logical :: shc_freq_scan</code><a class="headerlink" href="#logical-shc_freq_scan" title="Permanent link">&para;</a></h3>
 <p>Determines whether to calculate the frequency scan (i.e. the ac SHC) or
 the Fermi energy scan (i.e. the dc SHC) of the spin Hall conductivity.</p>
@@ -6185,7 +6118,7 @@ first band to shift <code>shc_bandshift_firstband</code> = <code>num_valence_ban
 <h3 id="integer-shc_bandshift_firstband"><code>integer :: shc_bandshift_firstband</code><a class="headerlink" href="#integer-shc_bandshift_firstband" title="Permanent link">&para;</a></h3>
 <p>Index of the first conduction band to shift.</p>
 <p>That means that all bands with index
-<span class="arithmatex">\(i\ge {\tt shc\_bandshift\_firstband}\)</span> will be shifted by 
+<span class="arithmatex">\(i\ge {\tt shc\_bandshift\_firstband}\)</span> will be shifted by
 <code>shc_bandshift_energyshift</code>, if <code>shc_bandshift</code> is <code>true</code>.</p>
 <p>The units are eV. No default value; if <code>shc_bandshift</code> is <code>true</code>, this
 flag must be provided.</p>
@@ -6193,7 +6126,7 @@ flag must be provided.</p>
 <p>Energy shift of the conduction bands.</p>
 <p>The units are eV. No default value; if <code>shc_bandshift</code> is <code>true</code>, this
 flag must be provided.</p>
-<h3 id="realkinddp-sc_eta_1"><code>real(kind=dp) :: sc_eta</code><a class="headerlink" href="#realkinddp-sc_eta_1" title="Permanent link">&para;</a></h3>
+<h3 id="realkinddp-sc_eta"><code>real(kind=dp) :: sc_eta</code><a class="headerlink" href="#realkinddp-sc_eta" title="Permanent link">&para;</a></h3>
 <p>The width <span class="arithmatex">\(\eta\)</span> used to broaden energy differences in denominators of
 the form</p>
 <div class="arithmatex">\[
@@ -6206,10 +6139,10 @@ the form</p>
 numerical problems caused by near-degeneracies in the sum over virtual
 states.</p>
 <p>The units are eV. The default value is 0.4.</p>
-<h3 id="integer-sc_phase_conv_1"><code>integer :: sc_phase_conv</code><a class="headerlink" href="#integer-sc_phase_conv_1" title="Permanent link">&para;</a></h3>
+<h3 id="integer-sc_phase_conv"><code>integer :: sc_phase_conv</code><a class="headerlink" href="#integer-sc_phase_conv" title="Permanent link">&para;</a></h3>
 <p>Convention for the expansion of the Bloch states in shift-current
 calculations. It can only take the values one or two. We follow the
-convention of Ref. <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>:</p>
+convention of Ref. <sup id="fnref:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>:</p>
 <ul>
 <li>
 <p>1: Include Wannier centre
@@ -6217,7 +6150,8 @@ convention of Ref. <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1
     in the phase factor (so-called tight-binding convention):</p>
 <div class="arithmatex">\[
 \begin{equation}
-|u_{n\bf{k}}\rangle = \sum_{\bf{R}} e^{-i{\bf k}({\bf r}-{\bf R}-{\bm \tau}_{n})}| w_{n\bf{R}} \rangle
+|u_{n\bf{k}}\rangle = \sum_{\bf{R}} e^{-i{\bf k}({\bf r}-{\bf R}
+    -{\bm \tau}_{n})}| w_{n\bf{R}} \rangle
 \end{equation}
 \]</div>
 </li>
@@ -6226,16 +6160,20 @@ convention of Ref. <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1
     <code>Wannier90</code> convention):</p>
 <div class="arithmatex">\[
 \begin{equation}
-|u_{n\bf{k}}\rangle = \sum_{\bf{R}} e^{-i\bf{k}(\bf{r}-\bf{R})}| w_{n\bf{R}} \rangle
+|u_{n\bf{k}}\rangle = \sum_{\bf{R}} e^{-i\bf{k}(\bf{r}-\bf{R})}|
+    w_{n\bf{R}} \rangle
 \end{equation}
 \]</div>
 </li>
 </ul>
-<p>The convention does not affect the full shift-current matrix element,
-but it does affect the weights of the internal components that compose
-it (see Ref. <sup id="fnref2:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup>).</p>
+<p>If <code>sc_use_eta_corr=true</code>, the convention does not affect the full
+shift-current matrix element, but it does affect the weights of the
+internal components that compose it (see Ref.
+<sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup>). If <code>sc_use_eta_corr=false</code>, the convention
+can affect the full shift-current matrix element (see Ref.
+<sup id="fnref3:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>).</p>
 <p>The default value is 1.</p>
-<h3 id="realkinddp-sc_w_thr_1"><code>real(kind=dp) :: sc_w_thr</code><a class="headerlink" href="#realkinddp-sc_w_thr_1" title="Permanent link">&para;</a></h3>
+<h3 id="realkinddp-sc_w_thr"><code>real(kind=dp) :: sc_w_thr</code><a class="headerlink" href="#realkinddp-sc_w_thr" title="Permanent link">&para;</a></h3>
 <p>Parameter <span class="arithmatex">\(\alpha_{t}\)</span> for speeding up the frequency integration in
 shift-current calculations. It settles the frequency threshold
 <span class="arithmatex">\(\omega_{t}=\alpha_{t}\eta_{n{\bf k}}\)</span> (a factor times the broadening)
@@ -6303,7 +6241,7 @@ option starts with a '-'):</p>
 </ul>
 </li>
 <li>
-<p><code>-dos</code> the density of states </p>
+<p><code>-dos</code> the density of states</p>
 <p>Output file:
 <code>seedname-gyrotropic-DOS.dat</code>. First column - energy (eV), second
 column - DOS (<span class="arithmatex">\(1/(\mathrm{eV}\times\mathring{A}^3)\)</span>)</p>
@@ -6326,10 +6264,10 @@ correspond ,e.g., for <span class="arithmatex">\(D_{ab}\)</span> to <span class=
 <span class="arithmatex">\((D_{yz}-D_{zy})/2\)</span>, <span class="arithmatex">\((D_{zx}-D_{xz})/2\)</span>, <span class="arithmatex">\((D_{xy}-D_{yx})/2\)</span></p>
 <h3 id="integer-gyrotropic_kmesh"><code>integer :: gyrotropic_kmesh(:)</code><a class="headerlink" href="#integer-gyrotropic_kmesh" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>kmesh</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-gyrotropic_kmesh_spacing"><code>real(kind=dp) :: gyrotropic_kmesh_spacing</code><a class="headerlink" href="#realkinddp-gyrotropic_kmesh_spacing" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>kmesh_spacing</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-gyrotropic_freq_min"><code>real(kind=dp) :: gyrotropic_freq_min</code><a class="headerlink" href="#realkinddp-gyrotropic_freq_min" title="Permanent link">&para;</a></h3>
 <p>Lower limit of the frequency range for computing the optical activity.</p>
 <p>Units are eV. The default value 0.0.</p>
@@ -6352,10 +6290,10 @@ bound of the inner energy window plus 0.6667. Otherwise it is the
 maximum energy eigenvalue stored in <code>seedname.eig</code> plus 0.6667.</p>
 <h3 id="logical-gyrotropic_smr_fixed_en_width"><code>logical :: gyrotropic_smr_fixed_en_width</code><a class="headerlink" href="#logical-gyrotropic_smr_fixed_en_width" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_fixed_en_width</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="characterlen120-gyrotropic_smr_type"><code>character(len=120) :: gyrotropic_smr_type</code><a class="headerlink" href="#characterlen120-gyrotropic_smr_type" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_type</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="characterlen120-gyrotropic_degen_thresh"><code>character(len=120) :: gyrotropic_degen_thresh</code><a class="headerlink" href="#characterlen120-gyrotropic_degen_thresh" title="Permanent link">&para;</a></h3>
 <p>The threshould to eliminate degenerate bands from the calculation in
 order to avoid divergences.</p>
@@ -6383,10 +6321,10 @@ vectors <code>gyrotropic_box_b{1,2,3}</code></p>
 which the transport coefficient are calculated). If
 <code>boltz_calc_also_dos</code> is <code>true</code>, the same <span class="arithmatex">\(k\)</span> mesh is used also for the
 DOS. Overrides the <code>kmesh</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-boltz_kmesh_spacing"><code>real(kind=dp) :: boltz_kmesh_spacing</code><a class="headerlink" href="#realkinddp-boltz_kmesh_spacing" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>kmesh_spacing</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="sec:boltz2ddir"><code>character(len=4) :: boltz_2d_dir</code><a class="headerlink" href="#sec:boltz2ddir" title="Permanent link">&para;</a></h3>
 <p>For two-dimensional systems, the direction along which the system is
 non-periodic. It can assume the following values: <code>x</code> for a 2D system on
@@ -6462,19 +6400,19 @@ code on the ab-initio <span class="arithmatex">\(q\)</span> me sh.</p>
 <p>The units are eV. The default value is 0.001 eV.</p>
 <h3 id="characterlen120-boltz_dos_smr_type"><code>character(len=120) :: boltz_dos_smr_type</code><a class="headerlink" href="#characterlen120-boltz_dos_smr_type" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_type</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="logical-boltz_dos_adpt_smr"><code>logical :: boltz_dos_adpt_smr</code><a class="headerlink" href="#logical-boltz_dos_adpt_smr" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-boltz_dos_adpt_smr_fac"><code>real(kind=dp) :: boltz_dos_adpt_smr_fac</code><a class="headerlink" href="#realkinddp-boltz_dos_adpt_smr_fac" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr_fac</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="realkinddp-boltz_dos_adpt_smr_max"><code>real(kind=dp) :: boltz_dos_adpt_smr_max</code><a class="headerlink" href="#realkinddp-boltz_dos_adpt_smr_max" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>adpt_smr_max</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="logical-boltz_dos_smr_fixed_en_width"><code>logical :: boltz_dos_smr_fixed_en_width</code><a class="headerlink" href="#logical-boltz_dos_smr_fixed_en_width" title="Permanent link">&para;</a></h3>
 <p>Overrides the <code>smr_fixed_en_width</code> global variable (see
-Sec. <a href="#sec:postw90-globalflags">Global variables</a>).</p>
+Sec. <a href="#global-variables">Global variables</a>).</p>
 <h3 id="logical-boltz_bandshift"><code>logical :: boltz_bandshift</code><a class="headerlink" href="#logical-boltz_bandshift" title="Permanent link">&para;</a></h3>
 <p>Shift all conduction bands by a given amount (defined by
 <code>boltz_bandshift_energyshift</code>).</p>
@@ -6521,16 +6459,16 @@ Sec. <a href="../geninterp/#sec:seedname.geninterp.dat"><code>seedname_geninter
 <hr />
 <ol>
 <li id="fn:ref1">
-<p>T. Yusufaly, D. Vanderbilt, and S. Coh. Tight-Binding Formalism in the Context of the PythTB Package. \url <a href="http://physics.rutgers.edu/pythtb/formalism.html">http://physics.rutgers.edu/pythtb/formalism.html</a>.&#160;<a class="footnote-backref" href="#fnref:ref1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Jae-Mo Lihm. Comment on “ab initio calculation of the shift photocurrent by wannier interpolation”. <em>Phys. Rev. B</em>, 103:247101, Jun 2021. URL: <a href="https://link.aps.org/doi/10.1103/PhysRevB.103.247101">https://link.aps.org/doi/10.1103/PhysRevB.103.247101</a>, <a href="https://doi.org/10.1103/PhysRevB.103.247101">doi:10.1103/PhysRevB.103.247101</a>.&#160;<a class="footnote-backref" href="#fnref:ref1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:ref1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:ref2">
-<p>Julen Ibañez-Azpiroz, Stepan S. Tsirkin, and Ivo Souza. Ab initio calculation of the shift photocurrent by wannier interpolation. <em>Phys. Rev. B</em>, 97:245143, Jun 2018. URL: <a href="https://link.aps.org/doi/10.1103/PhysRevB.97.245143">https://link.aps.org/doi/10.1103/PhysRevB.97.245143</a>, <a href="https://doi.org/10.1103/PhysRevB.97.245143">doi:10.1103/PhysRevB.97.245143</a>.&#160;<a class="footnote-backref" href="#fnref:ref2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>X. Wang, J. R. Yates, I. Souza, and D. Vanderbilt. Ab initio calculation of the anomalous hall conductivity by wannier interpolation. <em>Phys. Rev. B</em>, 74:195118, 2006.&#160;<a class="footnote-backref" href="#fnref:ref2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:ref3">
-<p>Jae-Mo Lihm. Comment on “ab initio calculation of the shift photocurrent by wannier interpolation”. <em>Phys. Rev. B</em>, 103:247101, Jun 2021. URL: <a href="https://link.aps.org/doi/10.1103/PhysRevB.103.247101">https://link.aps.org/doi/10.1103/PhysRevB.103.247101</a>, <a href="https://doi.org/10.1103/PhysRevB.103.247101">doi:10.1103/PhysRevB.103.247101</a>.&#160;<a class="footnote-backref" href="#fnref:ref3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:ref3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>T. Yusufaly, D. Vanderbilt, and S. Coh. Tight-Binding Formalism in the Context of the PythTB Package. \url <a href="http://physics.rutgers.edu/pythtb/formalism.html">http://physics.rutgers.edu/pythtb/formalism.html</a>.&#160;<a class="footnote-backref" href="#fnref:ref3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:ref4">
-<p>X. Wang, J. R. Yates, I. Souza, and D. Vanderbilt. Ab initio calculation of the anomalous hall conductivity by wannier interpolation. <em>Phys. Rev. B</em>, 74:195118, 2006.&#160;<a class="footnote-backref" href="#fnref:ref4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>Julen Ibañez-Azpiroz, Stepan S. Tsirkin, and Ivo Souza. Ab initio calculation of the shift photocurrent by wannier interpolation. <em>Phys. Rev. B</em>, 97:245143, Jun 2018. URL: <a href="https://link.aps.org/doi/10.1103/PhysRevB.97.245143">https://link.aps.org/doi/10.1103/PhysRevB.97.245143</a>, <a href="https://doi.org/10.1103/PhysRevB.97.245143">doi:10.1103/PhysRevB.97.245143</a>.&#160;<a class="footnote-backref" href="#fnref:ref4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -6556,7 +6494,7 @@ Sec. <a href="../geninterp/#sec:seedname.geninterp.dat"><code>seedname_geninter
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -6566,7 +6504,7 @@ Sec. <a href="../geninterp/#sec:seedname.geninterp.dat"><code>seedname_geninter
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

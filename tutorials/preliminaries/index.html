@@ -9,7 +9,7 @@
         <meta name="description" content="Wannier90 user guide and tutorials">
       
       
-        <meta name="author" content="['Version 3.1']">
+        <meta name="author" content="Wannier90 Developers">
       
       
         <link rel="canonical" href="https://wannier-developers.github.io/wannier90/tutorials/preliminaries/">
@@ -26,7 +26,7 @@
     
     
       
-        <title>: Tutorials - Wannier90 Documentation</title>
+        <title>Preliminaries - Wannier90 Documentation</title>
       
     
     
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              : Tutorials
+              Preliminaries
             
           </span>
         </div>
@@ -1120,6 +1120,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Preliminaries
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1129,6 +1140,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parallel-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel execution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-these-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      About these tutorials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact us
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1876,6 +1933,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parallel-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel execution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-these-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      About these tutorials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact us
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1905,16 +1997,16 @@
   
 
 
-<h1 class="unnumbered" id="preliminaries">Preliminaries<a class="headerlink" href="#preliminaries" title="Permanent link">&para;</a></h1>
+<h1 id="preliminaries">Preliminaries<a class="headerlink" href="#preliminaries" title="Permanent link">&para;</a></h1>
 <p>Welcome to <code>wannier90</code>! The examples contained in these tutorials are
 designed to help you become familiar with the procedure of generating,
 analysing and using maximally-localised Wannier functions (MLWFs). As a
 first step, install <code>wannier90</code> following the instructions in the
 <code>README</code> file of the <code>wannier90</code> distribution. For an introduction to
 the theory underlying MLWFs, you are encouraged to refer to the brief
-overview given in the <code>wannier90</code> User Guide <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup>, to the two
-seminal papers of Refs. <sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup><sup id="fnref:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>, a recent review
-article <sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup> and to a paper <sup id="fnref:ref5"><a class="footnote-ref" href="#fn:ref5">5</a></sup> describing
+overview given in the <code>wannier90</code> <a href="../../user_guide/introduction/">User Guide</a>,
+to the two seminal papers of Refs. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup><sup id="fnref:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup>, a recent
+review article <sup id="fnref:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup> and to a paper <sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup> describing
 <code>wannier90</code>.</p>
 <p>The following additional programs may be installed in order to visualise
 the output of <code>wannier90</code> (they are optional, not all of them are
@@ -1949,7 +2041,7 @@ necessary)</p>
     <a href="http://matplotlib.org">http://matplotlib.org</a></p>
 </li>
 </ul>
-<h1 class="unnumbered" id="parallel-execution">Parallel execution<a class="headerlink" href="#parallel-execution" title="Permanent link">&para;</a></h1>
+<h2 id="parallel-execution">Parallel execution<a class="headerlink" href="#parallel-execution" title="Permanent link">&para;</a></h2>
 <p><code>postw90.x</code> and <code>wannier90.x</code> can
 be run in parallel to speed up the calculations, using the MPI
 libraries.</p>
@@ -1964,9 +2056,9 @@ similar to <code>postw90</code> as follows:</p>
 <p>(the <code>mpirun</code> command and its flags may differ depending on the MPI
 libraries installed on your system: refer to your MPI manual and/or to
 your system administrator for further information).</p>
-<h1 class="unnumbered" id="about-this-tutorials">About these tutorials<a class="headerlink" href="#about-this-tutorials" title="Permanent link">&para;</a></h1>
+<h2 id="about-these-tutorials">About these tutorials<a class="headerlink" href="#about-these-tutorials" title="Permanent link">&para;</a></h2>
 <p>The first part of this collection of tutorials comprises four examples taken from
-Refs. <sup id="fnref2:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup><sup id="fnref2:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>: gallium arsenide, lead, silicon
+Refs. <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup><sup id="fnref2:ref2"><a class="footnote-ref" href="#fn:ref2">2</a></sup>: gallium arsenide, lead, silicon
 and copper. All of the <code>wannier90</code> input files have been provided.</p>
 <p>The second part of this collection of tutorials covers the generation of
 <code>wannier90</code> input files starting from a full electronic structure
@@ -1990,7 +2082,7 @@ including abinit (<a href="http://www.abinit.org">http://www.abinit.org</a>), fl
 (<a href="http://www.flapw.de">http://www.flapw.de</a>), OpenMX (<a href="http://www.openmx-square.org/">http://www.openmx-square.org/</a>), GPAW
 (<a href="https://wiki.fysik.dtu.dk/gpaw/">https://wiki.fysik.dtu.dk/gpaw/</a>), VASP (<a href="http://www.vasp.at">http://www.vasp.at</a>), and
 Wien2k (<a href="http://www.wien2k.at">http://www.wien2k.at</a>)</p>
-<h1 class="unnumbered" id="contact-us">Contact us<a class="headerlink" href="#contact-us" title="Permanent link">&para;</a></h1>
+<h2 id="contact-us">Contact us<a class="headerlink" href="#contact-us" title="Permanent link">&para;</a></h2>
 <p>If you have any suggestions regarding ways in which these tutorials may be
 improved, then send us an email.</p>
 <p>For other questions, email the <code>wannier90</code> forum at
@@ -2002,19 +2094,16 @@ deleted automatically. You can register by following the links at
 <hr />
 <ol>
 <li id="fn:ref1">
-<p>A. A. Mostofi, G. Pizzi, I. Souza, and J. R. Yates. User Guide to wannier90, available at \url <a href="http://www.wannier.org/user">http://www.wannier.org/user</a>_guide.html.&#160;<a class="footnote-backref" href="#fnref:ref1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>N. Marzari and D. Vanderbilt. Maximally localized generalized wannier functions for composite energy bands. <em>Phys. Rev. B</em>, 56:12847, 1997.&#160;<a class="footnote-backref" href="#fnref:ref1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:ref2">
-<p>N. Marzari and D. Vanderbilt. Maximally localized generalized wannier functions for composite energy bands. <em>Phys. Rev. B</em>, 56:12847, 1997.&#160;<a class="footnote-backref" href="#fnref:ref2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>I. Souza, N. Marzari, and D. Vanderbilt. Maximally localized wannier functions for entangled energy bands. <em>Phys. Rev. B</em>, 65:035109, 2001.&#160;<a class="footnote-backref" href="#fnref:ref2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:ref3">
-<p>I. Souza, N. Marzari, and D. Vanderbilt. Maximally localized wannier functions for entangled energy bands. <em>Phys. Rev. B</em>, 65:035109, 2001.&#160;<a class="footnote-backref" href="#fnref:ref3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:ref3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>N. Marzari, A. A. Mostofi, J. R. Yates, I. Souza, and D. Vanderbilt. <em>Rev. Mod. Phys.</em>, 84:1419, 2012.&#160;<a class="footnote-backref" href="#fnref:ref3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:ref4">
-<p>N. Marzari, A. A. Mostofi, J. R. Yates, I. Souza, and D. Vanderbilt. <em>Rev. Mod. Phys.</em>, 84:1419, 2012.&#160;<a class="footnote-backref" href="#fnref:ref4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
-</li>
-<li id="fn:ref5">
-<p>A. A. Mostofi, J. R. Yates, Y.-S. Lee, I. Souza, D. Vanderbilt, and N. Marzari. Wannier90: a tool for obtaining maximally-localised wannier functions. <em>Comput. Phys. Commun.</em>, 178:685, 2008.&#160;<a class="footnote-backref" href="#fnref:ref5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>A. A. Mostofi, J. R. Yates, Y.-S. Lee, I. Souza, D. Vanderbilt, and N. Marzari. Wannier90: a tool for obtaining maximally-localised wannier functions. <em>Comput. Phys. Commun.</em>, 178:685, 2008.&#160;<a class="footnote-backref" href="#fnref:ref4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -2040,7 +2129,7 @@ deleted automatically. You can register by following the links at
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2050,7 +2139,7 @@ deleted automatically. You can register by following the links at
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

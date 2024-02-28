@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gallium-arsenide-mlwfs-for-the-valence-bands" class="md-skip">
+        <a href="#1-gallium-arsenide-mlwfs-for-the-valence-bands" class="md-skip">
           Skip to content
         </a>
       
@@ -1905,18 +1905,18 @@
   
 
 
-<h1 class="unnumbered" id="gallium-arsenide-mlwfs-for-the-valence-bands">1: Gallium Arsenide &#151; MLWFs for the valence bands<a class="headerlink" href="#gallium-arsenide-mlwfs-for-the-valence-bands" title="Permanent link">&para;</a></h1>
+<h1 id="1-gallium-arsenide-mlwfs-for-the-valence-bands">1: Gallium Arsenide &#151; MLWFs for the valence bands<a class="headerlink" href="#1-gallium-arsenide-mlwfs-for-the-valence-bands" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
 <p>Outline: <em>Obtain and plot MLWFs for the four valence bands of GaAs.</em></p>
 </li>
 <li>
 <p>Generation details: <em>From <code>pwscf</code>, using norm-conserving
-    pseudopotentials and a <br> 
+    pseudopotentials and a <br>
     2<span class="arithmatex">\(\times\)</span>2<span class="arithmatex">\(\times\)</span>2 k-point grid. Starting guess: four bond-centred Gaussians.</em></p>
 </li>
 <li>
-<p>Directory: <code>tutorials/tutorial01/</code> <em>Files can be downloaded from 
+<p>Directory: <code>tutorials/tutorial01/</code> <em>Files can be downloaded from
     <a href="https://github.com/wannier-developers/wannier90/tree/develop/tutorials/tutorial01">here</a></em></p>
 </li>
 <li>
@@ -1927,15 +1927,15 @@
 </li>
 <li>
 <p><code>gaas.mmn</code> <em>The overlap matrices
-    <span class="arithmatex">\(\mathbf{M}^{(\mathbf{k},\mathbf{b})}\)</span></em></p>
+        <span class="arithmatex">\(\mathbf{M}^{(\mathbf{k},\mathbf{b})}\)</span></em></p>
 </li>
 <li>
 <p><code>gaas.amn</code> <em>Projection <span class="arithmatex">\(\mathbf{A}^{(\mathbf{k})}\)</span> of the Bloch
-    states onto a set of trial localised orbitals</em></p>
+        states onto a set of trial localised orbitals</em></p>
 </li>
 <li>
 <p><code>UNK00001.1</code> <em>The Bloch states in the real space unit cell. For
-    plotting only.</em></p>
+        plotting only.</em></p>
 </li>
 </ul>
 </li>
@@ -1957,13 +1957,19 @@ matrices <span class="arithmatex">\(\mathbf{U}^{(\mathbf{k})}\)</span>.</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>wannier_plot = true
 </span></code></pre></div>
 <p>and re-running <code>wannier90</code>. To visualise the MLWFs we must represent
-them explicitly on a real space grid (see the <a href="../../user_guide/wannier90/methodology/#methodology">User guide page</a>). As a
-consequence, plotting the MLWFs is slower and uses more memory than
+them explicitly on a real space grid (see the
+<a href="../../user_guide/wannier90/methodology/#methodology">User guide page</a>).
+As a consequence, plotting the MLWFs is slower and uses more memory than
 the minimisation of the spread. The four files that are created
-(<code>gaas_00001.xsf</code>, etc.) can be viewed using <code>XCrySDen</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>,
+(<code>gaas_00001.xsf</code>, etc.) can be viewed using <code>XCrySDen</code>,
 e.g.,</p>
 <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>xcrysden<span class="w"> </span>--xsf<span class="w"> </span>gaas_00001.xsf
 </span></code></pre></div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Once <code>XCrySDen</code> starts, click on <code>Tools</code> <span class="arithmatex">\(\rightarrow\)</span> <code>Data Grid</code>
+in order to specify an isosurface value to plot.</p>
+</div>
 <p>For large systems, plotting the MLWFs may be time consuming and
 require a lot of memory. Use the keyword <code>wannier_plot_list</code> to plot
 a subset of the MLWFs. E.g., to plot the 1<sup>st</sup> and 3<sup>rd</sup> MLWFs use</p>
@@ -1977,21 +1983,16 @@ than 3 as the memory and computational cost scales cubically with
 supercell size.</p>
 <p>Plot the 3<sup>rd</sup> MLWFs in a supercell of size 3. Choose a low value for
 the isosurface (say 0.5). Can you explain what you see?</p>
-<p><em>Hint:</em> For a finite k-point mesh, the MLWFs are in fact periodic
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>For a finite k-point mesh, the MLWFs are in fact periodic
 and the period is related to the spacing of the k-point mesh. For
 mesh with <span class="arithmatex">\(n\)</span> divisions in the <span class="arithmatex">\(i^{\mathrm{th}}\)</span> direction in the
 Brillouin zone, the MLWFs "live" in a supercell <span class="arithmatex">\(n\)</span> times the unit
 cell.</p>
+</div>
 </li>
 </ul>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p><a href="http://www.xcrysden.org/">http://www.xcrysden.org/</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
 
 
 
@@ -2014,7 +2015,7 @@ cell.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2024,7 +2025,7 @@ cell.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gallium-arsenide-frequency-dependent-spin-hall-conductivity" class="md-skip">
+        <a href="#30-gallium-arsenide-frequency-dependent-spin-hall-conductivity" class="md-skip">
           Skip to content
         </a>
       
@@ -1817,7 +1817,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-2" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       Notes
     </span>
@@ -1940,7 +1940,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-2" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       Notes
     </span>
@@ -1979,18 +1979,18 @@
   
 
 
-<h1 class="unnumbered" id="gallium-arsenide-frequency-dependent-spin-hall-conductivity">30: Gallium Arsenide &#151; Frequency-dependent spin Hall conductivity<a class="headerlink" href="#gallium-arsenide-frequency-dependent-spin-hall-conductivity" title="Permanent link">&para;</a></h1>
+<h1 id="30-gallium-arsenide-frequency-dependent-spin-hall-conductivity">30: Gallium Arsenide &#151; Frequency-dependent spin Hall conductivity<a class="headerlink" href="#30-gallium-arsenide-frequency-dependent-spin-hall-conductivity" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
 <p>Outline: <em>Calculate the alternating current (ac) spin Hall
     conductivity of gallium arsenide considering spin-orbit coupling. To
     gain a better understanding of this tutorial, it is suggested to read
     Ref. <sup id="fnref2:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup> for a detailed description of the theory and the
-    <a href="../../user_guide/postw90/berry/#sec:shc">berry_task=shc: spin Hall conductivity</a> 
+    <a href="../../user_guide/postw90/berry/#sec:shc">berry_task=shc: spin Hall conductivity</a>
     chapter of the User Guide.</em></p>
 </li>
 <li>
-<p>Directory: <code>tutorials/tutorial30/</code> <em>Files can downloaded from 
+<p>Directory: <code>tutorials/tutorial30/</code> <em>Files can downloaded from
     <a href="https://github.com/wannier-developers/wannier90/tree/develop/tutorials/tutorial30">here</a></em></p>
 </li>
 <li>
@@ -2053,9 +2053,10 @@
 </ol>
 </li>
 </ul>
-<h2 class="unnumbered" id="ac-spin-hall-conductivity">ac spin Hall conductivity<a class="headerlink" href="#ac-spin-hall-conductivity" title="Permanent link">&para;</a></h2>
+<h2 id="ac-spin-hall-conductivity">ac spin Hall conductivity<a class="headerlink" href="#ac-spin-hall-conductivity" title="Permanent link">&para;</a></h2>
 <p>The spin Hall conductivity is also dependent on the frequency <span class="arithmatex">\(\omega\)</span>
-in this <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:kubo_shc">equation</a> of the User Guide. 
+in this <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:kubo_shc">equation</a> of the
+User Guide.
 The direct current (dc) SHC calculated in the previous tutorial corresponds to
 <span class="arithmatex">\(\sigma_{\alpha\beta}^{\text{spin}\gamma}\)</span> in the limit
 <span class="arithmatex">\(\omega\rightarrow
@@ -2064,12 +2065,9 @@ The direct current (dc) SHC calculated in the previous tutorial corresponds to
 <p>To compute the ac spin Hall conductivity for <span class="arithmatex">\(\hbar\omega\)</span> up to 8 eV,
 add the lines</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>shc_freq_scan = true
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kubo_freq_min = 0.0
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>kubo_freq_max = 8.0
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>kubo_freq_step = 0.01
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kubo_freq_min = 0.0
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kubo_freq_max = 8.0
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>kubo_freq_step = 0.01
 </span></code></pre></div>
 <p>and re-run <code>postw90</code>. The file <code>GaAs-shc-freqscan.dat</code> contains the
 calculated ac SHC. Reasonably converged spectra can be obtained with a
@@ -2082,24 +2080,42 @@ following commands</p>
 </span></code></pre></div>
 <p>and then compare the result with Fig. 4 in Ref. <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup> or the
 Solution Booklet.</p>
-<h2 class="unnumbered" id="notes-2">Notes<a class="headerlink" href="#notes-2" title="Permanent link">&para;</a></h2>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>When calculating ac SHC, adaptive smearing can be used by add the
     following keywords in the <code>GaAs.win</code>,</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubo_adpt_smr = true
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>kubo_adpt_smr_fac = [insert here your smearing factor]
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>kubo_adpt_smr_max = [insert here your maximum smearing]
+</span></code></pre></div>
 </li>
 <li>
 <p>Adaptive kmesh refinement is not implemented for ac SHC calculation.</p>
 </li>
 <li>
 <p>The first 10 semi-core states are excluded from the calculation by
-    using the following keywords and in the case of GaAs disentanglement
-    is not adopted so</p>
+    using the following keywords</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>exclude_bands = 1-10
+</span></code></pre></div>
+<p>and in the case of GaAs disentanglement
+is not adopted so</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>num_bands         =   16
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>num_wann          =   16
+</span></code></pre></div>
 </li>
 <li>
 <p>Since the band gap is often under estimated by LDA/GGA calculations,
     a scissors shift is applied to recover the experimental band gap by
-    using the following keywords or by</p>
+    using the following keywords</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>shc_bandshift = true
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>shc_bandshift_firstband = 9
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>shc_bandshift_energyshift = 1.117
+</span></code></pre></div>
+<p>or by</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>num_valence_bands = 8
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>scissors_shift = 1.117
+</span></code></pre></div>
 </li>
 </ul>
 <div class="footnote">
@@ -2132,7 +2148,7 @@ Solution Booklet.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2142,7 +2158,7 @@ Solution Booklet.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

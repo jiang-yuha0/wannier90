@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#monolayer-bc_2n-kcdot-p-expansion-coefficients" class="md-skip">
+        <a href="#33-monolayer-bc_2n-kcdot-p-expansion-coefficients" class="md-skip">
           Skip to content
         </a>
       
@@ -1959,13 +1959,13 @@
   
 
 
-<h1 class="unnumbered" id="monolayer-bc_2n-kcdot-p-expansion-coefficients">33: Monolayer BC<span class="arithmatex">\(_2\)</span>N &#151; <span class="arithmatex">\(k\cdot p\)</span> expansion coefficients<a class="headerlink" href="#monolayer-bc_2n-kcdot-p-expansion-coefficients" title="Permanent link">&para;</a></h1>
+<h1 id="33-monolayer-bc_2n-kcdot-p-expansion-coefficients">33: Monolayer BC<span class="arithmatex">\(_2\)</span>N &#151; <span class="arithmatex">\(k\cdot p\)</span> expansion coefficients<a class="headerlink" href="#33-monolayer-bc_2n-kcdot-p-expansion-coefficients" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
 <p>Outline: <em>Calculate <span class="arithmatex">\(k\cdot p\)</span> expansion coefficients monolayer
     BC<span class="arithmatex">\(_2\)</span>N using quasi-degenerate (Löwdin) perturbation theory. In
     preparation for this example it may be useful to read Ref.
-    <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">4</a></sup></em></p>
+    <sup id="fnref:ref1"><a class="footnote-ref" href="#fn:ref1">1</a></sup></em></p>
 </li>
 <li>
 <p>Directory: <code>tutorial/tutorial33/</code> <em>Files can be downloaded from <a href="https://github.com/wannier-developers/wannier90/tree/develop/tutorials/tutorial33">here</a></em></p>
@@ -1997,14 +1997,16 @@
 </span></code></pre></div>
 </li>
 <li>
-<p>Run <code>pwscf</code> to obtain the ground state
-    <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pw.x<span class="w"> </span>&lt;<span class="w"> </span>bc2n.nscf<span class="w"> </span>&gt;<span class="w"> </span>nscf.out
-</span></code></pre></div></p>
+<p>Run <code>pwscf</code> to obtain the ground state</p>
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pw.x<span class="w"> </span>&lt;<span class="w"> </span>bc2n.nscf<span class="w"> </span>&gt;<span class="w"> </span>nscf.out
+</span></code></pre></div>
 </li>
-<li>Run <code>Wannier90</code> to generate a list of the required overlaps
-    (written into the <code>bc2n.nnkp</code> file)
-    <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wannier90.x<span class="w"> </span>-pp<span class="w"> </span>bc2n
-</span></code></pre></div></li>
+<li>
+<p>Run <code>Wannier90</code> to generate a list of the required overlaps
+    (written into the <code>bc2n.nnkp</code> file)</p>
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wannier90.x<span class="w"> </span>-pp<span class="w"> </span>bc2n
+</span></code></pre></div>
+</li>
 <li>
 <p>Run <code>pw2wannier90</code> to compute:</p>
 <ul>
@@ -2017,17 +2019,17 @@
 </span></code></pre></div>
 </li>
 <li>
-<p>Run <code>wannier90</code> to compute MLWFs
-    <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>wannier90.x<span class="w"> </span>bc2n
-</span></code></pre></div></p>
+<p>Run <code>wannier90</code> to compute MLWFs</p>
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>wannier90.x<span class="w"> </span>bc2n
+</span></code></pre></div>
 </li>
 <li>
-<p>Run <code>postw90</code> to compute expansion coefficients
-    <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>postw90.x<span class="w"> </span>bc2n
-</span></code></pre></div></p>
+<p>Run <code>postw90</code> to compute expansion coefficients</p>
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>postw90.x<span class="w"> </span>bc2n
+</span></code></pre></div>
 </li>
 </ol>
-<h2 class="unnumbered" id="expansion-coefficients">Expansion coefficients<a class="headerlink" href="#expansion-coefficients" title="Permanent link">&para;</a></h2>
+<h2 id="expansion-coefficients">Expansion coefficients<a class="headerlink" href="#expansion-coefficients" title="Permanent link">&para;</a></h2>
 <p>For computing <span class="arithmatex">\(k\cdot p\)</span> expansion coefficients as given by
 quasi-degenerate (Löwdin) perturbation theory, set</p>
 <div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>berry = true
@@ -2052,7 +2054,10 @@ level in eV</p>
 </span></code></pre></div>
 <p>On output, the program generates three files, namely
 <code>SEED-kdotp_0.dat</code>, <code>SEED-kdotp_1.dat</code> and <code>SEED-kdotp_2.dat</code>, which
-correspond to the zeroth, first and second order expansion coefficients, respectively. The dimension of the matrix contained in each file is <span class="arithmatex">\(3^{l}\times N^{2}\)</span>, where <span class="arithmatex">\(N\)</span> is the number of bands set by <code>kdotp_num_bands</code>, and <span class="arithmatex">\(l\)</span> is the order of the expansion term (currently <span class="arithmatex">\(l=0,1\)</span> or <span class="arithmatex">\(2\)</span>).</p>
+correspond to the zeroth, first and second order expansion coefficients,
+respectively. The dimension of the matrix contained in each file is
+<span class="arithmatex">\(3^{l}\times N^{2}\)</span>, where <span class="arithmatex">\(N\)</span> is the number of bands set by <code>kdotp_num_bands</code>,
+and <span class="arithmatex">\(l\)</span> is the order of the expansion term (currently <span class="arithmatex">\(l=0,1\)</span> or <span class="arithmatex">\(2\)</span>).</p>
 <p>These coefficients can be used, among other things, to compute the
 energy dispersion of the bands of interest around the chosen
 k-point. The <span class="arithmatex">\(k\cdot p\)</span> band dispersion can be computed and plotted
@@ -2060,33 +2065,22 @@ along <span class="arithmatex">\(k_x\)</span> (from S to X) using python and the
 provided in the example folder</p>
 <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="w">    </span>python<span class="w"> </span>kdotp_plot.py
 </span></code></pre></div>
-<p>For comparison, the exact band structure calculated usingWannier90 (file <code>bc2n_band.dat</code>, generated automatically) is also plotted along (see the band dispersion <a href="#fig:bc2n-bnd">plot</a>).</p>
+<p>For comparison, the exact band structure calculated usingWannier90
+(file <code>bc2n_band.dat</code>, generated automatically) is also plotted along
+(see the band dispersion <a href="#fig:bc2n-bnd">plot</a>).</p>
 <figure id="fig:bc2n-bnd">
 <a class="glightbox" href="../kdotp_bands_SX.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../kdotp_bands_SX.webp" width="500" /></a>
-<figcaption>Band dispersion of monolayer BC<sub>2</sub>N around <em>S</em> point. Exact results (solid dots) are compared to first-order (blue) and second-order (red) <em>k</em>⋅ <em>p</em> model results for valence and conduction bands.</figcaption>
+<figcaption>Band dispersion of monolayer
+BC<sub>2</sub>N around <span class="arithmatex">\(S\)</span> point.
+Exact results (solid dots) are compared to first-order (blue) and
+second-order (red) <span class="arithmatex">\(k\cdot p\)</span> model results for valence and conduction bands.
+</figcaption>
 </figure>
-<p>&nbsp;</p>
 <div class="footnote">
 <hr />
 <ol>
-<li id="fn:1">
-<p>Once <code>XCrySDen</code> starts, click on <code>Tools</code> <span class="arithmatex">\(\rightarrow\)</span> <code>Data Grid</code>
-in order to specify an isosurface value to plot.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>Please note the following counterintuitive feature in <code>pwscf</code>: in
-order to obtain a ground state with magnetization along the
-<em>positive</em> <span class="arithmatex">\(z\)</span>-axis, one should use a <em>negative</em> value for the
-variable <code>starting_magnetization</code>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>The calculation of the AHC using <code>berry_task = kubo</code> involves a
-truncation of the sum over empty states in the Kubo-Greenwood
-formula: see description of the keyword <a href=""><code>kubo_eigval_max</code></a> in the
-User Guide. As discussed around <a href="../../user_guide/postw90/berry/#mjx-eqn:eq:ahc">the formula for anomalous Hall conductivity</a> of the User Guide, no truncation is done with <code>berry_task = ahc</code>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
 <li id="fn:ref1">
-<p>Julen Ibañez-Azpiroz, Fernando de Juan, and Ivo Souza. Quantitative analysis of two-band <span class="arithmatex">\(k\cdot p\)</span> models describing the shift-current photoconductivity. <em>ArXiv e-prints</em>, 2019. URL: <a href="http://arxiv.org/abs/1910.06172">http://arxiv.org/abs/1910.06172</a>, <a href="https://arxiv.org/abs/1910.06172">arXiv:1910.06172</a>.&#160;<a class="footnote-backref" href="#fnref:ref1" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>Julen Ibañez-Azpiroz, Fernando de Juan, and Ivo Souza. Quantitative analysis of two-band <span class="arithmatex">\(k\cdot p\)</span> models describing the shift-current photoconductivity. <em>ArXiv e-prints</em>, 2019. URL: <a href="http://arxiv.org/abs/1910.06172">http://arxiv.org/abs/1910.06172</a>, <a href="https://arxiv.org/abs/1910.06172">arXiv:1910.06172</a>.&#160;<a class="footnote-backref" href="#fnref:ref1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -2112,7 +2106,7 @@ User Guide. As discussed around <a href="../../user_guide/postw90/berry/#mjx-eqn
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -2122,7 +2116,7 @@ User Guide. As discussed around <a href="../../user_guide/postw90/berry/#mjx-eqn
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     

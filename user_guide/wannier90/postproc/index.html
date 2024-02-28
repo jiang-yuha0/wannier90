@@ -2424,46 +2424,46 @@ described below.</p>
 <p>The only logical keyword is <code>calc_only_A</code>, eg,</p>
 <p><code>calc_only_A  :  F</code></p>
 <h3 id="real_lattice-block"><code>Real_lattice</code> block<a class="headerlink" href="#real_lattice-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin real_lattice
- 2.250000   0.000000   0.000000
- 0.000000   2.250000   0.000000
- 0.000000   0.000000   2.250000
-end real_lattice
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>begin real_lattice
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> 2.250000   0.000000   0.000000
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> 0.000000   2.250000   0.000000
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> 0.000000   0.000000   2.250000
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>end real_lattice
+</span></code></pre></div>
 <p>The real lattice vectors in units of Angstrom.</p>
 <h3 id="recip_lattice-block"><code>Recip_lattice</code> block<a class="headerlink" href="#recip_lattice-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin recip_lattice
- 2.792527   0.000000   0.000000
- 0.000000   2.792527   0.000000
- 0.000000   0.000000   2.792527
-end recip_lattice
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>begin recip_lattice
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> 2.792527   0.000000   0.000000
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> 0.000000   2.792527   0.000000
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> 0.000000   0.000000   2.792527
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>end recip_lattice
+</span></code></pre></div>
 <p>The reciprocal lattice vectors in units of inverse Angstrom.</p>
 <h3 id="kpoints-block"><code>Kpoints</code> block<a class="headerlink" href="#kpoints-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin kpoints
-  8
-  0.00000   0.00000   0.00000
-  0.00000   0.50000   0.00000
-  .
-  .
-  .
-  0.50000   0.50000   0.50000
-end kpoints
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>begin kpoints
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  8
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  0.00000   0.00000   0.00000
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  0.00000   0.50000   0.00000
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  .
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  .
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  .
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  0.50000   0.50000   0.50000
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>end kpoints
+</span></code></pre></div>
 <p>The first line in the block is the total number of k-points <code>num_kpts</code>.
 The subsequent <code>num_kpts</code> lines specify the k-points in crystallographic
 co-ordinates relative to the reciprocal lattice vectors.</p>
 <h3 id="projections-block"><code>Projections</code> block<a class="headerlink" href="#projections-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin projections
-   n_proj
-   centre   l  mr  r   
-     z-axis   x-axis   zona
-   centre   l  mr  r   
-     z-axis   x-axis   zona
-   .
-   .
-end projections
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>begin projections
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   n_proj
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>   centre   l  mr  r
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>     z-axis   x-axis   zona
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>   centre   l  mr  r
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>     z-axis   x-axis   zona
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>   .
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   .
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>end projections
+</span></code></pre></div>
 <p>Notes:</p>
 <p><code>n_proj</code>: integer; the number of projection centres, equal to the number
 of MLWF <code>num_wann</code>.</p>
@@ -2472,7 +2472,9 @@ crystallographic co-ordinates relative to the direct lattice vectors.</p>
 <p><code>l  mr  r</code>: three integers; <span class="arithmatex">\(l\)</span> and <span class="arithmatex">\(m_\mathrm{r}\)</span> specify the angular
 part <span class="arithmatex">\(\Theta_{lm_{\mathrm{r}}}(\theta,\varphi)\)</span>, and <span class="arithmatex">\(\mathrm{r}\)</span>
 specifies the radial part <span class="arithmatex">\(R_{\mathrm{r}}(r)\)</span> of the projection function
-(see Tables <a href="../projections/#angular-functions">Angular functions</a>, <a href="../projections/#hybrids">Hybrids</a> and <a href="../projections/#radial-functions">Radial functions</a>).</p>
+(see Tables <a href="../projections/#angular-functions">Angular functions</a>,
+<a href="../projections/#hybrids">Hybrids</a> and
+<a href="../projections/#radial-functions">Radial functions</a>).</p>
 <p><code>z-axis</code>: three real numbers; default is <code>0.0 0.0 1.0</code>; defines the axis
 from which the polar angle <span class="arithmatex">\(\theta\)</span> in spherical polar coordinates is
 measured.</p>
@@ -2483,18 +2485,18 @@ spherical polar coordinates is measured.</p>
 <p><code>zona</code>: real number; the value of <span class="arithmatex">\(\frac{Z}{a}\)</span> associated with the
 radial part of the atomic orbital. Units are in reciprocal Angstrom.</p>
 <h3 id="spinor_projections-block"><code>spinor_projections</code> block<a class="headerlink" href="#spinor_projections-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin spinor_projections
-   n_proj
-   centre   l  mr  r   
-    z-axis   x-axis   zona
-     spin spn_quant
-   centre   l  mr  r   
-    z-axis   x-axis   zona
-     spin spn_quant
-   .
-   .
-end spinor_projections
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>begin spinor_projections
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>   n_proj
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>   centre   l  mr  r
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    z-axis   x-axis   zona
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>     spin spn_quant
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>   centre   l  mr  r
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    z-axis   x-axis   zona
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>     spin spn_quant
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>   .
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>   .
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>end spinor_projections
+</span></code></pre></div>
 <p>Notes: Only one of projections and spinor_projections should be defined.
 Variables are the same as the projections block with the addition of
 <code>spin</code> and <code>spn_quant</code>.</p>
@@ -2503,13 +2505,13 @@ states.</p>
 <p><code>spn_quant</code>: three real numbers. Defines the spin quantisation axis in
 Cartesian coordinates.</p>
 <h3 id="nnkpts-block"><code>nnkpts</code> block<a class="headerlink" href="#nnkpts-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin nnkpts
-  10
-  1   2   0  0  0
-  .
-  .
-end nnkpts
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>begin nnkpts
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  10
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  1   2   0  0  0
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  .
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  .
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>end nnkpts
+</span></code></pre></div>
 <p>First line: <code>nntot</code>, the number of nearest neighbours belonging to each
 k-point of the Monkhorst-Pack mesh</p>
 <p>Subsequent lines: <code>nntot</code><span class="arithmatex">\(\times\)</span><code>num_kpts</code> lines, ie, <code>nntot</code> lines of
@@ -2522,24 +2524,24 @@ integers give the G-vector, in reciprocal lattice units, that brings the
 k-point specified by the second integer (which is in the first BZ) to
 the actual <span class="arithmatex">\(\mathbf{k+b}\)</span> that we need.</p>
 <h3 id="exclude_bands-block"><code>exclude_bands</code> block<a class="headerlink" href="#exclude_bands-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin exclude_bands 
-  8 
-  1 
-  2 
-  .
-  .
-end exclude_bands
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>begin exclude_bands 
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  8 
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  1 
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  2 
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  .
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  .
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>end exclude_bands
+</span></code></pre></div>
 <p>To exclude bands (independent of k-point) from the calculation of the
 overlap and projection matrices, for example to ignore shallow-core
 states. The first line is the number of states to exclude, the following
 lines give the states for be excluded.</p>
 <h3 id="auto_projections-block"><code>auto_projections</code> block<a class="headerlink" href="#auto_projections-block" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>begin auto_projections
-   8
-   0
-end auto_projections
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>begin auto_projections
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>   8
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>   0
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>end auto_projections
+</span></code></pre></div>
 <p>This block is only printed if <code>auto_projections=true</code> in the input. The
 choice of an additional block has been made in order to maintain
 back-compatibility with codes that interface with <code>wannier90</code>, e.g.
@@ -2561,13 +2563,15 @@ method <sup id="fnref:ref3"><a class="footnote-ref" href="#fn:ref3">3</a></sup>
 <span class="arithmatex">\(A_{mn}^{(\mathbf{k})}\)</span> in an automatic way. This has been implemented
 in the <code>pw2wannier90</code> interface code (you need v6.3 with the files
 provided in the <code>pwscf</code> folder of Wannier90, or v6.4), see for instance
-Tutorial <a href="../../../tutorials/tutorial_27/">27</a> in the <code>wannier90</code> tutorial that shows how to use it.</p>
+Tutorial <a href="../../../tutorials/tutorial_27/">27</a> in the <code>wannier90</code> tutorial
+that shows how to use it.</p>
 <p>Moreover, also the automatic generation of initial projections with
 spinor WFs is implemented in the <code>pw2wannier90</code> interface. See Tutorial
-<a href="../../../tutorials/tutorial_31/">31</a> in the <code>wannier90</code> tutorial that shows how to use it.</p>
+<a href="../../../tutorials/tutorial_31/">31</a> in the <code>wannier90</code> tutorial that shows
+how to use it.</p>
 <p>Another automatic projection method is projectability-disentangled
 Wannier function (PDWF) <sup id="fnref:ref4"><a class="footnote-ref" href="#fn:ref4">4</a></sup>, which uses pseudo-atomic
-orbitals inside pseudopotentials as initial guesses. </p>
+orbitals inside pseudopotentials as initial guesses.</p>
 <!-- TODO: Add a tutorial for PDWF. -->
 <!-- See Tutorial [34](../../tutorials/tutorial_34.md) and 35. -->
 
@@ -2576,28 +2580,29 @@ orbitals inside pseudopotentials as initial guesses. </p>
 projection orbitals on, say, a carbon atom at (0.5,0.5,0.5) in
 fractional co-ordinates relative to the direct lattice vectors. In this
 case <code>seedname.win</code> will contain the following lines:</p>
-<div class="language-text highlight"><pre><span></span><code>begin projections
- C:l=-1
-end projections
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>begin projections
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a> C:l=-1
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>end projections
+</span></code></pre></div>
 <p>and <code>seedname.nnkp</code>, generated on the first pass of <code>wannier90</code> (with
 <code>postproc_setup=T</code>), will contain:</p>
-<div class="language-text highlight"><pre><span></span><code>begin projections
-   4
-   0.50000    0.50000    0.50000    -1  1  1
-     0.000  0.000  1.000   1.000  0.000  0.000   2.00 
-   0.50000    0.50000    0.50000    -1  2  1
-     0.000  0.000  1.000   1.000  0.000  0.000   2.00 
-   0.50000    0.50000    0.50000    -1  3  1
-     0.000  0.000  1.000   1.000  0.000  0.000   2.00 
-   0.50000    0.50000    0.50000    -1  4  1
-     0.000  0.000  1.000   1.000  0.000  0.000   2.00 
-end projections
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>begin projections
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>   4
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>   0.50000    0.50000    0.50000    -1  1  1
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>     0.000  0.000  1.000   1.000  0.000  0.000   2.00
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>   0.50000    0.50000    0.50000    -1  2  1
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>     0.000  0.000  1.000   1.000  0.000  0.000   2.00
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>   0.50000    0.50000    0.50000    -1  3  1
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>     0.000  0.000  1.000   1.000  0.000  0.000   2.00
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>   0.50000    0.50000    0.50000    -1  4  1
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>     0.000  0.000  1.000   1.000  0.000  0.000   2.00
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>end projections
+</span></code></pre></div>
 <p>where the first line tells us that in total four projections are
-specified, and the subsquent lines provide the projection centre, the
-angular and radial parts of the orbital (see
-Section <a href="../projections/#orbital-definitions">Orbital Definitions</a> for definitions), the <span class="arithmatex">\(z\)</span> and <span class="arithmatex">\(x\)</span> axes,
+specified, and the subsequent lines provide the projection centre, the
+angular and radial parts of the orbital (see Section
+<a href="../projections/#orbital-definitions">Orbital Definitions</a> for definitions),
+the <span class="arithmatex">\(z\)</span> and <span class="arithmatex">\(x\)</span> axes,
 and the diffusivity and cut-off radius for the projection orbital.</p>
 <p><code>pwscf</code>, or any other <em>ab initio</em> electronic structure code,
 then reads <code>seedname.nnkp</code> file, calculates the projections and writes
@@ -2700,12 +2705,12 @@ mesh.</p>
 is the band index, the second integer gives the ordinal corresponding to
 the <span class="arithmatex">\(k\)</span>-point in the list of <span class="arithmatex">\(k\)</span>-points in <code>seedname.win</code>, and the real
 number is the eigenvalue.</p>
-<p>E.g.,
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>            1           1  -6.43858831271328
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>            2           1   19.3977795287297
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>            3           1   19.3977795287297
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>            4           1   19.3977795287298
-</span></code></pre></div></p>
+<p>E.g.,</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>            1           1  -6.43858831271328
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>            2           1   19.3977795287297
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>            3           1   19.3977795287297
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>            4           1   19.3977795287298
+</span></code></pre></div>
 <h2 id="interface-with-pwscf">Interface with pwscf<a class="headerlink" href="#interface-with-pwscf" title="Permanent link">&para;</a></h2>
 <p>Interfaces between <code>wannier90</code> and many ab-initio codes such as
 <code>pwscf</code>, <code>abinit</code> (<a href="http://www.abinit.org">http://www.abinit.org</a>), <code>siesta</code>
@@ -2883,18 +2888,18 @@ operations to be used in symmetry-adapted mode.</p>
 <p>Then: <code>nsymmetry</code> blocks of data. Each block (separated by a blank line)
 consists of four lines. The order of the data in each block is as
 follows:</p>
-<div class="language-text highlight"><pre><span></span><code>  R(1,1)   R(2,1)   R(3,1)
-  R(1,2)   R(2,2)   R(3,2)
-  R(1,3)   R(2,3)   R(3,3)
-   t(1)     t(2)     t(3)
-</code></pre></div>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>      R(1,1)   R(2,1)   R(3,1)
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>      R(1,2)   R(2,2)   R(3,2)
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>      R(1,3)   R(2,3)   R(3,3)
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>       t(1)     t(2)     t(3)   
+</span></code></pre></div>
 <p>Here, <span class="arithmatex">\(R\)</span> is the rotational part of symmetry operations (<span class="arithmatex">\(3\times3\)</span>
 matrix), and <span class="arithmatex">\(\bf t\)</span> is the fractional translation in the unit of
 "<code>alat</code>" (refer the definition of "<code>alat</code>" to the manual of
 <code>pwscf</code>). Both data are given in Cartesian coordinates. The
 symmetry operations act on a point <span class="arithmatex">\(\bf r\)</span> as <span class="arithmatex">\({\bf r} R - {\bf t}\)</span>.</p>
 <h2 id="irreducible-bz-calculation">Irreducible BZ calculation<a class="headerlink" href="#irreducible-bz-calculation" title="Permanent link">&para;</a></h2>
-<p>This section explains how to construct Wannier functions using wavefunctions 
+<p>This section explains how to construct Wannier functions using wavefunctions
 calculated only in the irreducible BZ (IBZ). Using this option, users only
 have to calculate wavefunctions, overlap matrices (<span class="arithmatex">\(M_{mn}\)</span>) and projection
 matrices (<span class="arithmatex">\(A_{mn}\)</span>) in the IBZ, which will reduce the computational cost.
@@ -2914,11 +2919,11 @@ files in the IBZ and some symmetry information.</p>
 <li>
 <p>Run <code>scf</code>/<code>nscf</code> calculation(s) with Quantum ESPRESSO <code>pw.x</code>. In the <code>nscf</code>
     calculation, users only have to calculate k-points in the IBZ.</p>
-<p>E.g.:
-<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>K_POINTS {automatic}
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>4 4 4 0 0 0
+<p>E.g.:</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>K_POINTS {automatic}
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>4 4 4 0 0 0
 </span></code></pre></div>
-Users also have the option to skip the <code>nscf</code> calculation, if the grid
+<p>Users also have the option to skip the <code>nscf</code> calculation, if the grid
 of the <code>scf</code> step is already sufficient.</p>
 </li>
 <li>
@@ -2934,10 +2939,10 @@ of the <code>scf</code> step is already sufficient.</p>
 <p>Run the python code <code>write_full_data.py</code>, part of the <code>symWannier</code> package.
     You can first install the package from
     <a href="https://github.com/wannier-utils-dev/symWannier">GitHub</a> and then
-    run the script as
-    <div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>write_full_data.py<span class="w"> </span>&lt;seedname&gt;
+    run the script as</p>
+<div class="language-bash highlight"><span class="filename">Terminal</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python<span class="w"> </span>write_full_data.py<span class="w"> </span>&lt;seedname&gt;
 </span></code></pre></div>
-    (replace <code>&lt;seedname&gt;</code> with the seedname of your calculation).</p>
+<p>(replace <code>&lt;seedname&gt;</code> with the seedname of your calculation).</p>
 <p>This python script generates the <span class="arithmatex">\(M_{mn}\)</span> and <span class="arithmatex">\(A_{mn}\)</span> matrices, and Kohn-Sham
 eigenvalues in the full BZ (<code>seedname.mmn</code>, <code>seedname.amn</code>, and
 <code>seedname.eig</code>) from those in the IBZ (<code>seedname.immn</code>,
@@ -2953,7 +2958,8 @@ in the IBZ and full BZ are explained in Ref. <sup id="fnref2:ref6"><a class="fo
 <h2 id="seednameimmn-file"><code>seedname.immn</code> file<a class="headerlink" href="#seednameimmn-file" title="Permanent link">&para;</a></h2>
 <p>INPUT</p>
 <p>The format is the same as <code>seedname.mmn</code>, except that the number of
-kpoints is the number of k-points in the IBZ. See also <a href="#seednamemmn-file">the section on the  <code>seedname.mmn</code> file</a>.</p>
+kpoints is the number of k-points in the IBZ. See also
+<a href="#seednamemmn-file">the section on the <code>seedname.mmn</code> file</a>.</p>
 <h2 id="seednameiamn-file"><code>seedname.iamn</code> file<a class="headerlink" href="#seednameiamn-file" title="Permanent link">&para;</a></h2>
 <p>INPUT</p>
 <p>The format is the same as <code>seedname.amn</code>, except that the number of
@@ -2977,28 +2983,28 @@ functions from imformation computed only in the IBZ.</p>
 <p>Then: <code>nsymmetry</code> blocks of data. Each block describes a symmetry
 operation, <span class="arithmatex">\(\hat{g}\)</span>, and consists of 7 lines (11 lines for the spinor
 case). The order of the data in each block is as follows:</p>
-<p>Non-spinor case:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>       a comment
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>       R(1,1)   R(2,1)   R(3,1)
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>       R(1,2)   R(2,2)   R(3,2)
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>       R(1,3)   R(2,3)   R(3,3)
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        t(1)     t(2)     t(3)
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        T
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        invs
-</span></code></pre></div></p>
-<p>Spinor case:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>       a comment
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>       R(1,1)   R(2,1)   R(3,1)
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>       R(1,2)   R(2,2)   R(3,2)
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>       R(1,3)   R(2,3)   R(3,3)
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        t(1)     t(2)     t(3)
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        T
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>       u(1,1).real  u(1,1).imag
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>       u(2,1).real  u(2,1).imag
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>       u(1,2).real  u(1,2).imag
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>       u(2,2).real  u(2,2).imag
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        invs
-</span></code></pre></div></p>
+<p>Non-spinor case:</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>a comment
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>R(1,1)   R(2,1)   R(3,1)
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>R(1,2)   R(2,2)   R(3,2)
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>R(1,3)   R(2,3)   R(3,3)
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a> t(1)     t(2)     t(3)
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a> T
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a> invs
+</span></code></pre></div>
+<p>Spinor case:</p>
+<div class="language-text highlight"><span class="filename">Input file</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>a comment
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>R(1,1)   R(2,1)   R(3,1)
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>R(1,2)   R(2,2)   R(3,2)
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>R(1,3)   R(2,3)   R(3,3)
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a> t(1)     t(2)     t(3)
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a> T
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>u(1,1).real  u(1,1).imag
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>u(2,1).real  u(2,1).imag
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>u(1,2).real  u(1,2).imag
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>u(2,2).real  u(2,2).imag
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a> invs
+</span></code></pre></div>
 <p>Here, <span class="arithmatex">\(R\)</span> is the rotational part of symmetry operations, (<span class="arithmatex">\(3 \times 3\)</span>
 integer matrix), and <span class="arithmatex">\(\bf t\)</span> is the fractional translation in
 crystal coordinates. The symmetry operations act on a point <span class="arithmatex">\(\bf r\)</span> in
@@ -3006,7 +3012,7 @@ crystal coordinates as <span class="arithmatex">\(\hat{g} {\bf r} = {\bf r} R - 
 <span class="arithmatex">\(T=1\)</span> (<span class="arithmatex">\(T=0\)</span>) indicates that this symmetry operation includes (does not
 include) time-reversal operation, respectively.
 <span class="arithmatex">\(u\)</span> is the SU(2) rotation matrix for
-the spinor part. 
+the spinor part.
 <code>invs</code> represents the symmetry operation
 corresponding to <span class="arithmatex">\(\hat{g}^{-1}\)</span>.</p>
 <p>2 blank lines</p>
@@ -3080,7 +3086,7 @@ imaginary parts of <span class="arithmatex">\(D_{mn}(\hat{g})\)</span>.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
@@ -3090,7 +3096,7 @@ imaginary parts of <span class="arithmatex">\(D_{mn}(\hat{g})\)</span>.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T21:48:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:08:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
