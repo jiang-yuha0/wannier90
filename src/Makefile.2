@@ -38,11 +38,15 @@ endif
 # Contains definition of OBJS, OBJS_POST, LIBRARY, DYNLIBRARY
 include ../Makefile.header
 
-wannier libs dynlibs w90chk2chk w90spn2spn: POSTOPTS = $(TEMP1)
-wannier libs dynlibs w90chk2chk w90spn2spn: COMPILER = $(TEMP2)
+wannier libs dynlibs w90genorb w90chk2chk w90spn2spn: POSTOPTS = $(TEMP1)
+wannier libs dynlibs w90genorb w90chk2chk w90spn2spn: COMPILER = $(TEMP2)
 wannier: ../../wannier90.x
+w90genorb: ../../w90genorb.x
 w90chk2chk: ../../w90chk2chk.x
 w90spn2spn: ../../w90spn2spn.x
+
+../../w90genorb.x: $(OBJS_POST) ../w90genorb.F90
+	$(COMPILER) $(POSTOPTS) $(FCOPTS) ../w90genorb.F90 $(LDOPTS) $(OBJS_POST) $(LIBS) -o ../../w90genorb.x
 
 ../../w90chk2chk.x: $(OBJS) ../w90chk2chk.F90
 	$(COMPILER) $(POSTOPTS) $(FCOPTS) ../w90chk2chk.F90 $(LDOPTS) $(OBJS) $(LIBS) -o ../../w90chk2chk.x

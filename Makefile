@@ -36,6 +36,9 @@ all: wannier lib post w90chk2chk w90pov w90vdw w90spn2spn
 
 doc: thedoc
 
+w90genorb: objdir
+	(cd $(ROOTDIR)/src/obj && $(MAKE) -f $(REALMAKEFILE) w90genorb)
+
 w90chk2chk: objdir
 	(cd $(ROOTDIR)/src/obj && $(MAKE) -f $(REALMAKEFILE) w90chk2chk)
 
