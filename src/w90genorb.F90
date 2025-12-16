@@ -517,7 +517,7 @@ contains
     ! <\nabla u_m| H \nabla|u_n> m, n, idir1, idir2, ik
     complex(kind=dp), allocatable :: Lo_qb1_q_qb2(:, :), L_qb1_q_qb2(:,:)
     integer, allocatable :: num_states(:)
-    real(kind=dp) :: c_real, c_imag
+    real(kind=dp) :: c_real, c_imag, temp
     integer :: tmp_bands, tmp_kpts, tmp_nntot
     integer :: ik, nn1, nn2, m, n, idir1, idir2, qb1, qb2
 
@@ -596,7 +596,7 @@ contains
           Lo_qb1_q_qb2 = transpose(Lo_qb1_q_qb2)
           do m = 1, num_bands
             do n = 1, num_bands
-              Lo_qb1_q_qb2(n, m) = eigval(m, ik) * Lo_qb1_q_qb2(n, m)
+              Lo_qb1_q_qb2(n, m) = eigval(m, qb2) * Lo_qb1_q_qb2(n, m)
             enddo
           enddo
           call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
@@ -624,61 +624,62 @@ contains
     deallocate(Lo_qb1_q_qb2, L_qb1_q_qb2)
   end subroutine get_uIu
 
-  subroutine calc_del (stdout, num_bands, num_wann, num_kpts, v_matrix, dv, eigval, del_eig, kmesh_info, error, comm)
-    !================================================!
-    !
-    !! calculate del v_matrix and del eigval
-    !! Note that del_v * v^dagger * v = del_v
-    !! We define dv = del_v * v^dagger
-    !! So del (|u>V) = |del u> V + |u> dV V
-    !
-    !================================================!
-    ! only run on root node
-    implicit none
+  ! subroutine calc_del (stdout, num_bands, num_wann, num_kpts, v_matrix, dv, eigval, del_eig, kmesh_info, error, comm)
+  !   !================================================!
+  !   !
+  !   !! calculate del v_matrix and del eigval
+  !   !! Note that del_v * v^dagger * v = del_v
+  !   !! We define dv = del_v * v^dagger
+  !   !! So del (|u>V) = |del u> V + |u> dV V
+  !   !
+  !   !================================================!
+  !   ! only run on root node
+  !   implicit none
 
-    type(w90_comm_type), intent(in) :: comm
-    type(w90_error_type), allocatable, intent(out) :: error
-    type(kmesh_info_type), intent(in) :: kmesh_info
+  !   type(w90_comm_type), intent(in) :: comm
+  !   type(w90_error_type), allocatable, intent(out) :: error
+  !   type(kmesh_info_type), intent(in) :: kmesh_info
     
-    integer, intent(in) :: stdout
-    integer, intent(in) :: num_bands, num_wann, num_kpts
-    complex(kind=dp), allocatable, intent(in) :: v_matrix(:, :, :)
-    complex(kind=dp), allocatable, intent(inout) :: dv(:, :, :, :)
-    real(kind=dp), intent(in) :: eigval(:, :)
-    real(kind=dp), allocatable, intent(inout) :: del_eig(:, :, :)
-    complex(kind=dp), allocatable :: del_v(:, :, :)
-    integer :: ik, nn, qb, idir
-    if (allocated(dv)) then
-      call set_error_input(error, 'Error: dv allocated before allcated', comm)
-      return
-    endif
-    if (allocated(del_eig)) then
-      call set_error_input(error, 'Error: dv allocated before allcated', comm)
-      return
-    endif
-    allocate(dv(num_bands, num_bands, 3, num_kpts))
-    allocate(del_v(num_bands, num_wann, 3))
-    allocate(del_eig(num_bands, 3, num_kpts))
-    dv = cmplx_0
-    del_eig = 0.0_dp
-    do ik = 1, num_kpts
-      del_v = cmplx_0
-      do nn = 1, kmesh_info%nntot
-        do idir = 1, 3
-          qb = kmesh_info%nnlist(ik, nn)
-          del_v(:, :, idir) = del_v(:, :, idir) + &
-                        kmesh_info%wb(nn)* kmesh_info%bk(idir, nn, ik) * v_matrix(:, :, qb)
-          del_eig(:, idir, ik) = del_eig(:, idir, ik) + &
-                        kmesh_info%wb(nn)* kmesh_info%bk(idir, nn, ik) * eigval(:, qb)
-        enddo ! idir
-      enddo ! nn
-      do idir = 1, 3
-        dv(:, :, idir, ik) = matmul(del_v(:, :, idir), conjg(transpose(v_matrix(:, :, ik))))
-      enddo
-    enddo ! ik
-  end subroutine
+  !   integer, intent(in) :: stdout
+  !   integer, intent(in) :: num_bands, num_wann, num_kpts
+  !   complex(kind=dp), allocatable, intent(in) :: v_matrix(:, :, :)
+  !   complex(kind=dp), allocatable, intent(inout) :: dv(:, :, :, :)
+  !   real(kind=dp), intent(in) :: eigval(:, :)
+  !   real(kind=dp), allocatable, intent(inout) :: del_eig(:, :, :)
+  !   complex(kind=dp), allocatable :: del_v(:, :, :)
+  !   integer :: ik, nn, qb, idir
+  !   if (allocated(dv)) then
+  !     call set_error_input(error, 'Error: dv allocated before allcated', comm)
+  !     return
+  !   endif
+  !   if (allocated(del_eig)) then
+  !     call set_error_input(error, 'Error: dv allocated before allcated', comm)
+  !     return
+  !   endif
+  !   allocate(dv(num_bands, num_bands, 3, num_kpts))
+  !   allocate(del_v(num_bands, num_wann, 3))
+  !   allocate(del_eig(num_bands, 3, num_kpts))
+  !   dv = cmplx_0
+  !   del_eig = 0.0_dp
+  !   do ik = 1, num_kpts
+  !     del_v = cmplx_0
+  !     do nn = 1, kmesh_info%nntot
+  !       do idir = 1, 3
+  !         qb = kmesh_info%nnlist(ik, nn)
+  !         del_v(:, :, idir) = del_v(:, :, idir) + &
+  !                       kmesh_info%wb(nn)* kmesh_info%bk(idir, nn, ik) * v_matrix(:, :, qb)
+  !         del_eig(:, idir, ik) = del_eig(:, idir, ik) + &
+  !                       kmesh_info%wb(nn)* kmesh_info%bk(idir, nn, ik) * eigval(:, qb)
+  !       enddo ! idir
+  !     enddo ! nn
+  !     do idir = 1, 3
+  !       dv(:, :, idir, ik) = matmul(del_v(:, :, idir), conjg(transpose(v_matrix(:, :, ik))))
+  !     enddo
+  !   enddo ! ik
+  ! end subroutine
 
-  subroutine calc_orb(stdout, num_bands, num_kpts, num_wann, eigval, del_H, v_matrix, mmn, hmmn, mhmn, dhmmn, uhu, uiu, orb, error, comm)
+  subroutine calc_orb(stdout, num_bands, num_kpts, num_wann, eigval, del_H, v_matrix, &
+                      mmn, hmmn, mhmn, dhmmn, uhu, uiu, orb, error, comm)
     !================================================!
     !
     !! calculate orbital matrix
@@ -734,12 +735,12 @@ contains
       do b = 1, 3
         do a = 1, 3
           left = conjg(transpose(mmn(:, :, a, ik)))
-          right = hmmn(:, :, b, ik) - del_H(:, :, b, ik) - mhmn(:, :, b, ik)
+          right = del_H(:, :, b, ik) - hmmn(:, :, b, ik) - conjg(transpose(hmmn(:, :, b, ik)))
           orb_ab(:, :, a, b) = cmplx_i * ( &
               uhu(:, :, a, b, ik) - &
-              conjg(transpose(dhmmn(:, :, b, a, ik))) - &
-              uiu(:, :, a, b, ik) - &
-              matmul(left, right) &
+              ! conjg(transpose(dhmmn(:, :, b, a, ik))) - &
+              uiu(:, :, a, b, ik) + &
+              matmul(left, right) & ! <del u| u> \times (del E - <u|H|del u> - <del u|H|u>)
             )
         enddo ! a
       enddo ! b
@@ -806,8 +807,8 @@ end module get_orb
 program w90genorb
   !! Program to convert spn files from formatted to unformmated
   use w90_constants, only: dp, pw90_physical_constants_type
-  use get_orb, only: get_seedname, get_mmn, get_uHu, get_uIu, &
-    calc_del, calc_orb, output_orb_formatted
+  use get_orb, only: get_seedname, get_mmn, get_uHu, get_uIu, & ! calc_del,
+    calc_orb, output_orb_formatted
   use w90_error
   use w90_io
   use w90_types
