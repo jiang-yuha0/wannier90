@@ -864,7 +864,6 @@ contains
           enddo
         enddo
       endif
-      if (allocated(u_matrix_opt)) deallocate (u_matrix_opt)
       if (.not. (num_valence_bands > 0 .and. abs(scissors_shift) > 1.0e-7_dp)) then
         if (allocated(u_matrix)) deallocate (u_matrix)
       endif
@@ -912,8 +911,59 @@ contains
       if (allocated(error)) return
       call comms_bcast(dis_manifold%ndimwin(1), num_kpts, error, comm)
       if (allocated(error)) return
-    end if
 
+      ! Since Projectability disentanglement will reorder the indexes,
+      ! we should make sure if PDWFs were employed.
+      dis_manifold%frozen_proj = .false.
+      do loop_kpt = 1, num_kpts
+        if (dis_manifold%ndimwin(loop_kpt) == num_bands) cycle
+        do i = 1, num_bands
+          if (dis_manifold%lwindow(i, loop_kpt)) exit
+        enddo
+        ! there are (i-1) bands below lowest_keepstate
+        do j = num_bands, 1, -1
+          if (dis_manifold%lwindow(j, loop_kpt)) exit
+        enddo
+        ! there are (num_bands-j) bands over highest_keepstate
+        ! if any discarded states within lowest_keepstate:highest_keepstate, it means reorder was processed. 
+        if (dis_manifold%ndimwin(loop_kpt) .lt. j - i + 1) then
+          dis_manifold%frozen_proj = .true.
+          exit
+        end if
+      enddo
+    end if
+    if (on_root) then
+      ! if PDWF, it is convenient to convert the order of V matrix back and increase ndimwin
+      if (dis_manifold%frozen_proj) then
+        ! use u_matrix_opt as temp matrix
+        u_matrix_opt = cmplx_0
+        do loop_kpt = 1, num_kpts
+          do i = 1, num_bands
+            if (dis_manifold%lwindow(i, loop_kpt)) exit
+          enddo ! i = lowest keep state
+          do j = num_bands, 1, -1
+            if (dis_manifold%lwindow(j, loop_kpt)) exit
+          enddo
+          dis_manifold%ndimwin(loop_kpt) = j - i + 1
+          m = 0
+          do j = i, num_bands
+            if (dis_manifold%lwindow(j, loop_kpt)) then
+              m = m + 1
+              u_matrix_opt(j-i+1, :, loop_kpt) = v_matrix(m, :, loop_kpt)
+            endif
+          enddo ! j 
+        enddo
+        v_matrix = u_matrix_opt
+      endif
+    endif
+    ! call comms_bcast(dis_manifold%lwindow(1, 1), num_bands*num_kpts, error, comm)
+    ! if (allocated(error)) return
+    call comms_bcast(dis_manifold%ndimwin(1), num_kpts, error, comm)
+    if (allocated(error)) return
+    call comms_bcast(v_matrix(1, 1, 1), num_bands*num_wann*num_kpts, error, comm)
+    if (allocated(error)) return
+
+    if (allocated(u_matrix_opt)) deallocate (u_matrix_opt)
   end subroutine pw90common_wanint_data_dist
 
 !================================================
