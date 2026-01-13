@@ -119,7 +119,7 @@ contains
   end subroutine get_seedname
 
   subroutine get_mmn(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_manifold, have_disentangled, &
-                     v_matrix, eigval, mmn, error, comm, hmmn, mhmn, dhmmn, del_H)
+                     v_matrix, eigval, mmn, error, comm, hmmn, del_H)
     !================================================!
     !
     !! read MMN matrix from seedname.mmn
@@ -143,11 +143,10 @@ contains
     complex(kind=dp), allocatable, intent(inout) :: mmn(:, :, :, :)
     ! <u_m|\nabla|u_n> m, n, idir, ik
     complex(kind=dp), allocatable :: S_o(:, :), S(:, :)
-    complex(kind=dp), allocatable :: H_o(:, :, :), MH_o(:, :), HM_o(:, :)
-    complex(kind=dp), allocatable :: del_H_o(:, :, :, :), del_HM_o(:, :), del_HM(:, :, :)
-    complex(kind=dp), allocatable :: MH(:, :), HM(:, :)
-    complex(kind=dp), allocatable, intent(inout), optional ::  hmmn(:, :, :, :), mhmn(:, :, :, :)
-    complex(kind=dp), allocatable, intent(inout), optional ::  dhmmn(:, :, :, :, :)
+    complex(kind=dp), allocatable :: H_o(:, :, :)
+    complex(kind=dp), allocatable :: del_H_b(:, :)
+    complex(kind=dp), allocatable :: HM(:, :)
+    complex(kind=dp), allocatable, intent(inout), optional ::  hmmn(:, :, :, :)
     complex(kind=dp), allocatable, intent(inout), optional ::  del_H(:, :, :, :)
     integer, allocatable :: num_states(:)
     real(kind=dp) :: c_real, c_imag
@@ -191,6 +190,7 @@ contains
       call set_error_alloc(error, 'Error in allocating mmn in get_mmn', comm)
       return
     endif
+    mmn = cmplx_0
     allocate(S_o(num_bands, num_bands), stat=ierr)
     if (ierr /= 0) then
       call set_error_alloc(error, 'Error in allocating S_o in get_mmn', comm)
@@ -201,46 +201,34 @@ contains
       call set_error_alloc(error, 'Error in allocating S in get_mmn', comm)
       return
     endif
-    if (present(hmmn) .or. present(mhmn) .or. present(dhmmn)) then
-      allocate(H_o(num_bands, num_bands, num_kpts), HM_o(num_bands, num_bands), MH_o(num_bands, num_bands), &
-              HM(num_wann, num_wann), MH(num_wann, num_wann), &
-              hmmn(num_wann, num_wann, 3, num_kpts), mhmn(num_wann, num_wann, 3, num_kpts), &
-              dhmmn(num_wann, num_wann, 3, 3, num_kpts), &
-              del_HM_o(num_bands, num_bands), del_HM(num_wann, num_wann, 3), stat=ierr)
-      if (ierr /= 0) then
-        call set_error_alloc(error, 'Error in allocating H_o, hmmn, mhmn, or dhmmn in get_mmn', comm)
-        return
-      endif
-      hmmn = cmplx_0
-      mhmn = cmplx_0
-      dhmmn = cmplx_0
-      H_o = cmplx_0
 
-      do ik = 1, num_kpts
-        do m = 1, num_bands
-          H_o(m, m, ik) = cmplx_1 * eigval(m, ik)
-        enddo
-      enddo
+    allocate(H_o(num_bands, num_bands, num_kpts), HM(num_wann, num_wann), &
+            hmmn(num_wann, num_wann, 3, num_kpts), stat=ierr)
+    if (ierr /= 0) then
+      call set_error_alloc(error, 'Error in allocating H_o, HM, hmmn in get_mmn', comm)
+      return
     endif
+    hmmn = cmplx_0
+    H_o = cmplx_0
 
-    if (present(dhmmn)) then
-      allocate(del_H_o(num_bands, num_bands, 3, ik))
-      del_H_o = cmplx_0
-      do ik = 1, num_kpts
-        do nn = 1, kmesh_info%nntot
-          do idir = 1, 3
-            del_H_o(:, :, idir, ik) = del_H_o(:, :, idir, ik) + &
-                          kmesh_info%wb(nn)* kmesh_info%bk(idir, nn, ik) * &
-                          H_o(:, :, kmesh_info%nnlist(ik, nn))
-          enddo ! idir
-        enddo ! nn
+    do ik = 1, num_kpts
+      do m = 1, num_bands
+        H_o(m, m, ik) = cmplx_1 * eigval(m, ik)
       enddo
-    endif
-    if (present(del_H)) then
-      allocate(del_H(num_wann, num_wann, 3, num_kpts))
-      del_H = cmplx_0
-    endif
-    mmn = cmplx_0
+    enddo
+    ! del_H_o = cmplx_0
+    ! do ik = 1, num_kpts
+    !   do nn = 1, kmesh_info%nntot
+    !     do idir = 1, 3
+    !       del_H_o(:, :, idir, ik) = del_H_o(:, :, idir, ik) + &
+    !                     kmesh_info%wb(nn)* kmesh_info%bk(idir, nn, ik) * &
+    !                     H_o(:, :, kmesh_info%nnlist(ik, nn))
+    !     enddo ! idir
+    !   enddo ! nn
+    ! enddo
+    
+    allocate(del_H(num_wann, num_wann, 3, num_kpts), del_H_b(num_wann, num_wann))
+    del_H = cmplx_0
 
 
     do ncount = 1, num_kpts*kmesh_info%nntot
@@ -250,18 +238,9 @@ contains
       !
       S_o = cmplx_0
       S = cmplx_0
-      if (present(hmmn)) then
-        HM_o = cmplx_0
-        HM = cmplx_0
-      endif
-      if (present(mhmn)) then
-        MH_o = cmplx_0
-        MH = cmplx_0
-      endif
-      if (present(dhmmn)) then
-        del_HM_o = cmplx_0
-        del_HM = cmplx_0
-      endif
+      HM = cmplx_0
+      del_H_b = cmplx_0
+
       read (iun_mmn, *) ik, ik2, nnl, nnm, nnn
       do n = 1, num_bands
         do m = 1, num_bands
@@ -292,72 +271,47 @@ contains
         call set_error_fatal(error, 'Neighbour not found', comm)
         return
       end if
+      ! < um | H | del un > = sum wb*bk* [V^dagg(k) (H(k) * S_o(k)) V(k+b)]
+      ! write(*, *) "get_mmn", ik, num_states(ik), kmesh_info%nnlist(ik, nn), num_states(kmesh_info%nnlist(ik, nn))
       call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
                                     ik, num_states(ik), kmesh_info%nnlist(ik, nn), &
                                     num_states(kmesh_info%nnlist(ik, nn)), S_o, &
-                                    have_disentangled, S)
-      if (present(hmmn)) then
-        HM_o = matmul(H_o(:, :, ik), S_o) ! < um | H | del un > = < um | Em | del un >
-        call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
-                                      ik, num_states(ik), kmesh_info%nnlist(ik, nn), &
-                                      num_states(kmesh_info%nnlist(ik, nn)), HM_o, &
-                                      have_disentangled, HM)
-      endif
-      if (present(mhmn)) then
-        MH_o = matmul(S_o, H_o(:, :, ik)) ! < um | En | del un >
-        call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
-                                      ik, num_states(ik), kmesh_info%nnlist(ik, nn), &
-                                      num_states(kmesh_info%nnlist(ik, nn)), MH_o, &
-                                      have_disentangled, MH)
-      endif
-      if (present(dhmmn)) then
-        do idir = 1, 3
-          del_HM_o(:, :) = matmul(del_H_o(:, :, idir, ik), S_o)
-          call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
-                                        ik, num_states(ik), kmesh_info%nnlist(ik, nn), &
-                                        num_states(kmesh_info%nnlist(ik, nn)), del_HM_o, &
-                                        have_disentangled, del_HM(:, :, idir))
-        enddo
-      endif
+                                    have_disentangled, S=S, H=HM)
+      call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
+                                    kmesh_info%nnlist(ik, nn), num_states(kmesh_info%nnlist(ik, nn)), &
+                                    kmesh_info%nnlist(ik, nn), num_states(kmesh_info%nnlist(ik, nn)), &
+                                    H_o(:, :, kmesh_info%nnlist(ik, nn)), have_disentangled, del_H_b)
+      
       do idir = 1, 3
         mmn(:, :, idir, ik) = mmn(:, :, idir, ik) + &
           kmesh_info%wb(nn)*kmesh_info%bk(idir, nn, ik)*S(:, :)
-        if (present(hmmn)) hmmn(:, :, idir, ik) = hmmn(:, :, idir, ik) + &
-            kmesh_info%wb(nn)*kmesh_info%bk(idir, nn, ik)*HM(:, :)
-        if (present(mhmn)) mhmn(:, :, idir, ik) = mhmn(:, :, idir, ik) + &
-          kmesh_info%wb(nn)*kmesh_info%bk(idir, nn, ik)*MH(:, :)
-        if (present(dhmmn)) then
-          do idir2 = 1, 3
-            dhmmn(:, :, idir2, idir, ik) = dhmmn(:, :, idir2, idir, ik) + &
-              kmesh_info%wb(nn)*kmesh_info%bk(idir, nn, ik)*del_HM(:, :, idir2)
-          enddo
-        endif
+        hmmn(:, :, idir, ik) = hmmn(:, :, idir, ik) + &
+          kmesh_info%wb(nn)*kmesh_info%bk(idir, nn, ik)*HM(:, :)
+        del_H(:, :, idir, ik) = del_H(:, :, idir, ik) + &
+          kmesh_info%wb(nn)*kmesh_info%bk(idir, nn, ik)*del_H_b(:, :)
       enddo
     enddo ! ncount over num_kpts * nntot
-    deallocate(S_o, S)
-    if (present(hmmn) .or. present(mhmn)) then
-      deallocate(H_o, HM_o, HM, MH_o, MH)
-    endif
+    deallocate(S_o, S, H_o, del_H_b, HM)
+    
     close(iun_mmn)
 
     do ik = 1, num_kpts
       do idir = 1, 3
         mmn(:, :, idir, ik) = 0.5_dp * (mmn(:, :, idir, ik) - &
                         conjg(transpose(mmn(:, :, idir, ik))))
+        del_H(:, :, idir, ik) = 0.5_dp * (del_H(:, :, idir, ik) + &
+                        conjg(transpose(del_H(:, :, idir, ik))))
       enddo
     enddo
-    if (present(del_H)) then
-      do ik = 1, num_kpts
-        do idir = 1, 3
-          call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
-                                        ik, num_states(ik), ik, num_states(ik), &
-                                        del_H_o(:, :, idir, ik), have_disentangled, del_H(:, :, idir, ik))
-        enddo
-      enddo
-    endif
-    if (present(dhmmn)) then
-      deallocate(del_H_o, del_HM_o, del_HM)
-    endif
+    ! if (present(del_H)) then
+    !   do ik = 1, num_kpts
+    !     do idir = 1, 3
+    !       call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
+    !                                     ik, num_states(ik), ik, num_states(ik), &
+    !                                     del_H_o(:, :, idir, ik), have_disentangled, del_H(:, :, idir, ik))
+    !     enddo
+    !   enddo
+    ! endif
   end subroutine get_mmn
 
   subroutine get_uHu(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_manifold, have_disentangled, formatted, &
@@ -464,6 +418,8 @@ contains
               ((Ho_qb1_q_qb2(n, m), n=1, num_bands), m=1, num_bands)
           endif
           Ho_qb1_q_qb2 = transpose(Ho_qb1_q_qb2)
+
+          ! write(*, *) "uHu", qb1, num_states(qb1), qb2, num_states(qb2)
           call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
                                         qb1, num_states(qb1), qb2, num_states(qb2), &
                                         Ho_qb1_q_qb2, have_disentangled, H_qb1_q_qb2)
@@ -599,6 +555,7 @@ contains
               Lo_qb1_q_qb2(n, m) = eigval(m, qb2) * Lo_qb1_q_qb2(n, m)
             enddo
           enddo
+          ! write(*, *) "uIu", qb1, num_states(qb1), qb2, num_states(qb2)
           call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
                                         qb1, num_states(qb1), qb2, num_states(qb2), &
                                         Lo_qb1_q_qb2, have_disentangled, L_qb1_q_qb2)
@@ -679,7 +636,7 @@ contains
   ! end subroutine
 
   subroutine calc_orb(stdout, num_bands, num_kpts, num_wann, eigval, del_H, v_matrix, &
-                      mmn, hmmn, mhmn, dhmmn, uhu, uiu, orb, error, comm)
+                      mmn, hmmn, uhu, uiu, orb, error, comm)
     !================================================!
     !
     !! calculate orbital matrix
@@ -696,10 +653,9 @@ contains
     real(kind=dp), intent(in) :: eigval(:, :)
     complex(kind=dp), allocatable, intent(inout) :: mmn(:, :, :, :)
     ! <u_m|\nabla|u_n> m, n, idir, ik
-    complex(kind=dp), allocatable, intent(inout) :: hmmn(:, :, :, :), mhmn(:, :, :, :)
+    complex(kind=dp), allocatable, intent(inout) :: hmmn(:, :, :, :)
     ! <u_m|\nabla|u_n> m, n, idir, ik
-    complex(kind=dp), allocatable, intent(inout) :: dhmmn(:, :, :, :, :)
-    ! <u_m|\nabla|u_n> m, n, idir1, idir2, ik
+
     complex(kind=dp), allocatable, intent(inout) :: uhu(:, :, :, :, :)
     ! <\nabla u_m| H \nabla|u_n> m, n, idir1, idir2, ik
     complex(kind=dp), allocatable, intent(inout) :: uiu(:, :, :, :, :)
@@ -916,10 +872,10 @@ program w90genorb
   ! <u_m|\nabla|u_n> m, n, idir, ik
   complex(kind=dp), allocatable :: hmmn(:, :, :, :)
   ! <u_m|H|del u_n> = <u_m|E_m|del u_n> m, n, idir, ik
-  complex(kind=dp), allocatable :: dhmmn(:, :, :, :, :)
-  ! <u_m|H|del u_n> = <u_m|del E_m|del u_n> m, n, idir1, idir2, ik
-  complex(kind=dp), allocatable :: mhmn(:, :, :, :)
-  ! <u_m|E_n|del u_n> m, n, idir, ik
+  ! complex(kind=dp), allocatable :: dhmmn(:, :, :, :, :)
+  ! ! <u_m|H|del u_n> = <u_m|del E_m|del u_n> m, n, idir1, idir2, ik
+  ! complex(kind=dp), allocatable :: mhmn(:, :, :, :)
+  ! ! <u_m|E_n|del u_n> m, n, idir, ik
   complex(kind=dp), allocatable :: del_H(:, :, :, :)
   ! < u | del E | u > in Wannier Gauge
   complex(kind=dp), allocatable :: uhu(:, :, :, :, :)
@@ -1037,7 +993,7 @@ program w90genorb
     ! call calc_del(stdout, num_bands, num_wann, num_kpts, v_matrix, dv, eigval, del_eig, kmesh_info, error, comm)
 
     call get_mmn(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_window, have_disentangled, &
-                 v_matrix, eigval, mmn ,error, comm, hmmn=hmmn, mhmn=mhmn, dhmmn=dhmmn, del_H=del_H)
+                 v_matrix, eigval, mmn ,error, comm, hmmn=hmmn, del_H=del_H)
     if (allocated(error)) call print_error_halt(error, ierr, stdout, stderr, comm)
     if (allocated(mmn)) then
       write(stdout, *) "Reading mmn ... Done"
@@ -1058,7 +1014,7 @@ program w90genorb
     ! allocate(temp(num_bands, num_bands, 3))
 
     call calc_orb(stdout, num_bands, num_kpts, num_wann, &
-                  eigval, del_H, v_matrix, mmn, hmmn, mhmn, dhmmn, uhu, uiu, orb, error, comm)
+                  eigval, del_H, v_matrix, mmn, hmmn, uhu, uiu, orb, error, comm)
     call output_orb_formatted(stdout, seedname, num_bands, num_kpts, num_wann, orb, v_matrix)
     if (allocated(orb)) deallocate(orb)
     write(stdout, *) "TEST exiting..."
