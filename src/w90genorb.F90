@@ -28,7 +28,7 @@ module get_orb
 
   implicit none
 
-  integer, save :: iun_mmn, iun_uHu, iun_uIu, iun_orb
+  integer, save :: iun_mmn, iun_uHu, iun_uIu, iun_orb, iun_sIu, iun_sHu, iun_sH
   integer :: ierr
 
 contains
@@ -84,6 +84,8 @@ contains
     integer, intent(in) :: stdout
     character(len=50), intent(inout)  :: seedname
     logical, intent(inout) :: method
+    ! .true.  : Qiao's method
+    ! .false. : Ryoo's method
 
     integer :: num_arg
     character(len=50) :: ctemp
@@ -119,7 +121,7 @@ contains
   end subroutine get_seedname
 
   subroutine get_mmn(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, &
-                     eigval, mmn, error, comm, orb_o)
+                     eigval, mmn, H_o, error, comm)
     !================================================!
     !
     !! read MMN matrix from seedname.mmn
@@ -138,16 +140,17 @@ contains
     integer, intent(in) :: num_bands, num_kpts, num_wann
     real(kind=dp), intent(in) :: eigval(:, :)
     complex(kind=dp), allocatable, intent(inout) :: mmn(:, :, :, :)
+    complex(kind=dp), allocatable, intent(inout) :: H_o(:, :, :)
     ! <u_mk|u_nk+b> m, n, nntot, k
-    complex(kind=dp), allocatable, intent(inout) :: orb_o(:, :, :, :, :)
-    complex(kind=dp), allocatable :: S_o(:, :), H_o(:, :, :)
+    ! complex(kind=dp), allocatable, intent(inout) :: orb_o(:, :, :, :, :)
+    complex(kind=dp), allocatable :: S_o(:, :)
     real(kind=dp) :: c_real, c_imag
     integer :: tmp_bands, tmp_kpts, tmp_nntot
     integer :: ik, ik2, nnl, nnm, nnn, nn, inn, m, n, nn1, nn2
     integer :: ncount
     logical :: nn_found
 
-    write(stdout, '(1x,a)', advance='no') "Reading mmn ..."
+    write(stdout, '(1x,a)', advance='no') "Reading <u_k|u_k+b> from "//trim(seedname)//".mmn ..."
     open(newunit=iun_mmn, file=trim(seedname)//".mmn", &
         form='formatted', status='old', action='read')
     read(iun_mmn, *) header
@@ -238,31 +241,31 @@ contains
     
     close(iun_mmn)
     ! reading done
-    write(stdout, '(1x,a)') "Done"
+    write(stdout, '(1x,a/)') "Done"
 
     ! i <\nabla u_m | u_t >< u_t | \nabla H | u_n >
     !~i <\nabla u_m | u_t >(< u_t | Hk+b | u_nk+b > - < u_t | Hk | u_nk+b >)
     !=i <\nabla u_m | u_t >(M*H_k+b - H_k*M)
     !=i M^+ * (M*H_k+b - H_k*M)
-    do ik = 1, num_kpts
-      do nn2 = 1, kmesh_info%nntot
-        S_o = mmn(:, :, nn2, ik)
-        do nn1 = 1, kmesh_info%nntot
-          orb_o(:, :, nn1, nn2, ik) = cmplx_i * matmul( &
-            conjg(transpose(mmn(:, :, nn1, ik))), &
-            (matmul(S_o, H_o(:, :, kmesh_info%nnlist(ik, nn2))) - &
-             matmul(H_o(:, :, ik), S_o)) &
-          )
-        enddo
-      enddo
-    enddo
+    ! do ik = 1, num_kpts
+    !   do nn2 = 1, kmesh_info%nntot
+    !     S_o = mmn(:, :, nn2, ik)
+    !     do nn1 = 1, kmesh_info%nntot
+    !       orb_o(:, :, nn1, nn2, ik) = cmplx_i * matmul( &
+    !         conjg(transpose(mmn(:, :, nn1, ik))), &
+    !         ! (matmul(S_o, H_o(:, :, kmesh_info%nnlist(ik, nn2))) - &
+    !         (matmul(S_o, H_o(:, :, ik)) - &
+    !          matmul(H_o(:, :, ik), S_o)) &
+    !       )
+    !     enddo
+    !   enddo
+    ! enddo
     deallocate(S_o)
-    deallocate(mmn)
-    write(stdout, '(1x,a)') "mmn matrix processed"
+    ! deallocate(mmn)
   end subroutine get_mmn
 
   subroutine get_uHu(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, formatted, &
-                     eigval, uhu, error, comm, orb_o)
+                     eigval, uhu, error, comm)
     !================================================!
     !
     !! read uHu matrix from seedname.uHu
@@ -283,13 +286,13 @@ contains
     logical, intent(in) :: formatted
     complex(kind=dp), allocatable, intent(inout) :: uhu(:, :, :, :, :)
     ! <\nabla u_m| H |\nabla u_n> m, n, nntot, nntot, ik
-    complex(kind=dp), allocatable, intent(inout) :: orb_o(:, :, :, :, :)
+    ! complex(kind=dp), allocatable, intent(inout) :: orb_o(:, :, :, :, :)
     complex(kind=dp), allocatable :: Ho_qb1_q_qb2(:, :)
     real(kind=dp) :: c_real, c_imag
     integer :: tmp_bands, tmp_kpts, tmp_nntot
     integer :: ik, nn1, nn2, m, n
 
-    write(stdout, '(1x,a)', advance='no') "Reading uHu ..."
+    write(stdout, '(1x,a)', advance='no') "Reading <u_k+b1|H|u_k+b2> from "//trim(seedname)//".uHu ..."
     if (formatted) then
       open(newunit=iun_uHu, file=trim(seedname)//".uHu", &
           form='formatted', status='old', action='read')
@@ -344,20 +347,21 @@ contains
               ((Ho_qb1_q_qb2(n, m), n=1, num_bands), m=1, num_bands)
           endif
           Ho_qb1_q_qb2 = transpose(Ho_qb1_q_qb2)
-          orb_o(:, :, nn1, nn2, ik) = Ho_qb1_q_qb2
-          orb_o(:, :, nn1, nn2, ik) = orb_o(:, :, nn1, nn2, ik) + &
-                                      cmplx_i * Ho_qb1_q_qb2
+          uhu(:, :, nn1, nn2, ik) = Ho_qb1_q_qb2(:, :)
+          ! orb_o(:, :, nn1, nn2, ik) = Ho_qb1_q_qb2
+          ! orb_o(:, :, nn1, nn2, ik) = orb_o(:, :, nn1, nn2, ik) + &
+          !                             cmplx_i * Ho_qb1_q_qb2
         enddo ! nn1
       enddo ! nn2
     enddo ! ik
     close(iun_uHu)
-    write(stdout, '(1x,a)') "Done"
+    write(stdout, '(1x,a/)') "Done"
     deallocate(Ho_qb1_q_qb2)
-    deallocate(uhu)
+    ! deallocate(uhu)
   end subroutine get_uHu
 
   subroutine get_uIu(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, formatted, &
-                     eigval, uiu, error, comm, orb_o)
+                     eigval, uiu, error, comm)
     !================================================!
     !
     !! read uIu matrix from seedname.uIu
@@ -379,13 +383,13 @@ contains
     logical, intent(in) :: formatted
     complex(kind=dp), allocatable, intent(inout) :: uiu(:, :, :, :, :)
     ! <\nabla u_m| H \nabla|u_n> m, n, idir1, idir2, ik
-    complex(kind=dp), allocatable, intent(inout) :: orb_o(:, :, :, :, :)
+    ! complex(kind=dp), allocatable, intent(inout) :: orb_o(:, :, :, :, :)
     complex(kind=dp), allocatable :: Lo_qb1_q_qb2(:, :)
     real(kind=dp) :: c_real, c_imag, temp
     integer :: tmp_bands, tmp_kpts, tmp_nntot
     integer :: ik, nn1, nn2, m, n, qb1, qb2
 
-    write(stdout, '(1x,a)', advance='no') "Reading uIu ..."
+    write(stdout, '(1x,a)', advance='no') "Reading <u_k+b1|u_k+b2> from "//trim(seedname)//".uIu ..."
     if (formatted) then
       open(newunit=iun_uIu, file=trim(seedname)//".uIu", &
           form='formatted', status='old', action='read')
@@ -444,30 +448,241 @@ contains
           endif
           Lo_qb1_q_qb2 = transpose(Lo_qb1_q_qb2)
           uiu(:, :, nn1, nn2, ik) = Lo_qb1_q_qb2(:, :)
-          do m = 1, num_bands
-            do n = 1, num_bands
-              Lo_qb1_q_qb2(n, m) = eigval(m, qb2) * Lo_qb1_q_qb2(n, m)
-            enddo
-          enddo
-          orb_o(:, :, nn1, nn2, ik) = orb_o(:, :, nn1, nn2, ik) - cmplx_i * Lo_qb1_q_qb2(:, :)
+          ! do m = 1, num_bands
+          !   do n = 1, num_bands
+          !     ! Lo_qb1_q_qb2(n, m) = eigval(m, qb2) * Lo_qb1_q_qb2(n, m)
+          !     Lo_qb1_q_qb2(n, m) = eigval(m, ik) * Lo_qb1_q_qb2(n, m)
+          !   enddo
+          ! enddo
+          ! orb_o(:, :, nn1, nn2, ik) = orb_o(:, :, nn1, nn2, ik) - cmplx_i * Lo_qb1_q_qb2(:, :)
         enddo ! nn1
       enddo ! nn2
     enddo ! ik
     close(iun_uIu)
-    write(stdout, '(1x,a)') "Done"
+    write(stdout, '(1x,a/)') "Done"
     deallocate(Lo_qb1_q_qb2)
-    deallocate(uiu)
+    ! deallocate(uiu)
   end subroutine get_uIu
 
 
-  subroutine calc_orb(stdout, num_bands, num_kpts, num_wann, kmesh_info, dis_manifold, have_disentangled, &
-                      eigval, v_matrix, orb, orb_o, error, comm)
+  ! subroutine calc_orb(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_manifold, have_disentangled, &
+  !                     eigval, v_matrix, orb_o, mmn, uhu, uiu, method, error, comm)
+  !   !================================================!
+  !   !
+  !   !! calculate orbital matrix
+  !   !
+  !   !================================================!
+  !   ! only run on root node
+  !   use w90_io, only: io_date
+
+  !   implicit none
+
+  !   type(w90_comm_type), intent(in) :: comm
+  !   type(w90_error_type), allocatable, intent(out) :: error
+  !   type(kmesh_info_type), intent(in) :: kmesh_info
+  !   type(dis_manifold_type), intent(in) :: dis_manifold
+    
+  !   integer, intent(in) :: stdout
+  !   character(len=50), intent(inout) :: seedname
+  !   integer, intent(in) :: num_bands, num_kpts, num_wann
+  !   logical, intent(in) :: have_disentangled
+  !   logical, intent(in) :: method
+  !   real(kind=dp), intent(in) :: eigval(:, :)
+  !   complex(kind=dp), allocatable, intent(in) :: v_matrix(:, :, :)
+  !   complex(kind=dp), allocatable, intent(in) :: orb_o(:, :, :, :, :)
+  !   complex(kind=dp), allocatable, intent(inout) :: mmn(:, :, :, :)
+  !   complex(kind=dp), allocatable, intent(inout) :: uiu(:, :, :, :, :)
+  !   ! <\nabla u_m| \nabla u_n> m, n, idir1, idir2, ik
+  !   complex(kind=dp), allocatable, intent(inout) :: uhu(:, :, :, :, :)
+  !   ! <\nabla u_m| H |\nabla u_n> m, n, idir1, idir2, ik
+  !   complex(kind=dp), allocatable :: orb_ab(:, :, :, :), orb_ab_k(:, :)
+  !   complex(kind=dp), allocatable :: orb_ab_h(:, :, :, :), orb_h_w_k(:, :, :), orb_h_w2o_k(:, :, :)
+  !   complex(kind=dp), allocatable :: orb_ab_uiu(:, :, :, :, :), orb_uiu_w_k(:, :, :, :), orb_uiu_w2o_k(:, :, :, :)
+  !   complex(kind=dp), allocatable :: orb_ab_uhu(:, :, :, :, :), orb_uhu_w_k(:, :, :, :), orb_uhu_w2o_k(:, :, :, :)
+  !   complex(kind=dp), allocatable :: orb_w_k(:, :, :), orb_w2o_k(:, :, :)
+  !   complex(kind=dp), allocatable :: vdag_orb_k(:, :)
+  !   integer, allocatable :: num_states(:)
+  !   integer :: ik, m, n, idir1, idir2, nn1, nn2, nn3, qb1, qb2
+
+  !   integer, dimension(3), parameter :: alpha_A = (/2, 3, 1/)
+  !   integer, dimension(3), parameter :: beta_A = (/3, 1, 2/)
+  !   real(kind=dp), parameter :: fac = 3.674932379e-2_dp / (0.52917721092_dp)**2
+
+  !   character(len=60) header
+  !   character(len=9) cdate, ctime
+  !   call io_date(cdate, ctime)
+  !   header = 'Created on ' // cdate // ' at ' // ctime
+    
+  !   allocate(num_states(num_kpts))
+  !   do ik = 1, num_kpts
+  !     if (have_disentangled) then
+  !       num_states(ik) = dis_manifold%ndimwin(ik)
+  !     else
+  !       num_states(ik) = num_wann
+  !     endif
+  !   enddo
+
+  !   open (newunit=iun_orb, file=trim(seedname)//'.orb.fmt', form='formatted', status='replace', position='rewind')
+  !   write(iun_orb, *) header
+  !   write(iun_orb, *) num_bands, num_kpts
+  !   !
+  !   if (.not. method) then
+  !     open (newunit=iun_sIu, file=trim(seedname)//'.sIu', form='unformatted', status='replace', position='rewind')
+  !     write(iun_sIu) header
+  !     write(iun_sIu) num_bands, num_kpts, kmesh_info%nntot
+
+  !     open (newunit=iun_sHu, file=trim(seedname)//'.sHu', form='unformatted', status='replace', position='rewind')
+  !     write(iun_sHu) header
+  !     write(iun_sHu) num_bands, num_kpts, kmesh_info%nntot
+
+  !     open (newunit=iun_sH, file=trim(seedname)//'.sH', form='unformatted', status='replace', position='rewind')
+  !     write(iun_sH) header
+  !     write(iun_sH) num_bands, num_kpts
+  !   endif
+  !   !
+  !   if (allocated(orb_w_k)) then
+  !     call set_error_input(error, 'Error: orb matrix has been allocated before calculated', comm)
+  !     return
+  !   endif
+  !   allocate(orb_w_k(num_wann, num_wann, 3), orb_w2o_k(num_bands, num_bands, 3), stat=ierr)
+  !   if (ierr /= 0) then
+  !     call set_error_alloc(error, 'Error in allocating orb_w_k or orb_w2o_k in calc_orb', comm)
+  !     return
+  !   endif
+  !   allocate(orb_ab(num_wann, num_wann, 3, 3), orb_ab_k(num_wann, num_wann), stat=ierr)
+  !   if (ierr /= 0) then
+  !     call set_error_alloc(error, 'Error in allocating orb_ab or orb_ab_k in calc_orb', comm)
+  !     return
+  !   endif
+
+  !   if (.not. method) then
+  !     allocate(orb_ab_uiu(num_wann, num_bands, 3, 3, kmesh_info%nntot), &
+  !              orb_uiu_w_k(num_wann, num_bands, 3, kmesh_info%nntot), &
+  !              orb_uiu_w2o_k(num_bands, num_bands, 3, kmesh_info%nntot), stat=ierr)
+  !     allocate(orb_ab_uhu(num_wann, num_bands, 3, 3, kmesh_info%nntot), &
+  !              orb_uhu_w_k(num_wann, num_bands, 3, kmesh_info%nntot), &
+  !              orb_uhu_w2o_k(num_bands, num_bands, 3, kmesh_info%nntot), stat=ierr)
+  !     allocate(orb_ab_h(num_wann, num_bands, 3, 3), &
+  !              orb_h_w_k(num_wann, num_bands, 3), &
+  !              orb_h_w2o_k(num_bands, num_bands, 3), stat=ierr)
+  !     allocate(vdag_orb_k(num_wann, num_bands), stat=ierr)
+  !     orb_ab_uhu = cmplx_0
+  !     orb_ab_uiu = cmplx_0
+  !     orb_ab_h = cmplx_0
+  !   endif
+  !   orb_w_k = cmplx_0
+
+  !   do ik = 1, num_kpts
+  !     orb_ab = cmplx_0
+  !     if (.not. method) then
+  !       orb_ab_uhu = cmplx_0
+  !       orb_ab_uiu = cmplx_0
+  !       orb_ab_h = cmplx_0
+  !       do n = 1, num_bands
+  !         mmn(n, :, :, ik) = eigval(n, ik) * mmn(n, :, :, ik)
+  !       enddo
+  !     endif
+  !     do nn2 = 1, kmesh_info%nntot
+  !       qb2 = kmesh_info%nnlist(ik, nn2)
+  !       do nn1 = 1, kmesh_info%nntot
+  !         qb1 = kmesh_info%nnlist(ik, nn1)
+  !         orb_ab_k = cmplx_0
+  !         call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
+  !                                       qb1, num_states(qb1), qb2, num_states(qb2), &
+  !                                       orb_o(:, :, nn1, nn2, ik), have_disentangled, orb_ab_k)
+  !         if (.not. method) then
+  !           vdag_orb_k = matmul(conjg(transpose(v_matrix(:, :, qb1))), orb_o(:, :, nn1, nn2, ik))
+  !         endif
+  !         do idir2 = 1, 3
+  !           do idir1 = 1, 3
+  !             orb_ab(:, :, idir1, idir2) = orb_ab(:, :, idir1, idir2) + &
+  !                                           kmesh_info%wb(nn1)*kmesh_info%bk(idir1, nn1, ik)* &
+  !                                           kmesh_info%wb(nn2)*kmesh_info%bk(idir2, nn2, ik)*orb_ab_k(:, :)
+  !             if (.not. method) then
+  !               orb_ab_h(:, :, idir1, idir2) = orb_ab_h(:, :, idir1, idir2) + &
+  !                                              kmesh_info%wb(nn1)*kmesh_info%bk(idir1, nn1, ik)* &
+  !                                              kmesh_info%wb(nn2)*kmesh_info%bk(idir2, nn2, ik)* &
+  !                                              matmul(vdag_orb_k, conjg(transpose(mmn(:, :, nn2, ik))))
+  !               do nn3 = 1, kmesh_info%nntot
+  !                 orb_ab_uiu(:, :, idir1, idir2, nn3) = orb_ab_uiu(:, :, idir1, idir2, nn3) + &
+  !                                                       kmesh_info%wb(nn1)*kmesh_info%bk(idir1, nn1, ik)* &
+  !                                                       kmesh_info%wb(nn2)*kmesh_info%bk(idir2, nn2, ik)* &
+  !                                                       matmul(vdag_orb_k, uiu(:, :, nn2, nn3, ik))
+  !                 orb_ab_uhu(:, :, idir1, idir2, nn3) = orb_ab_uhu(:, :, idir1, idir2, nn3) + &
+  !                                                       kmesh_info%wb(nn1)*kmesh_info%bk(idir1, nn1, ik)* &
+  !                                                       kmesh_info%wb(nn2)*kmesh_info%bk(idir2, nn2, ik)* &
+  !                                                       matmul(vdag_orb_k, uhu(:, :, nn2, nn3, ik))
+  !               enddo
+  !             endif ! method
+  !           enddo ! idir1
+  !         enddo ! idir2
+  !       enddo ! nn1
+  !     enddo ! nn2
+  !     orb_w2o_k = cmplx_0
+  !     do idir1 = 1, 3
+  !       orb_w_k(:, :, idir1) = orb_ab(:, :, alpha_A(idir1), beta_A(idir1)) - orb_ab(:, :, beta_A(idir1), alpha_A(idir1))
+  !       orb_w_k(:, :, idir1) = fac * (orb_w_k(:, :, idir1) + conjg(transpose(orb_w_k(:, :, idir1))))
+  !       orb_w2o_k(:, :, idir1) = matmul(v_matrix(:, :, ik), matmul(orb_w_k(:, :, idir1), conjg(transpose(v_matrix(:, :, ik)))))
+  !       !
+  !       if (.not. method) then
+  !         orb_h_w_k(:, :, idir1) = orb_ab_h(:, :, alpha_A(idir1), beta_A(idir1)) - &
+  !                                  orb_ab_h(:, :, beta_A(idir1), alpha_A(idir1))
+  !         orb_h_w2o_k(:, :, idir1) = 2 * fac * matmul(v_matrix(:, :, ik), orb_h_w_k(:, :, idir1))
+  !         do nn3 = 1, kmesh_info%nntot
+  !           orb_uiu_w_k(:, :, idir1, nn3) = orb_ab_uiu(:, :, alpha_A(idir1), beta_A(idir1), nn3) - &
+  !                                           orb_ab_uiu(:, :, beta_A(idir1), alpha_A(idir1), nn3)
+  !           orb_uiu_w2o_k(:, :, idir1, nn3) = 2 * fac * matmul(v_matrix(:, :, ik), orb_uiu_w_k(:, :, idir1, nn3))
+  !           orb_uhu_w_k(:, :, idir1, nn3) = orb_ab_uhu(:, :, alpha_A(idir1), beta_A(idir1), nn3) - &
+  !                                           orb_ab_uhu(:, :, beta_A(idir1), alpha_A(idir1), nn3)
+  !           orb_uhu_w2o_k(:, :, idir1, nn3) = 2 * fac * matmul(v_matrix(:, :, ik), orb_uhu_w_k(:, :, idir1, nn3))
+  !         enddo
+  !       endif
+  !       !
+  !     enddo ! idir1
+
+  !     do m = 1, num_bands
+  !       do n = 1, m
+  !         do idir1 = 1, 3
+  !           write(iun_orb, '(2es26.16)') orb_w2o_k(n, m, idir1)
+  !         enddo ! idir1
+  !       enddo
+  !     enddo
+  !     !
+  !     if (.not. method) then
+  !       do idir1 = 1, 3
+  !         write(iun_sH) ((orb_h_w2o_k(n, m, idir1), n=1, num_bands), m=1, num_bands)
+  !       enddo
+  !       do nn3 = 1, kmesh_info%nntot
+  !         do idir1 = 1, 3
+  !           ! transpose here
+  !           write(iun_sIu) ((orb_uiu_w2o_k(n, m, idir1, nn3), m=1, num_bands), n=1, num_bands)
+  !           write(iun_sHu) ((orb_uiu_w2o_k(n, m, idir1, nn3), m=1, num_bands), n=1, num_bands)
+  !         enddo
+  !       enddo
+  !     endif
+  !     !
+  !   enddo ! ik
+  !   deallocate(orb_w_k, orb_w2o_k, orb_ab, orb_ab_k)
+  !   if (.not. method) deallocate(orb_uiu_w2o_k, orb_uiu_w_k, orb_ab_uiu)
+  !   if (.not. method) deallocate(orb_uhu_w2o_k, orb_uhu_w_k, orb_ab_uhu)
+  !   if (.not. method) deallocate(orb_h_w2o_k, orb_h_w_k, orb_ab_h)
+  !   close(iun_orb)
+  !   if (.not. method) close(iun_sIu)
+  !   if (.not. method) close(iun_sHu)
+  !   if (.not. method) close(iun_sH)
+  !   deallocate(uiu, uhu, mmn)
+  ! end subroutine
+
+    subroutine calc_orb_gh(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_manifold, have_disentangled, &
+                           eigval, H_o, mmn, uhu, uiu, method, error, comm)
     !================================================!
     !
     !! calculate orbital matrix
     !
     !================================================!
     ! only run on root node
+    use w90_io, only: io_date
+
     implicit none
 
     type(w90_comm_type), intent(in) :: comm
@@ -476,125 +691,168 @@ contains
     type(dis_manifold_type), intent(in) :: dis_manifold
     
     integer, intent(in) :: stdout
+    character(len=50), intent(inout) :: seedname
     integer, intent(in) :: num_bands, num_kpts, num_wann
     logical, intent(in) :: have_disentangled
+    logical, intent(in) :: method
     real(kind=dp), intent(in) :: eigval(:, :)
-    complex(kind=dp), allocatable, intent(in) :: v_matrix(:, :, :)
-    complex(kind=dp), allocatable, intent(inout) :: orb(:, :, :, :)
-    complex(kind=dp), allocatable, intent(in) :: orb_o(:, :, :, :, :)
-    complex(kind=dp), allocatable :: orb_ab(:, :, :, :), orb_ab_k(:, :)
-    integer, allocatable :: num_states(:)
-    integer :: ik, m, n, t, idir1, idir2, nn1, nn2, qb1, qb2, a, b
+    complex(kind=dp), allocatable, intent(inout) :: H_o(:, :, :)
+    complex(kind=dp), allocatable, intent(inout) :: mmn(:, :, :, :)
+    complex(kind=dp), allocatable, intent(inout) :: uiu(:, :, :, :, :)
+    ! <\nabla u_m| \nabla u_n> m, n, idir1, idir2, ik
+    complex(kind=dp), allocatable, intent(inout) :: uhu(:, :, :, :, :)
+    ! <\nabla u_m| H |\nabla u_n> m, n, idir1, idir2, ik
+    complex(kind=dp), allocatable :: orb_g(:, :), orb_h(:, :)
+    ! m, n
+    complex(kind=dp), allocatable :: orb_ab(:, :, :, :)
+    ! convert orb_g and orb_h to orb_ab where a,b = x, y, z
+    ! m, n
+    complex(kind=dp), allocatable :: orb_o(:, :, :)
+    ! cross product orb_ab into orb_o
+    ! m, n, idir1
+
+    ! temp variables below here
+    complex(kind=dp), allocatable :: mmn_b1(:, :), mmn_b2(:, :)
+    integer :: ik, m, n, idir1, idir2, nn1, nn2
 
     integer, dimension(3), parameter :: alpha_A = (/2, 3, 1/)
     integer, dimension(3), parameter :: beta_A = (/3, 1, 2/)
     real(kind=dp), parameter :: fac = 3.674932379e-2_dp / (0.52917721092_dp)**2
 
-    allocate(num_states(num_kpts))
-    do ik = 1, num_kpts
-      if (have_disentangled) then
-        num_states(ik) = dis_manifold%ndimwin(ik)
-      else
-        num_states(ik) = num_wann
-      endif
-    enddo
+    character(len=60) header
+    character(len=9) cdate, ctime
 
-    if (allocated(orb)) then
-      call set_error_input(error, 'Error: orb_o matrix has been allocated before calculated', comm)
-      return
-    endif
-    allocate(orb(num_wann, num_wann, 3, num_kpts), stat=ierr)
+
+    call io_date(cdate, ctime)
+    header = 'Created on ' // cdate // ' at ' // ctime
+
+    open (newunit=iun_orb, file=trim(seedname)//'.orb.fmt', form='formatted', status='replace', position='rewind')
+    write(iun_orb, *) header
+    write(iun_orb, *) num_bands, num_kpts
+
+    allocate(mmn_b1(num_bands, num_bands),mmn_b2(num_bands, num_bands))
+    mmn_b1 = cmplx_0
+    mmn_b2 = cmplx_0
+
+    allocate(orb_g(num_bands, num_bands), &
+             orb_h(num_bands, num_bands), stat=ierr)
     if (ierr /= 0) then
-      call set_error_alloc(error, 'Error in allocating orb_o in calc_orb', comm)
+      call set_error_alloc(error, 'Error in allocating orb_g or orb_h in calc_orb_gh', comm)
       return
     endif
-    allocate(orb_ab(num_wann, num_wann, 3, 3), stat=ierr)
-    allocate(orb_ab_k(num_wann, num_wann), stat=ierr)
-    orb = cmplx_0
+    orb_g = cmplx_0
+    orb_h = cmplx_0
+
+    allocate(orb_ab(num_bands, num_bands, 3, 3), &
+             orb_o(num_bands, num_bands, 3), stat=ierr)
+    if (ierr /= 0) then
+      call set_error_alloc(error, 'Error in allocating orb_ab or orb_o in calc_orb_gh', comm)
+      return
+    endif
 
     do ik = 1, num_kpts
+      orb_g = cmplx_0
+      orb_h = cmplx_0
       orb_ab = cmplx_0
       do nn2 = 1, kmesh_info%nntot
-        qb2 = kmesh_info%nnlist(ik, nn2)
+        mmn_b2(:, :) = mmn(:, :, nn2, ik)
         do nn1 = 1, kmesh_info%nntot
-          qb1 = kmesh_info%nnlist(ik, nn1)
-          orb_ab_k = cmplx_0
-          call get_gauge_overlap_matrix(num_bands, num_wann, eigval, v_matrix, dis_manifold, &
-                                        qb1, num_states(qb1), qb2, num_states(qb2), &
-                                        orb_o(:, :, nn1, nn2, ik), have_disentangled, orb_ab_k)
+          mmn_b1(:, :) = mmn(:, :, nn1, ik)
+          ! <k+b1 | H | k+b2> - <k+b1 | k> <k | H | k> <k | k+b2>
+          orb_g(:, :) = uhu(:, :, nn1, nn2, ik) - &
+                                  matmul(conjg(transpose(mmn_b1)), &
+                                  matmul(H_o(:, :, ik), mmn_b2))
+          orb_g(:, :) = cmplx_i * matmul(mmn_b1, matmul(orb_g(:, :), conjg(transpose(mmn_b2))))
+          orb_h(:, :) = uiu(:, :, nn1, nn2, ik) - &
+                        matmul(conjg(transpose(mmn_b1)), mmn_b2)
+          orb_h(:, :) = cmplx_i * matmul(mmn_b1, matmul(orb_h(:, :), conjg(transpose(mmn_b2))))
+          orb_h(:, :) = matmul(orb_h, H_o(:, :, ik))
           do idir2 = 1, 3
             do idir1 = 1, 3
               orb_ab(:, :, idir1, idir2) = orb_ab(:, :, idir1, idir2) + &
                                             kmesh_info%wb(nn1)*kmesh_info%bk(idir1, nn1, ik)* &
-                                            kmesh_info%wb(nn2)*kmesh_info%bk(idir2, nn2, ik)*orb_ab_k(:, :)
+                                            kmesh_info%wb(nn2)*kmesh_info%bk(idir2, nn2, ik)* &
+                                            (orb_g(:, :) - orb_h(:, :))
             enddo ! idir1
           enddo ! idir2
         enddo ! nn1
       enddo ! nn2
+      orb_o = cmplx_0
       do idir1 = 1, 3
-        orb(:, :, idir1, ik) = orb_ab(:, :, alpha_A(idir1), beta_A(idir1)) - orb_ab(:, :, beta_A(idir1), alpha_A(idir1))
-        orb(:, :, idir1, ik) = fac * (orb(:, :, idir1, ik) + conjg(transpose(orb(:, :, idir1, ik))))
-      enddo
-    enddo ! ik
-    deallocate(orb_ab, orb_ab_k)
-  end subroutine
+        orb_o(:, :, idir1) = orb_ab(:, :, alpha_A(idir1), beta_A(idir1)) - orb_ab(:, :, beta_A(idir1), alpha_A(idir1))
+        orb_o(:, :, idir1) = fac * (orb_o(:, :, idir1) + conjg(transpose(orb_o(:, :, idir1))))
+        !
+      enddo ! idir1
 
-  subroutine output_orb_formatted(stdout, seedname, num_bands, num_kpts, num_wann, orb, v_matrix)
-    !================================================!
-    !
-    !! write orbital matrix to seedname.orb.fmt
-    !
-    !================================================!
-    ! only run on root node
-    use w90_io, only: io_date
-
-    implicit none
-    
-    integer, intent(in) :: stdout
-    character(len=50), intent(inout) :: seedname
-    integer, intent(in) :: num_bands, num_kpts, num_wann
-    complex(kind=dp), allocatable, intent(inout) :: orb(:, :, :, :)
-    ! m, n, idir, ik
-    complex(kind=dp), allocatable, intent(inout) :: v_matrix(:, :, :)
-    ! num_bands, num_wann, ik
-    complex(kind=dp), allocatable :: orb_o_k(:, :, :)
-    integer :: ik, m, n, idir
-    character(len=60) header
-    character(len=9) cdate, ctime
-    call io_date(cdate, ctime)
-    header = 'Created on ' // cdate // ' at ' // ctime
-
-    write (stdout, '(3a)') 'Writing information to formatted file ', trim(seedname), '.orb.fmt :'
-
-    open (newunit=iun_orb, file=trim(seedname)//'.orb.fmt', form='formatted', status='replace', position='rewind')
-    allocate(orb_o_k(num_bands, num_bands, 3))
-
-    write(iun_orb, *) header
-    write(iun_orb, *) num_bands, num_kpts
-    do ik = 1, num_kpts
-      orb_o_k = cmplx_0
-      do idir = 1, 3
-        orb_o_k(:, :, idir) = matmul(v_matrix(:, :, ik), matmul(orb(:, :, idir, ik), conjg(transpose(v_matrix(:, :, ik)))))
-      enddo
       do m = 1, num_bands
         do n = 1, m
-          do idir = 1, 3
-            write(iun_orb, '(2es26.16)') orb_o_k(n, m, idir)
-          enddo
+          do idir1 = 1, 3
+            write(iun_orb, '(2es26.16)') orb_o(n, m, idir1)
+          enddo ! idir1
         enddo
       enddo
-    enddo
+    enddo ! ik
+    deallocate(orb_g, orb_h, orb_ab, orb_o)
     close(iun_orb)
-
+    deallocate(uiu, uhu, mmn, H_o)
   end subroutine
+
+  ! subroutine output_orb_formatted(stdout, seedname, num_bands, num_kpts, num_wann, orb, v_matrix)
+  !   !================================================!
+  !   !
+  !   !! write orbital matrix to seedname.orb.fmt
+  !   !
+  !   !================================================!
+  !   ! only run on root node
+  !   use w90_io, only: io_date
+
+  !   implicit none
+    
+  !   integer, intent(in) :: stdout
+  !   character(len=50), intent(inout) :: seedname
+  !   integer, intent(in) :: num_bands, num_kpts, num_wann
+  !   complex(kind=dp), allocatable, intent(inout) :: orb(:, :, :, :)
+  !   ! m, n, idir, ik
+  !   complex(kind=dp), allocatable, intent(inout) :: v_matrix(:, :, :)
+  !   ! num_bands, num_wann, ik
+  !   complex(kind=dp), allocatable :: orb_o_k(:, :, :)
+  !   integer :: ik, m, n, idir
+  !   character(len=60) header
+  !   character(len=9) cdate, ctime
+  !   call io_date(cdate, ctime)
+  !   header = 'Created on ' // cdate // ' at ' // ctime
+
+  !   write (stdout, '(1x,a)', advance='no') "Writing information to formatted file "//trim(seedname)//".orb.fmt ..."
+
+  !   open (newunit=iun_orb, file=trim(seedname)//'.orb.fmt', form='formatted', status='replace', position='rewind')
+  !   allocate(orb_o_k(num_bands, num_bands, 3))
+
+  !   write(iun_orb, *) header
+  !   write(iun_orb, *) num_bands, num_kpts
+  !   do ik = 1, num_kpts
+  !     orb_o_k = cmplx_0
+  !     do idir = 1, 3
+  !       orb_o_k(:, :, idir) = matmul(v_matrix(:, :, ik), matmul(orb(:, :, idir, ik), conjg(transpose(v_matrix(:, :, ik)))))
+  !     enddo
+  !     do m = 1, num_bands
+  !       do n = 1, m
+  !         do idir = 1, 3
+  !           write(iun_orb, '(2es26.16)') orb_o_k(n, m, idir)
+  !         enddo ! idir
+  !       enddo
+  !     enddo
+  !   enddo
+  !   close(iun_orb)
+  !   write (stdout, '(1x,a/)') "Done"
+
+  ! end subroutine
 end module get_orb
 
 
 program w90genorb
   !! Program to convert spn files from formatted to unformmated
   use w90_constants, only: dp, cmplx_0, pw90_physical_constants_type
-  use get_orb, only: get_seedname, get_mmn, get_uHu, get_uIu, & ! calc_del,
-    calc_orb, output_orb_formatted
+  use get_orb, only: get_seedname, get_mmn, get_uHu, get_uIu, calc_orb_gh
   use w90_error
   use w90_io
   use w90_types
@@ -677,7 +935,7 @@ program w90genorb
   ! m_matrix we store here, becuase it is needed for restart of wannierise
   complex(kind=dp), allocatable :: u_matrix(:, :, :)
   real(kind=dp) :: scissors_shift
-  complex(kind=dp), allocatable :: v_matrix(:, :, :), dv(:, :, :, :)
+  complex(kind=dp), allocatable :: v_matrix(:, :, :)
   character(len=20) :: checkpoint
   real(kind=dp) :: omega_invariant
   type(kpoint_dist_type) :: kpt_dist
@@ -697,19 +955,14 @@ program w90genorb
   type(ws_distance_type) :: ws_distance
   type(pw90_calculation_type) :: pw90_calcs
 
-  complex(kind=dp), allocatable :: orb_o(:, :, :, :, :)
-  ! orbital matrix in <u_mk+b1|...|u_nk+b2> format
-  ! m, n, nntot, nntot, k
+  complex(kind=dp), allocatable :: H_o(:, :, :)
   complex(kind=dp), allocatable :: mmn(:, :, :, :)
   ! <u_mk|u_nk+b> m, n, nntot, k
   complex(kind=dp), allocatable :: uhu(:, :, :, :, :)
   ! <\nabla u_m| H \nabla|u_n> m, n, idir1, idir2, ik
   complex(kind=dp), allocatable :: uiu(:, :, :, :, :)
   ! <\nabla u_m| \nabla|u_n> m, n, idir1, idir2, ik
-  complex(kind=dp), allocatable :: orb(:, :, :, :)
-  ! m, n, idir, ik
-  integer :: i, j, k, idir
-  complex(kind=dp), allocatable :: temp(:, :, :)
+  ! complex(kind=dp), allocatable :: temp(:, :, :)
 
 
 #ifdef MPI
@@ -815,31 +1068,35 @@ program w90genorb
 
     end if
     ! call calc_del(stdout, num_bands, num_wann, num_kpts, v_matrix, dv, eigval, del_eig, kmesh_info, error, comm)
-    allocate(orb_o(num_bands, num_bands, kmesh_info%nntot, kmesh_info%nntot, num_kpts), stat=ierr)
-    if (ierr /= 0) then
-      call set_error_alloc(error, 'Error in allocating rpv in get_mmn', comm)
-      return
-    endif
-    orb_o = cmplx_0
+
+    call io_stopwatch_start('process mmn matrix', timer)
     call get_mmn(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, &
-                 eigval, mmn ,error, comm, orb_o)
+                 eigval, mmn, H_o ,error, comm)
     if (allocated(error)) call print_error_halt(error, ierr, stdout, stderr, comm)
+    call io_stopwatch_stop('process mmn matrix', timer)
 
+    call io_stopwatch_start('process uHu matrix', timer)
     call get_uHu(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, formatted, &
-                 eigval, uhu ,error, comm, orb_o)
+                 eigval, uhu ,error, comm)
     if (allocated(error)) call print_error_halt(error, ierr, stdout, stderr, comm)
+    call io_stopwatch_stop('process uHu matrix', timer)
 
+    call io_stopwatch_start('process uIu matrix', timer)
     call get_uIu(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, formatted, &
-                 eigval, uiu ,error, comm, orb_o)
+                 eigval, uiu ,error, comm)
     if (allocated(error)) call print_error_halt(error, ierr, stdout, stderr, comm)
+    call io_stopwatch_stop('process uIu matrix', timer)
 
     ! allocate(temp(num_bands, num_bands, 3))
 
-    call calc_orb(stdout, num_bands, num_kpts, num_wann, kmesh_info, dis_window, have_disentangled,&
-                  eigval, v_matrix, orb, orb_o, error, comm)
-    call output_orb_formatted(stdout, seedname, num_bands, num_kpts, num_wann, orb, v_matrix)
-    if (allocated(orb)) deallocate(orb)
-    write(stdout, '(1x,a)') "TEST exiting..."
+    call io_stopwatch_start('calculate orb matrix', timer)
+    call calc_orb_gh(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_window, have_disentangled,&
+                     eigval, H_o, mmn, uhu, uiu, method, error, comm)
+    ! call output_orb_formatted(stdout, seedname, num_bands, num_kpts, num_wann, orb, v_matrix)
+    call io_stopwatch_stop('calculate orb matrix', timer)
+    call io_print_timings(timer, stdout)
+    write(stdout, '(/1x,a)') "Exit"
+
     close (unit=stdout)
   endif
 
