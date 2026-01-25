@@ -66,14 +66,14 @@ contains
     write (stdout, '(A)') "Usage:"
     write (stdout, '(A)') "  w90genorb.x [ARGS] [SEEDNAME]"
     write (stdout, '(A)') "where ARGS can be one of the following:"
-    write (stdout, '(A)') "  -q or --qiao"
-    write (stdout, '(A)') "      Output orb matrix only for Qiao's algorithm."
-    write (stdout, '(A)') "  -r or --ryoo"
-    write (stdout, '(A)') "      Output orb, oIu and oHu matrix for Ryoo's algorithm."
+    write (stdout, '(A)') "  -w or --wannier"
+    write (stdout, '(A)') "      Output orb matrix in Wannier gauge."
+    write (stdout, '(A)') "  -b or --bloch"
+    write (stdout, '(A)') "      Output orb matrix in Bloch gauge."
   end subroutine print_usage
 
   !================================================!
-  subroutine get_seedname(stdout, seedname, method)
+  subroutine get_seedname(stdout, seedname, wan_gauge)
     !================================================!
     !
     !! Set the seedname from the command line
@@ -83,9 +83,9 @@ contains
 
     integer, intent(in) :: stdout
     character(len=50), intent(inout)  :: seedname
-    logical, intent(inout) :: method
-    ! .true.  : Qiao's method
-    ! .false. : Ryoo's method
+    logical, intent(inout) :: wan_gauge
+    ! .true.  : output matrix in Bloch basis (Wannier gauge)
+    ! .false. : output matrix in Bloch basis (Bloch gauge)
 
     integer :: num_arg
     character(len=50) :: ctemp
@@ -108,10 +108,10 @@ contains
     end if
 
     call get_command_argument(1, ctemp)
-    if ((index(ctemp, '-q') > 0) .or. (index(ctemp, '--qiao') > 0)) then
-      method = .true.
-    elseif ((index(ctemp, '-r') > 0) .or. (index(ctemp, '--ryoo') > 0)) then
-      method = .false.
+    if ((index(ctemp, '-w') > 0) .or. (index(ctemp, '--wannier') > 0)) then
+      wan_gauge = .true.
+    elseif ((index(ctemp, '-b') > 0) .or. (index(ctemp, '--bloch') > 0)) then
+      wan_gauge = .false.
     else
       write (stdout, '(A)') 'Wrong command line action: '//trim(ctemp)
       call print_usage(stdout)
@@ -674,7 +674,7 @@ contains
   ! end subroutine
 
     subroutine calc_orb_gh(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_manifold, have_disentangled, &
-                           eigval, H_o, mmn, uhu, uiu, method, error, comm)
+                           eigval, v_matrix, H_o, mmn, uhu, uiu, wan_gauge, error, comm)
     !================================================!
     !
     !! calculate orbital matrix
@@ -694,8 +694,9 @@ contains
     character(len=50), intent(inout) :: seedname
     integer, intent(in) :: num_bands, num_kpts, num_wann
     logical, intent(in) :: have_disentangled
-    logical, intent(in) :: method
+    logical, intent(in) :: wan_gauge
     real(kind=dp), intent(in) :: eigval(:, :)
+    complex(kind=dp), allocatable, intent(inout) :: v_matrix(:, :, :)
     complex(kind=dp), allocatable, intent(inout) :: H_o(:, :, :)
     complex(kind=dp), allocatable, intent(inout) :: mmn(:, :, :, :)
     complex(kind=dp), allocatable, intent(inout) :: uiu(:, :, :, :, :)
@@ -713,7 +714,8 @@ contains
 
     ! temp variables below here
     complex(kind=dp), allocatable :: mmn_b1(:, :), mmn_b2(:, :)
-    integer :: ik, m, n, idir1, idir2, nn1, nn2
+    complex(kind=dp), allocatable :: VVd(:, :)
+    integer :: ik, m, n, idir1, idir2, nn1, nn2, qb1, qb2
 
     integer, dimension(3), parameter :: alpha_A = (/2, 3, 1/)
     integer, dimension(3), parameter :: beta_A = (/3, 1, 2/)
@@ -750,21 +752,42 @@ contains
       return
     endif
 
+    allocate(VVd(num_bands, num_bands), stat=ierr)
+    if (ierr /= 0) then
+      call set_error_alloc(error, 'Error in allocating Vdagger * V in calc_orb_gh', comm)
+      return
+    endif
+    VVd = cmplx_0
+
     do ik = 1, num_kpts
       orb_g = cmplx_0
       orb_h = cmplx_0
       orb_ab = cmplx_0
+      if (wan_gauge) VVd(:, :) = matmul(v_matrix(:, :, ik), conjg(transpose(v_matrix(:, :, ik))))
       do nn2 = 1, kmesh_info%nntot
         mmn_b2(:, :) = mmn(:, :, nn2, ik)
         do nn1 = 1, kmesh_info%nntot
           mmn_b1(:, :) = mmn(:, :, nn1, ik)
-          ! <k+b1 | H | k+b2> - <k+b1 | k> <k | H | k> <k | k+b2>
-          orb_g(:, :) = uhu(:, :, nn1, nn2, ik) - &
-                                  matmul(conjg(transpose(mmn_b1)), &
-                                  matmul(H_o(:, :, ik), mmn_b2))
+          ! <k | k+b1> [<k+b1 | H | k+b2> - <k+b1 | k> <k | H | k> <k | k+b2>] <k+b2 | k>
+          if (wan_gauge) then
+            orb_g(:, :) = uhu(:, :, nn1, nn2, ik) - &
+                          matmul(matmul(conjg(transpose(mmn_b1)), VVd(:, :)), &
+                          matmul(H_o(:, :, ik), mmn_b2))
+          else
+            orb_g(:, :) = uhu(:, :, nn1, nn2, ik) - &
+                          matmul(conjg(transpose(mmn_b1)), &
+                          matmul(H_o(:, :, ik), mmn_b2))
+          endif
           orb_g(:, :) = cmplx_i * matmul(mmn_b1, matmul(orb_g(:, :), conjg(transpose(mmn_b2))))
-          orb_h(:, :) = uiu(:, :, nn1, nn2, ik) - &
-                        matmul(conjg(transpose(mmn_b1)), mmn_b2)
+
+          ! <k | k+b1> [<k+b1 | k+b2> - <k+b1 | k> <k | k+b2>] <k+b2 | k> <k | H | k>
+          if (wan_gauge) then
+            orb_h(:, :) = uiu(:, :, nn1, nn2, ik) - &
+                          matmul(matmul(conjg(transpose(mmn_b1)), VVd(:, :)), mmn_b2)
+          else
+            orb_h(:, :) = uiu(:, :, nn1, nn2, ik) - &
+                          matmul(conjg(transpose(mmn_b1)), mmn_b2)
+          endif
           orb_h(:, :) = cmplx_i * matmul(mmn_b1, matmul(orb_h(:, :), conjg(transpose(mmn_b2))))
           orb_h(:, :) = matmul(orb_h, H_o(:, :, ik))
           do idir2 = 1, 3
@@ -914,7 +937,7 @@ program w90genorb
   integer :: mp_grid(3)
   integer :: optimisation
   real(kind=dp), allocatable :: fermi_energy_list(:)
-  logical :: gamma_only, eig_found, method
+  logical :: gamma_only, eig_found, wan_gauge
   logical :: formatted = .false.
   logical :: effective_model = .false.
   logical :: have_disentangled
@@ -983,7 +1006,7 @@ program w90genorb
   stderr = 0
 
   if (on_root) then 
-    call get_seedname(stdout, seedname, method)
+    call get_seedname(stdout, seedname, wan_gauge)
     open (newunit=stdout, file=trim(seedname)//'.log')
     write(stdout, "(a,i4,a)") "Running on", num_nodes, " nodes"
     call w90_readwrite_in_file(settings, seedname, error, comm)
@@ -1091,7 +1114,7 @@ program w90genorb
 
     call io_stopwatch_start('calculate orb matrix', timer)
     call calc_orb_gh(stdout, seedname, num_bands, num_kpts, num_wann, kmesh_info, dis_window, have_disentangled,&
-                     eigval, H_o, mmn, uhu, uiu, method, error, comm)
+                     eigval, v_matrix, H_o, mmn, uhu, uiu, wan_gauge, error, comm)
     ! call output_orb_formatted(stdout, seedname, num_bands, num_kpts, num_wann, orb, v_matrix)
     call io_stopwatch_stop('calculate orb matrix', timer)
     call io_print_timings(timer, stdout)
