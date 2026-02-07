@@ -763,33 +763,29 @@ contains
       orb_g = cmplx_0
       orb_h = cmplx_0
       orb_ab = cmplx_0
-      ! if (wan_gauge) VVd(:, :) = matmul(v_matrix(:, :, ik), conjg(transpose(v_matrix(:, :, ik))))
+      if (wan_gauge) VVd(:, :) = matmul(v_matrix(:, :, ik), conjg(transpose(v_matrix(:, :, ik))))
       do nn2 = 1, kmesh_info%nntot
         mmn_b2(:, :) = mmn(:, :, nn2, ik)
         do nn1 = 1, kmesh_info%nntot
-          if (wan_gauge) VVd(:, :) = matmul(v_matrix(:, :, kmesh_info%nnlist(ik, nn1)), &
-                            conjg(transpose(v_matrix(:, :, kmesh_info%nnlist(ik, nn1)))))
+          ! if (wan_gauge) VVd(:, :) = matmul(v_matrix(:, :, kmesh_info%nnlist(ik, nn1)), &
+          !                   conjg(transpose(v_matrix(:, :, kmesh_info%nnlist(ik, nn1)))))
           mmn_b1(:, :) = mmn(:, :, nn1, ik)
           ! <k | k+b1> [<k+b1 | H | k+b2> - <k+b1 | k> <k | H | k> <k | k+b2>] <k+b2 | k>
           if (wan_gauge) then
-            orb_g(:, :) = matmul(VVd, uhu(:, :, nn1, nn2, ik)) !- &
-                          ! matmul(matmul(conjg(transpose(mmn_b1)), VVd(:, :)), &
-                          ! matmul(H_o(:, :, ik), mmn_b2))
-          else
             orb_g(:, :) = uhu(:, :, nn1, nn2, ik) - &
-                          matmul(conjg(transpose(mmn_b1)), &
+                          matmul(matmul(conjg(transpose(mmn_b1)), VVd(:, :)), &
                           matmul(H_o(:, :, ik), mmn_b2))
+          else
+            orb_g(:, :) = uhu(:, :, nn1, nn2, ik)
           endif
           orb_g(:, :) = cmplx_i * matmul(mmn_b1, matmul(orb_g(:, :), conjg(transpose(mmn_b2))))
 
           ! <k | k+b1> [<k+b1 | k+b2> - <k+b1 | k> <k | k+b2>] <k+b2 | k> <k | H | k>
           if (wan_gauge) then
-            orb_h(:, :) = matmul(VVd, matmul(uiu(:, :, nn1, nn2, ik), H_o(:, :, kmesh_info%nnlist(ik, nn2)))) ! - &
-                          ! matmul(matmul(conjg(transpose(mmn_b1)), VVd(:, :)), mmn_b2)
+            orb_h(:, :) = matmul(uiu(:, :, nn1, nn2, ik), H_o(:, :, kmesh_info%nnlist(ik, nn2))) - &
+                          matmul(matmul(matmul(conjg(transpose(mmn_b1)), VVd(:, :)), mmn_b2), H_o(:, :, kmesh_info%nnlist(ik, nn2)))
           else
-            orb_h(:, :) = uiu(:, :, nn1, nn2, ik) - &
-                          matmul(conjg(transpose(mmn_b1)), mmn_b2)
-            orb_h(:, :) = matmul(orb_h, H_o(:, :, ik))
+            orb_h(:, :) = matmul(uiu(:, :, nn1, nn2, ik), H_o(:, :, ik))
           endif
           orb_h(:, :) = cmplx_i * matmul(mmn_b1, matmul(orb_h(:, :), conjg(transpose(mmn_b2))))
           ! orb_h(:, :) = matmul(orb_h, H_o(:, :, ik))
@@ -805,8 +801,9 @@ contains
       enddo ! nn2
       orb_o = cmplx_0
       do idir1 = 1, 3
-        orb_o(:, :, idir1) = orb_ab(:, :, alpha_A(idir1), beta_A(idir1)) - orb_ab(:, :, beta_A(idir1), alpha_A(idir1))
-        orb_o(:, :, idir1) = fac * (orb_o(:, :, idir1) + conjg(transpose(orb_o(:, :, idir1))))
+        orb_o(:, :, idir1) = fac * (orb_ab(:, :, alpha_A(idir1), beta_A(idir1)) -&
+                                    orb_ab(:, :, beta_A(idir1), alpha_A(idir1)))
+        orb_o(:, :, idir1) = (orb_o(:, :, idir1) + conjg(transpose(orb_o(:, :, idir1))))
         !
       enddo ! idir1
 
