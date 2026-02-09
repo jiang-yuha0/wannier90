@@ -785,7 +785,7 @@ contains
             orb_h(:, :) = matmul(uiu(:, :, nn1, nn2, ik), H_o(:, :, kmesh_info%nnlist(ik, nn2))) - &
                           matmul(matmul(matmul(conjg(transpose(mmn_b1)), VVd(:, :)), mmn_b2), H_o(:, :, kmesh_info%nnlist(ik, nn2)))
           else
-            orb_h(:, :) = matmul(uiu(:, :, nn1, nn2, ik), H_o(:, :, ik))
+            orb_h(:, :) = matmul(uiu(:, :, nn1, nn2, ik), H_o(:, :, kmesh_info%nnlist(ik, nn2)))
           endif
           orb_h(:, :) = cmplx_i * matmul(mmn_b1, matmul(orb_h(:, :), conjg(transpose(mmn_b2))))
           ! orb_h(:, :) = matmul(orb_h, H_o(:, :, ik))
